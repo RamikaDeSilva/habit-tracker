@@ -48,33 +48,36 @@ public class UserApp {
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
-        if (command.equals("a")) {
-            System.out.println("\nPlease enter the following information: ");
-            addHabit();
-            System.out.println("\nYour habit has been added! Anything else?");
-        } else if (command.equals("v")) {
-            if (HabitService.getAllHabits().isEmpty()) {
-                System.out.println("\nYou have no habits - please add a habit first.");
-            } else {
-                viewHabits(HabitService.getAllHabits());
+        switch (command) {
+            case "a" -> {
+                System.out.println("\nPlease enter the following information: ");
+                addHabit();
+                System.out.println("\nYour habit has been added! Anything else?");
             }
-        } else if (command.equals("h")) {
-            if (HabitService.getActiveHabits().isEmpty()) {
-                System.out.println("\nYou have no habits - please add a habit first.");
-            } else {
-                viewHabits(HabitService.getActiveHabits());
+            case "v" -> {
+                if (HabitService.getAllHabits().isEmpty()) {
+                    System.out.println("\nYou have no habits - please add a habit first.");
+                } else {
+                    viewHabits(HabitService.getAllHabits());
+                }
             }
-        } else if (command.equals("s")) {
-            viewSpecificHabit();
-        } else if (command.equals("i")) {
-            deactivateHabit();
-            System.out.println("Habit now deactivated - Anything else? ");
-        } else if (command.equals("d")) {
-            removeHabit();
-            System.out.println("Habit deleted - Anything else? ");
-        }
-        else {
-            System.out.println("Selection not valid...");
+            case "h" -> {
+                if (HabitService.getActiveHabits().isEmpty()) {
+                    System.out.println("\nYou have no habits - please add a habit first.");
+                } else {
+                    viewHabits(HabitService.getActiveHabits());
+                }
+            }
+            case "s" -> viewSpecificHabit();
+            case "i" -> {
+                deactivateHabit();
+                System.out.println("Habit now deactivated - Anything else? ");
+            }
+            case "d" -> {
+                removeHabit();
+                System.out.println("Habit deleted - Anything else? ");
+            }
+            default -> System.out.println("Selection not valid...");
         }
     }
 
