@@ -1,5 +1,6 @@
 package main.java.com.ramika.habit.ui;
 
+import main.java.com.ramika.habit.exceptions.AlreadyNotActiveException;
 import main.java.com.ramika.habit.exceptions.HabitNotFoundException;
 import main.java.com.ramika.habit.model.Category;
 import main.java.com.ramika.habit.model.Habit;
@@ -65,14 +66,19 @@ public class UserApp {
             }
         } else if (command.equals("s")) {
             viewSpecificHabit();
-        } else {
+        } else if (command.equals("i")) {
+            deactivateHabit();
+            System.out.println("Habit now deactivated - Anything else? ");
+        } else if (command.equals("d")) {
+            removeHabit();
+            System.out.println("Habit deleted - Anything else? ");
+        }
+        else {
             System.out.println("Selection not valid...");
         }
     }
 
 
-    // source attribute to TellerApp:
-    // https://github.students.cs.ubc.ca/CPSC210/TellerApp
     // EFFECTS: displays menu of options to user
     private void displayMenu() {
         System.out.println("\nSelect from:");
@@ -80,6 +86,8 @@ public class UserApp {
         System.out.println("\tv -> View all habits");
         System.out.println("\th -> View active habits");
         System.out.println("\ts -> View a specific habit");
+        System.out.println("\ti -> Make habit inactive");
+        System.out.println("\td -> Delete habit");
         System.out.println("\tq -> quit");
     }
 
@@ -160,6 +168,7 @@ public class UserApp {
     private void viewHabits(Map<UUID, Habit> habits) {
         for (UUID id : habits.keySet()) {
             try {
+                System.out.println();
                 viewHabit(id);
             } catch (HabitNotFoundException e) {
                 System.out.println("error: habit doesn't exist");
@@ -167,6 +176,7 @@ public class UserApp {
         }
     }
 
+    // EFFECTS: View specific habit entered as input
     private void viewSpecificHabit() {
         UUID searchID = null;
         do {
@@ -190,8 +200,56 @@ public class UserApp {
         }
     }
 
+    // EFFECTS: remove given habit
+    private void removeHabit() {
+        UUID searchID = null;
+        do {
+            System.out.println("Enter habit name");
+            String habitName = input.next().toLowerCase();
+            Map<UUID, Habit> habits = HabitService.getAllHabits();
+            for (UUID id : habits.keySet()) {
+                if (habits.get(id) != null) {
+                    String name = habits.get(id).getName().toLowerCase();
+                    if (name.equals(habitName)) {
+                        searchID = id;
+                    }
+                }
+            }
+        } while (searchID == null);
 
-    // displays specific habit asked
+        try {
+            HabitService.removeHabit(searchID);
+        } catch (HabitNotFoundException e) {
+            System.out.println("error: habit doesn't exist");
+        }
+    }
+
+    private void deactivateHabit() {
+        UUID searchID = null;
+        do {
+            System.out.println("Enter habit name");
+            String habitName = input.next().toLowerCase();
+            Map<UUID, Habit> habits = HabitService.getAllHabits();
+            for (UUID id : habits.keySet()) {
+                if (habits.get(id) != null) {
+                    String name = habits.get(id).getName().toLowerCase();
+                    if (name.equals(habitName)) {
+                        searchID = id;
+                    }
+                }
+            }
+        } while (searchID == null);
+
+        try {
+            HabitService.deactivateHabit(searchID);
+        } catch (HabitNotFoundException e) {
+            System.out.println("error: habit doesn't exist");
+        } catch (AlreadyNotActiveException e) {
+            System.out.println("error: habit already not active");
+        }
+    }
+
+    // EFFECTS: displays specific habit asked
     private void viewHabit(UUID habitId) throws HabitNotFoundException {
         // get the habit from the general collection - go through ids and check if they match
         // if habit is not inside, throw new exception book not found

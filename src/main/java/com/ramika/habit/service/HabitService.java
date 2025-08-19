@@ -1,5 +1,6 @@
 package main.java.com.ramika.habit.service;
 
+import main.java.com.ramika.habit.exceptions.AlreadyNotActiveException;
 import main.java.com.ramika.habit.exceptions.HabitNotFoundException;
 import main.java.com.ramika.habit.model.Category;
 import main.java.com.ramika.habit.model.Habit;
@@ -51,7 +52,7 @@ public class HabitService {
     // MODIFIES: allHabits, activeHabits
     // EFFECTS: Removes habit from allHabits and activeHabits if active
     // if not in allHabits, throw exception - CREATE ONE FOR THIS!!!
-    public void deleteHabit(UUID habitID) throws HabitNotFoundException {
+    public static void removeHabit(UUID habitID) throws HabitNotFoundException {
         // check if UUID Is in Keyset, if not throw exception
         if (!allHabits.containsKey(habitID)) {
             throw new HabitNotFoundException();
@@ -64,9 +65,31 @@ public class HabitService {
                 } else {
                     activeHabits.remove(habitID);
                 }
+                allHabits.remove(habitID);
             } else {
                 allHabits.remove(habitID);
             }
         }
     }
+
+    // MODIFIES: allHabits, activeHabits
+    // EFFECTS: deactivates habit - removes from activeHabits
+    // if not in allHabits, throw HabitNotFoundException
+    // if already notActive, throw AlreadyNotActiveException
+    public static void deactivateHabit(UUID habitID) throws HabitNotFoundException, AlreadyNotActiveException {
+        // check if UUID Is in Keyset, if not throw exception
+        if (!allHabits.containsKey(habitID)) {
+            throw new HabitNotFoundException();
+        }
+        else {
+            Habit deactivatedHabit = allHabits.get(habitID);
+            if (deactivatedHabit.getActiveStatus() == Status.ACTIVE) {
+                deactivatedHabit.setActiveStatus(Status.INACTIVE);
+                activeHabits.remove(habitID);
+            } else {
+               throw new AlreadyNotActiveException();
+            }
+        }
+    }
+
 }

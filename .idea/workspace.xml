@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Specified + Implemented displayMenu, processCommand, and runApp">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="added AlreadyNotActiveException.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/UserApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/UserApp.java" afterDir="false" />
@@ -229,7 +229,23 @@
       <option name="project" value="LOCAL" />
       <updated>1755570055188</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Implemented add, view all, view specific book functionality">
+      <option name="closed" value="true" />
+      <created>1755575215171</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1755575215171</updated>
+    </task>
+    <task id="LOCAL-00019" summary="added AlreadyNotActiveException.java">
+      <option name="closed" value="true" />
+      <created>1755577299143</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1755577299143</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -247,7 +263,9 @@
     <MESSAGE value="Implemented deleteHabit method in HabitService.java" />
     <MESSAGE value="Linked Main to UserApp Console" />
     <MESSAGE value="Specified + Implemented displayMenu, processCommand, and runApp" />
-    <option name="LAST_COMMIT_MESSAGE" value="Specified + Implemented displayMenu, processCommand, and runApp" />
+    <MESSAGE value="Implemented add, view all, view specific book functionality" />
+    <MESSAGE value="added AlreadyNotActiveException.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="added AlreadyNotActiveException.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
