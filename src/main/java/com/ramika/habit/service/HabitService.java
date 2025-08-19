@@ -13,13 +13,10 @@ import java.util.UUID;
 // Singleton class to handle all habit functionality
 public class HabitService {
     private static HabitService instance;
-    private static Map<UUID, Habit> allHabits;
-    private static Map<UUID, Habit> activeHabits;
+    private static Map<UUID, Habit> allHabits = new LinkedHashMap<>();
+    private static Map<UUID, Habit> activeHabits = new LinkedHashMap<>();
 
-    private HabitService() {
-        allHabits = new LinkedHashMap<>();
-        activeHabits = new LinkedHashMap<>();
-    }
+    private HabitService() {}
 
     public static HabitService getInstance() {
         if (instance != null) {
@@ -40,7 +37,7 @@ public class HabitService {
     // MODIFIES: allHabits, activeHabits
     // EFFECTS: Creates new habit with given name, priority, category
     // add the habit to allHabits and activeHabits with given id
-    public void createHabit(String name, Priority priority, Category category) {
+    public static void createHabit(String name, Priority priority, Category category) {
         // create new uuid
         // call constructor
         // add to both lists

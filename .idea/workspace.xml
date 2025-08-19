@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Linked Main to UserApp Console">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Specified + Implemented displayMenu, processCommand, and runApp">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/UserApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/UserApp.java" afterDir="false" />
@@ -221,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755568771472</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Specified + Implemented displayMenu, processCommand, and runApp">
+      <option name="closed" value="true" />
+      <created>1755570055188</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1755570055188</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -238,7 +246,8 @@
     <MESSAGE value="Implemented HabitNotFoundException.java" />
     <MESSAGE value="Implemented deleteHabit method in HabitService.java" />
     <MESSAGE value="Linked Main to UserApp Console" />
-    <option name="LAST_COMMIT_MESSAGE" value="Linked Main to UserApp Console" />
+    <MESSAGE value="Specified + Implemented displayMenu, processCommand, and runApp" />
+    <option name="LAST_COMMIT_MESSAGE" value="Specified + Implemented displayMenu, processCommand, and runApp" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
