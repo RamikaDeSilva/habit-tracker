@@ -107,4 +107,36 @@ public class HabitService {
         return searchId;
     }
 
+    public static void changeName(UUID searchId, String name) {
+        for (UUID id : allHabits.keySet()) {
+            if (searchId.equals(id)) {
+                if (allHabits.get(id) != null) {
+                    allHabits.get(id).setName(name);
+                    break;
+                }
+            }
+        }
+    }
+
+    public static void changePriority(UUID searchId, String name) {
+        for (UUID id : allHabits.keySet()) {
+            if (searchId.equals(id)) {
+                if (allHabits.get(id) != null) {
+                    allHabits.get(id).setName(name);
+                    break;
+                }
+            }
+        }
+    }
+
+    public static void changeCategory(UUID searchId, String name) {
+        for (UUID id : allHabits.keySet()) {
+            if (searchId.equals(id)) {
+                if (allHabits.get(id) != null) {
+                    allHabits.get(id).setName(name);
+                    break;
+                }
+            }
+        }
+    }
 }

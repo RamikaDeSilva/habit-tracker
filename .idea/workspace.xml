@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Implemented deleting habit user story and changing active status">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="edited empty active habits message">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/UserApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/UserApp.java" afterDir="false" />
@@ -253,7 +253,31 @@
       <option name="project" value="LOCAL" />
       <updated>1755577787026</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Refactored verifiying UUID exists of given habit name to HabitService.java from UserApp.java">
+      <option name="closed" value="true" />
+      <created>1755619878470</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1755619878470</updated>
+    </task>
+    <task id="LOCAL-00022" summary="changed processComand if statements to switch statement">
+      <option name="closed" value="true" />
+      <created>1755619989115</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1755619989115</updated>
+    </task>
+    <task id="LOCAL-00023" summary="edited empty active habits message">
+      <option name="closed" value="true" />
+      <created>1755620070724</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1755620070724</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -274,7 +298,11 @@
     <MESSAGE value="Implemented add, view all, view specific book functionality" />
     <MESSAGE value="added AlreadyNotActiveException.java" />
     <MESSAGE value="Implemented deleting habit user story and changing active status" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented deleting habit user story and changing active status" />
+    <MESSAGE value="Refactored verifiying UUID exists of given habit name to HabitService.java from UserApp.java" />
+    <MESSAGE value="changed processComand if statements to switch statement" />
+    <MESSAGE value="changed processCommand method if statements to switch statement" />
+    <MESSAGE value="edited empty active habits message" />
+    <option name="LAST_COMMIT_MESSAGE" value="edited empty active habits message" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -69,6 +69,10 @@ public class UserApp {
                 }
             }
             case "s" -> viewSpecificHabit();
+            case "e" -> {
+                    editSpecificHabit();
+                    System.out.println("edit has been made - Anything else? ");
+            }
             case "i" -> {
                 deactivateHabit();
                 System.out.println("Habit now deactivated - Anything else? ");
@@ -89,6 +93,7 @@ public class UserApp {
         System.out.println("\tv -> View all habits");
         System.out.println("\th -> View active habits");
         System.out.println("\ts -> View a specific habit");
+        System.out.println("\te -> edit a habit");
         System.out.println("\ti -> Make habit inactive");
         System.out.println("\td -> Delete habit");
         System.out.println("\tq -> quit");
@@ -195,6 +200,49 @@ public class UserApp {
         }
     }
 
+    // MODIFIES: Habit instance found
+    // EFFECTS: finds given habit, changes chosen thing to change
+    private void editSpecificHabit() {
+        UUID searchID = null;
+        do {
+            System.out.println("Enter habit name");
+            String habitName = input.next().toLowerCase();
+            searchID = HabitService.validIdExist(searchID, habitName);
+        } while (searchID == null);
+
+        boolean foundProperty = false;
+        do {
+            System.out.print("\nWhat do you want to edit: \n");
+            System.out.println("a - name");
+            System.out.println("b - priority level");
+            System.out.println("c - category");
+            String stringProperty = input.next();
+            stringProperty = stringProperty.toLowerCase();
+
+            if (stringProperty.length() != 1) {
+                System.out.println("error: please enter specific letter");
+            }
+            switch (stringProperty) {
+                case "a":
+                    System.out.println("Enter the new name: ");
+                    String newName = input.next().trim();
+                    HabitService.changeName(searchID, newName);
+                    foundProperty = true;
+                    break;
+                case "b":
+                    HabitService.changePriority(searchID, "");
+                    foundProperty = true;
+                    break;
+                case "c":
+                    HabitService.changeCategory(searchID, "");
+                    foundProperty = true;
+                    break;
+                default:
+                    break;
+            }
+        } while (!foundProperty);
+    }
+
     // EFFECTS: remove given habit
     private void removeHabit() {
         UUID searchID = null;
@@ -249,5 +297,7 @@ public class UserApp {
         }
 
     }
+
+
 
 }
