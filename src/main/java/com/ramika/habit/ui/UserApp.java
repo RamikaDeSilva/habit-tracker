@@ -63,7 +63,7 @@ public class UserApp {
             }
             case "h" -> {
                 if (HabitService.getActiveHabits().isEmpty()) {
-                    System.out.println("\nYou have no habits - please add a habit first.");
+                    System.out.println("\nYou have no active habits - please add a habit first.");
                 } else {
                     viewHabits(HabitService.getActiveHabits());
                 }
