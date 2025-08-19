@@ -12,7 +12,7 @@ import java.util.UUID;
 
 // Singleton class to handle all habit functionality
 public class HabitService {
-    private HabitService instance;
+    private static HabitService instance;
     private static Map<UUID, Habit> allHabits;
     private static Map<UUID, Habit> activeHabits;
 
@@ -21,12 +21,20 @@ public class HabitService {
         activeHabits = new LinkedHashMap<>();
     }
 
-    public HabitService getInstance() {
+    public static HabitService getInstance() {
         if (instance != null) {
             return instance;
         }
         instance = new HabitService();
         return instance;
+    }
+
+    public static Map<UUID, Habit> getAllHabits() {
+        return allHabits;
+    }
+
+    public static Map<UUID, Habit> getActiveHabits() {
+        return activeHabits;
     }
 
     // MODIFIES: allHabits, activeHabits
