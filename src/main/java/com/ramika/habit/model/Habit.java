@@ -12,8 +12,8 @@ public class Habit {
     private Status activeStatus;
 
     // Creates a new habit with given name, priority, category, and activeStatus set to Active
-    public Habit(String name, Priority priority, Category category) {
-        id = UUID.randomUUID();
+    public Habit(UUID id, String name, Priority priority, Category category) {
+        this.id = id;
         this.name = name;
         this.priority = priority;
         this.category = category;

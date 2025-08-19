@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Implemented Category Enum + updated class Diagram">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Habit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Habit.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "RamikaDeSilva"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/RamikaDeSilva/habit-tracker.git",
+    "accountId": "a3dca5a5-8bb3-4583-8509-8dc7b5ad8522"
+  }
+}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="31TuaRznzaqWa5OUa8m38khYQSX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "onboarding.tips.debug.path": "/Users/ramikadesilva/Downloads/java-projects/habit-tracker/src/Main.java",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/main/java" />
+    </key>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="" />
+      <created>1755560446414</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1755560446414</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Added README.md file details">
+      <option name="closed" value="true" />
+      <created>1755560801652</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1755560801652</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added README.md file details">
+      <option name="closed" value="true" />
+      <created>1755560809140</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1755560809140</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added class diagram - MVP edition">
+      <option name="closed" value="true" />
+      <created>1755561121597</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1755561121597</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added class diagram - MVP edition">
+      <option name="closed" value="true" />
+      <created>1755561512766</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1755561512766</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added class diagram - MVP edition">
+      <option name="closed" value="true" />
+      <created>1755561522839</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1755561522839</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added raw Classes + Enums for MVP">
+      <option name="closed" value="true" />
+      <created>1755561654220</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1755561654220</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added raw Classes + Enums for MVP">
+      <option name="closed" value="true" />
+      <created>1755561668641</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1755561668641</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Implemented Priority and Status Enum classes">
+      <option name="closed" value="true" />
+      <created>1755561779983</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1755561779983</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Implemented Category Enum + updated class Diagram">
+      <option name="closed" value="true" />
+      <created>1755562069422</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1755562069422</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added README.md file details" />
+    <MESSAGE value="Created package folders" />
+    <MESSAGE value="Added class diagram - MVP edition" />
+    <MESSAGE value="Added raw Classes + Enums for MVP" />
+    <MESSAGE value="Implemented Priority and Status Enum classes" />
+    <MESSAGE value="Implemented Category Enum + updated class Diagram" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Category Enum + updated class Diagram" />
+  </component>
+</project>

@@ -1,6 +1,8 @@
 package main.java.com.ramika.habit.service;
 
+import main.java.com.ramika.habit.model.Category;
 import main.java.com.ramika.habit.model.Habit;
+import main.java.com.ramika.habit.model.Priority;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -27,7 +29,16 @@ public class HabitService {
 
     // MODIFIES: allHabits, activeHabits
     // EFFECTS: Creates new habit with given name, priority, category
-    public void createHabit() {
+    // add the habit to allHabits and activeHabits with given id
+    public void createHabit(String name, Priority priority, Category category) {
+        // create new uuid
+        // call constructor
+        // add to both lists
+        UUID id = UUID.randomUUID();
+        Habit habit = new Habit(id, name, priority, category);
+        allHabits.put(id, habit);
+        activeHabits.put(id, habit);
+        //
     }
 
     // MODIFIES: allHabits, activeHabits
