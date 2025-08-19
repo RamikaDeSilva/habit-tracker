@@ -182,15 +182,7 @@ public class UserApp {
         do {
             System.out.println("Enter habit name");
             String habitName = input.next().toLowerCase();
-            Map<UUID, Habit> habits = HabitService.getAllHabits();
-            for (UUID id : habits.keySet()) {
-                if (habits.get(id) != null) {
-                    String name = habits.get(id).getName().toLowerCase();
-                    if (name.equals(habitName)) {
-                        searchID = id;
-                    }
-                }
-            }
+            searchID = HabitService.validIdExist(searchID, habitName);
         } while (searchID == null);
 
         try {
@@ -206,15 +198,7 @@ public class UserApp {
         do {
             System.out.println("Enter habit name");
             String habitName = input.next().toLowerCase();
-            Map<UUID, Habit> habits = HabitService.getAllHabits();
-            for (UUID id : habits.keySet()) {
-                if (habits.get(id) != null) {
-                    String name = habits.get(id).getName().toLowerCase();
-                    if (name.equals(habitName)) {
-                        searchID = id;
-                    }
-                }
-            }
+            searchID = HabitService.validIdExist(searchID, habitName);
         } while (searchID == null);
 
         try {
@@ -227,17 +211,9 @@ public class UserApp {
     private void deactivateHabit() {
         UUID searchID = null;
         do {
-            System.out.println("Enter habit name");
+            System.out.println("Enter habit name: ");
             String habitName = input.next().toLowerCase();
-            Map<UUID, Habit> habits = HabitService.getAllHabits();
-            for (UUID id : habits.keySet()) {
-                if (habits.get(id) != null) {
-                    String name = habits.get(id).getName().toLowerCase();
-                    if (name.equals(habitName)) {
-                        searchID = id;
-                    }
-                }
-            }
+            searchID = HabitService.validIdExist(searchID, habitName);
         } while (searchID == null);
 
         try {
@@ -249,10 +225,9 @@ public class UserApp {
         }
     }
 
+
     // EFFECTS: displays specific habit asked
     private void viewHabit(UUID habitId) throws HabitNotFoundException {
-        // get the habit from the general collection - go through ids and check if they match
-        // if habit is not inside, throw new exception book not found
         if (!HabitService.getAllHabits().containsKey(habitId)) {
             throw new HabitNotFoundException();
         } else {

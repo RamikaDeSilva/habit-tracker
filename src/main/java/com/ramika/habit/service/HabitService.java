@@ -92,4 +92,19 @@ public class HabitService {
         }
     }
 
+    // EFFECTS: finds UUID with given habitName, if found, set found ID to
+    // search id, otherwise do nothing
+    public static UUID validIdExist(UUID searchId, String habitName) {
+        //Map<UUID, Habit> habits = HabitService.getAllHabits();
+        for (UUID id : allHabits.keySet()) {
+            if (allHabits.get(id) != null) {
+                String name = allHabits.get(id).getName().toLowerCase();
+                if (name.equals(habitName)) {
+                    searchId = id;
+                }
+            }
+        }
+        return searchId;
+    }
+
 }
