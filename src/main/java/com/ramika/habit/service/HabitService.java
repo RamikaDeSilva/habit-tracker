@@ -7,6 +7,8 @@ import main.java.com.ramika.habit.model.Habit;
 import main.java.com.ramika.habit.model.Priority;
 import main.java.com.ramika.habit.model.Status;
 
+import java.time.DayOfWeek;
+import java.util.EnumSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -38,12 +40,12 @@ public class HabitService {
     // MODIFIES: allHabits, activeHabits
     // EFFECTS: Creates new habit with given name, priority, category
     // add the habit to allHabits and activeHabits with given id
-    public static void createHabit(String name, Priority priority, Category category) {
+    public static void createHabit(String name, Priority priority, Category category, EnumSet<DayOfWeek> schedule) {
         // create new uuid
         // call constructor
         // add to both lists
         UUID id = UUID.randomUUID();
-        Habit habit = new Habit(id, name, priority, category);
+        Habit habit = new Habit(id, name, priority, category, schedule);
         allHabits.put(id, habit);
         activeHabits.put(id, habit);
         // future : check for duplicate before adding

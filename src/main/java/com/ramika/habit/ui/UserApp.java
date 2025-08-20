@@ -7,6 +7,8 @@ import main.java.com.ramika.habit.model.Habit;
 import main.java.com.ramika.habit.model.Priority;
 import main.java.com.ramika.habit.service.HabitService;
 
+import java.time.DayOfWeek;
+import java.util.EnumSet;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.UUID;
@@ -117,63 +119,10 @@ public class UserApp {
         Priority priority = enterNewPriority();
         System.out.println();
         Category category = enterNewCategory();
-//        do {
-//            System.out.print("\nChose Priority by Letter: \n");
-//            System.out.println("a - High priority");
-//            System.out.println("b - Medium priority");
-//            System.out.println("c - Low priority");
-//            String stringPriority = input.next();
-//            stringPriority = stringPriority.toLowerCase();
-//
-//            if (stringPriority.length() != 1) {
-//                System.out.println("error: please enter specific letter");
-//            }
-//            switch (stringPriority) {
-//                case "a":
-//                    priority = Priority.HIGH;
-//                    break;
-//                case "b":
-//                    priority = Priority.MEDIUM;
-//                    break;
-//                case "c":
-//                    priority = Priority.LOW;
-//                    break;
-//                default:
-//                    break;
-//            }
-//        } while (priority == null);
+        EnumSet<DayOfWeek> schedule = enterDaysOfWeek();
+        System.out.println("Chosen Schedule: " + schedule);
 
-//        do {
-//            System.out.print("\nChose Category by Letter: \n");
-//            System.out.println("a - Fitness");
-//            System.out.println("b - Financial");
-//            System.out.println("c - Mental Health");
-//            System.out.println("d - Other");
-//            String stringCategory = input.next();
-//            stringCategory = stringCategory.toLowerCase();
-//
-//            if (stringCategory.length() != 1) {
-//                System.out.println("error: please enter specific letter");
-//            }
-//            switch (stringCategory) {
-//                case "a":
-//                    category = Category.FITNESS;
-//                    break;
-//                case "b":
-//                    category = Category.FINANCIAL;
-//                    break;
-//                case "c":
-//                    category = Category.MENTALHEALTH;
-//                    break;
-//                case "d":
-//                    category = Category.OTHER;
-//                    break;
-//                default:
-//                    break;
-//            }
-//        } while (category == null);
-
-        HabitService.createHabit(title, priority, category);
+        HabitService.createHabit(title, priority, category, schedule);
     }
 
     // EFFECTS: Displays all habits in collection of habits given
@@ -315,6 +264,27 @@ public class UserApp {
         return category;
     }
 
+    private EnumSet<DayOfWeek> enterDaysOfWeek() {
+        System.out.println("Enter the days you want this habit: ");
+        EnumSet<DayOfWeek> schedule = EnumSet.noneOf(DayOfWeek.class);
+
+        if (input.hasNextLine()) input.nextLine();
+
+        do {
+            for (DayOfWeek day : DayOfWeek.values()) {
+                System.out.print("\nInclude " + day + "? (y/n): ");
+                String answer = input.nextLine().trim().toLowerCase();
+                if (answer.equals("y") || answer.equals("yes")) {
+                    schedule.add(day);
+                }
+            }
+            if (schedule.isEmpty()) {
+                System.out.println("please choose at least one day you want this habit to occur.");
+            }
+        } while (schedule.isEmpty());
+        return schedule;
+    }
+
     // EFFECTS: remove given habit
     private void removeHabit() {
         UUID searchID = null;
@@ -365,6 +335,7 @@ public class UserApp {
                 System.out.println("Category: " + habit.getCategory());
                 System.out.println("Priority level: " + habit.getPriority());
                 System.out.println("Active? : " + habit.getActiveStatus());
+                System.out.println("Schedule: " + habit.getSchedule());
             }
         }
 

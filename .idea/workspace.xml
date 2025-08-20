@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Added change Priority and change Category user stories">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Refactored addHabit() by using helper methods enterNewPriority() and enterNewCategory() for getting priority and category">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Habit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Habit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/UserApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/UserApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -271,7 +273,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755651770156</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Refactored addHabit() by using helper methods enterNewPriority() and enterNewCategory() for getting priority and category">
+      <option name="closed" value="true" />
+      <created>1755653730023</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1755653730023</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -297,7 +307,8 @@
     <MESSAGE value="changed processCommand method if statements to switch statement" />
     <MESSAGE value="edited empty active habits message" />
     <MESSAGE value="Added change Priority and change Category user stories" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added change Priority and change Category user stories" />
+    <MESSAGE value="Refactored addHabit() by using helper methods enterNewPriority() and enterNewCategory() for getting priority and category" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored addHabit() by using helper methods enterNewPriority() and enterNewCategory() for getting priority and category" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
