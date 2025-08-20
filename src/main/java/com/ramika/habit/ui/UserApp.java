@@ -103,8 +103,8 @@ public class UserApp {
     // EFFECTS: creates and adds habit to active habit list and general habit list
     private void addHabit() {
         String title;
-        Priority priority = null;
-        Category category = null;
+//        Priority priority = null;
+//        Category category = null;
         do {
             System.out.print("enter title: ");
             title = input.nextLine().trim();
@@ -113,61 +113,65 @@ public class UserApp {
             }
         } while (title.isEmpty());
 
-        do {
-            System.out.print("\nChose Priority by Letter: \n");
-            System.out.println("a - High priority");
-            System.out.println("b - Medium priority");
-            System.out.println("c - Low priority");
-            String stringPriority = input.next();
-            stringPriority = stringPriority.toLowerCase();
+        System.out.println();
+        Priority priority = enterNewPriority();
+        System.out.println();
+        Category category = enterNewCategory();
+//        do {
+//            System.out.print("\nChose Priority by Letter: \n");
+//            System.out.println("a - High priority");
+//            System.out.println("b - Medium priority");
+//            System.out.println("c - Low priority");
+//            String stringPriority = input.next();
+//            stringPriority = stringPriority.toLowerCase();
+//
+//            if (stringPriority.length() != 1) {
+//                System.out.println("error: please enter specific letter");
+//            }
+//            switch (stringPriority) {
+//                case "a":
+//                    priority = Priority.HIGH;
+//                    break;
+//                case "b":
+//                    priority = Priority.MEDIUM;
+//                    break;
+//                case "c":
+//                    priority = Priority.LOW;
+//                    break;
+//                default:
+//                    break;
+//            }
+//        } while (priority == null);
 
-            if (stringPriority.length() != 1) {
-                System.out.println("error: please enter specific letter");
-            }
-            switch (stringPriority) {
-                case "a":
-                    priority = Priority.HIGH;
-                    break;
-                case "b":
-                    priority = Priority.MEDIUM;
-                    break;
-                case "c":
-                    priority = Priority.LOW;
-                    break;
-                default:
-                    break;
-            }
-        } while (priority == null);
-
-        do {
-            System.out.print("\nChose Category by Letter: \n");
-            System.out.println("a - Fitness");
-            System.out.println("b - Financial");
-            System.out.println("c - Mental Health");
-            System.out.println("d - Other");
-            String stringCategory = input.next();
-            stringCategory = stringCategory.toLowerCase();
-
-            if (stringCategory.length() != 1) {
-                System.out.println("error: please enter specific letter");
-            }
-            switch (stringCategory) {
-                case "a":
-                    category = Category.FITNESS;
-                    break;
-                case "b":
-                    category = Category.FINANCIAL;
-                    break;
-                case "c":
-                    category = Category.MENTALHEALTH;
-                    break;
-                case "d":
-                    category = Category.OTHER;
-                    break;
-                default:
-                    break;
-            }
-        } while (category == null);
+//        do {
+//            System.out.print("\nChose Category by Letter: \n");
+//            System.out.println("a - Fitness");
+//            System.out.println("b - Financial");
+//            System.out.println("c - Mental Health");
+//            System.out.println("d - Other");
+//            String stringCategory = input.next();
+//            stringCategory = stringCategory.toLowerCase();
+//
+//            if (stringCategory.length() != 1) {
+//                System.out.println("error: please enter specific letter");
+//            }
+//            switch (stringCategory) {
+//                case "a":
+//                    category = Category.FITNESS;
+//                    break;
+//                case "b":
+//                    category = Category.FINANCIAL;
+//                    break;
+//                case "c":
+//                    category = Category.MENTALHEALTH;
+//                    break;
+//                case "d":
+//                    category = Category.OTHER;
+//                    break;
+//                default:
+//                    break;
+//            }
+//        } while (category == null);
 
         HabitService.createHabit(title, priority, category);
     }
@@ -246,7 +250,7 @@ public class UserApp {
     }
 
     private Priority enterNewPriority() {
-        System.out.println("Enter the new priority: ");
+        System.out.println("Enter the priority: ");
         Priority priority = null;
         do {
             System.out.println("a - High priority");
@@ -276,11 +280,11 @@ public class UserApp {
     }
 
     private Category enterNewCategory() {
-        System.out.println("Enter the new category: ");
+        System.out.println("Enter the category: ");
         Category category = null;
 
         do {
-            System.out.print("\nChose Category by Letter: \n");
+            System.out.print("Chose Category by Letter: \n");
             System.out.println("a - Fitness");
             System.out.println("b - Financial");
             System.out.println("c - Mental Health");

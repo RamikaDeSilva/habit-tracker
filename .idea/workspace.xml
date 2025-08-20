@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="edited empty active habits message">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Added change Priority and change Category user stories">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/UserApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/UserApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -264,7 +263,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755620070724</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Added change Priority and change Category user stories">
+      <option name="closed" value="true" />
+      <created>1755651770156</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1755651770156</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -289,7 +296,8 @@
     <MESSAGE value="changed processComand if statements to switch statement" />
     <MESSAGE value="changed processCommand method if statements to switch statement" />
     <MESSAGE value="edited empty active habits message" />
-    <option name="LAST_COMMIT_MESSAGE" value="edited empty active habits message" />
+    <MESSAGE value="Added change Priority and change Category user stories" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added change Priority and change Category user stories" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
