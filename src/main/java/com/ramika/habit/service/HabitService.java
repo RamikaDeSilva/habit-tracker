@@ -118,22 +118,22 @@ public class HabitService {
         }
     }
 
-    public static void changePriority(UUID searchId, String name) {
+    public static void changePriority(UUID searchId, Priority priority) {
         for (UUID id : allHabits.keySet()) {
             if (searchId.equals(id)) {
                 if (allHabits.get(id) != null) {
-                    allHabits.get(id).setName(name);
+                    allHabits.get(id).setPriority(priority);
                     break;
                 }
             }
         }
     }
 
-    public static void changeCategory(UUID searchId, String name) {
+    public static void changeCategory(UUID searchId, Category category) {
         for (UUID id : allHabits.keySet()) {
             if (searchId.equals(id)) {
                 if (allHabits.get(id) != null) {
-                    allHabits.get(id).setName(name);
+                    allHabits.get(id).setCategory(category);
                     break;
                 }
             }

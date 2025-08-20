@@ -230,17 +230,85 @@ public class UserApp {
                     foundProperty = true;
                     break;
                 case "b":
-                    HabitService.changePriority(searchID, "");
+                    Priority priorityChosen = enterNewPriority();
+                    HabitService.changePriority(searchID, priorityChosen);
                     foundProperty = true;
                     break;
                 case "c":
-                    HabitService.changeCategory(searchID, "");
+                    Category categoryChosen = enterNewCategory();
+                    HabitService.changeCategory(searchID, categoryChosen);
                     foundProperty = true;
                     break;
                 default:
                     break;
             }
         } while (!foundProperty);
+    }
+
+    private Priority enterNewPriority() {
+        System.out.println("Enter the new priority: ");
+        Priority priority = null;
+        do {
+            System.out.println("a - High priority");
+            System.out.println("b - Medium priority");
+            System.out.println("c - Low priority");
+            String stringPriority = input.next();
+            stringPriority = stringPriority.toLowerCase();
+
+            if (stringPriority.length() != 1) {
+                System.out.println("error: please enter specific letter");
+            }
+            switch (stringPriority) {
+                case "a":
+                    priority = Priority.HIGH;
+                    break;
+                case "b":
+                    priority = Priority.MEDIUM;
+                    break;
+                case "c":
+                    priority = Priority.LOW;
+                    break;
+                default:
+                    break;
+            }
+        } while (priority == null);
+        return priority;
+    }
+
+    private Category enterNewCategory() {
+        System.out.println("Enter the new category: ");
+        Category category = null;
+
+        do {
+            System.out.print("\nChose Category by Letter: \n");
+            System.out.println("a - Fitness");
+            System.out.println("b - Financial");
+            System.out.println("c - Mental Health");
+            System.out.println("d - Other");
+            String stringCategory = input.next();
+            stringCategory = stringCategory.toLowerCase();
+
+            if (stringCategory.length() != 1) {
+                System.out.println("error: please enter specific letter");
+            }
+            switch (stringCategory) {
+                case "a":
+                    category = Category.FITNESS;
+                    break;
+                case "b":
+                    category = Category.FINANCIAL;
+                    break;
+                case "c":
+                    category = Category.MENTALHEALTH;
+                    break;
+                case "d":
+                    category = Category.OTHER;
+                    break;
+                default:
+                    break;
+            }
+        } while (category == null);
+        return category;
     }
 
     // EFFECTS: remove given habit
