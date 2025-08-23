@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Refactored addHabit() by using helper methods enterNewPriority() and enterNewCategory() for getting priority and category">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Implemented MVP for habit schedule creation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Habit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Habit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/UserApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/UserApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,7 +278,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755653730023</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Implemented MVP for habit schedule creation">
+      <option name="closed" value="true" />
+      <created>1755715681089</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1755715681089</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -308,7 +313,8 @@
     <MESSAGE value="edited empty active habits message" />
     <MESSAGE value="Added change Priority and change Category user stories" />
     <MESSAGE value="Refactored addHabit() by using helper methods enterNewPriority() and enterNewCategory() for getting priority and category" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored addHabit() by using helper methods enterNewPriority() and enterNewCategory() for getting priority and category" />
+    <MESSAGE value="Implemented MVP for habit schedule creation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented MVP for habit schedule creation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
