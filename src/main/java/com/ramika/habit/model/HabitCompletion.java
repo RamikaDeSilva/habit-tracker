@@ -6,7 +6,7 @@ public class HabitCompletion {
     private LocalDate date;
     private boolean completed;
 
-    public HabitCompletion(Long habitId, LocalDate date, boolean completed) {
+    public HabitCompletion(LocalDate date, boolean completed) {
         this.date = date;
         this.completed = completed;
     }
