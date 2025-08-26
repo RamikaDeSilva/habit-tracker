@@ -84,7 +84,7 @@ public class UserApp {
                 markHabitCompletedToday();
             }
             case "o" -> {
-                System.out.println("Feature coming soon! Anything else? ");
+                viewHabitsCompletedToday();
             }
             case "d" -> {
                 removeHabit();
@@ -105,7 +105,7 @@ public class UserApp {
         System.out.println("\te -> edit a habit");
         System.out.println("\ti -> Make habit inactive");
         System.out.println("\tc -> Mark habit complete today");
-        System.out.println("\to -> View completion history");
+        System.out.println("\to -> View habits completed today");
         System.out.println("\td -> Delete habit");
         System.out.println("\tq -> quit");
     }
@@ -369,6 +369,17 @@ public class UserApp {
         }
     }
 
-
-
+    // EFFECTS: displays active habits completed today
+    private void viewHabitsCompletedToday() {
+        boolean found = false;
+        for (Habit habit : HabitService.getActiveHabits().values()) {
+            if (habit.findCompletionByDate(java.time.LocalDate.now()) != null) {
+                System.out.println("Habit: " + habit.getName());
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No habits completed today.");
+        }
+    }
 }
