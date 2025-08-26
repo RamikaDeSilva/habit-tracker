@@ -76,9 +76,15 @@ public class Habit {
         return completions;
     }
 
-    public void addCompletion(HabitCompletion completion) {
+    public void markCompletedToday() {
+        LocalDate today = LocalDate.now();
+        HabitCompletion completion = new HabitCompletion(today, true);
         completions.add(completion);
     }
+
+//    public void addCompletion(HabitCompletion completion) {
+//        completions.add(completion);
+//    }
 
     // Update a completion by index
     public void updateCompletion(int index, HabitCompletion updatedCompletion) {

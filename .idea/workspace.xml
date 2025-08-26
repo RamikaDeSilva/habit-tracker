@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Added CRUD Operations for completions field in Habit class">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Habit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Habit.java" afterDir="false" />
-    </list>
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="imported Local date to Habit.java" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -318,11 +316,18 @@
       <option name="project" value="LOCAL" />
       <updated>1756233793788</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="imported Local date to Habit.java">
+      <option name="closed" value="true" />
+      <created>1756233905287</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1756233905287</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added class diagram - MVP edition" />
     <MESSAGE value="Added raw Classes + Enums for MVP" />
     <MESSAGE value="Implemented Priority and Status Enum classes" />
     <MESSAGE value="Implemented Category Enum + updated class Diagram" />
@@ -347,7 +352,8 @@
     <MESSAGE value="Added SummaryService.java" />
     <MESSAGE value="Added HabitCompletion.java to store days habits are completed" />
     <MESSAGE value="Added CRUD Operations for completions field in Habit class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added CRUD Operations for completions field in Habit class" />
+    <MESSAGE value="imported Local date to Habit.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="imported Local date to Habit.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -141,4 +141,12 @@ public class HabitService {
             }
         }
     }
+
+    public static void markHabitCompletedToday(UUID habitId) throws HabitNotFoundException {
+        Habit habit = allHabits.get(habitId);
+        if (habit == null) {
+            throw new HabitNotFoundException();
+        }
+        habit.markCompletedToday();
+    }
 }
