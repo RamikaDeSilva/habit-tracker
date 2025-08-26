@@ -1,7 +1,9 @@
 package main.java.com.ramika.habit.model;
 
 import java.time.DayOfWeek;
+import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.UUID;
 
 // represents a Habit with a unique id, a name, priority level,
@@ -12,8 +14,8 @@ public class Habit {
     private Priority priority;
     private Category category;
     private Status activeStatus;
-
     private EnumSet<DayOfWeek> schedule;
+    private List<HabitCompletion> completions = new ArrayList<>();
 
     // Creates a new habit with given name, priority, category, and activeStatus set to Active
     public Habit(UUID id, String name, Priority priority, Category category, EnumSet<DayOfWeek> schedule) {
@@ -68,4 +70,37 @@ public class Habit {
     public void setActiveStatus(Status activeStatus) {
         this.activeStatus = activeStatus;
     }
+
+    public List<HabitCompletion> getCompletions() {
+        return completions;
+    }
+
+    public void addCompletion(HabitCompletion completion) {
+        completions.add(completion);
+    }
+
+    // Update a completion by index
+    public void updateCompletion(int index, HabitCompletion updatedCompletion) {
+        if (index >= 0 && index < completions.size()) {
+            completions.set(index, updatedCompletion);
+        }
+    }
+
+    // Remove a completion by index
+    public void removeCompletion(int index) {
+        if (index >= 0 && index < completions.size()) {
+            completions.remove(index);
+        }
+    }
+
+    // Find a completion by date (example)
+    public HabitCompletion findCompletionByDate(LocalDate date) {
+        for (HabitCompletion hc : completions) {
+            if (hc.getDate().equals(date)) {
+                return hc;
+            }
+        }
+        return null;
+    }
+
 }
