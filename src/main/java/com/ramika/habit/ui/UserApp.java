@@ -2,6 +2,7 @@ package main.java.com.ramika.habit.ui;
 
 import main.java.com.ramika.habit.exceptions.AlreadyNotActiveException;
 import main.java.com.ramika.habit.exceptions.HabitAlreadyCompleteException;
+import main.java.com.ramika.habit.exceptions.HabitNotActiveTodayException;
 import main.java.com.ramika.habit.exceptions.HabitNotFoundException;
 import main.java.com.ramika.habit.model.Category;
 import main.java.com.ramika.habit.model.Habit;
@@ -366,6 +367,8 @@ public class UserApp {
             System.out.println("error: habit doesn't exist");
         } catch (HabitAlreadyCompleteException e) {
             System.out.println("error: habit already completed today");
+        } catch (HabitNotActiveTodayException e) {
+            System.out.println("error: habit not active today");
         }
     }
 
