@@ -26,4 +26,9 @@ public class HabitCompletion {
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
+
+    @Override
+    public String toString() {
+        return date.toString();
+    }
 }
