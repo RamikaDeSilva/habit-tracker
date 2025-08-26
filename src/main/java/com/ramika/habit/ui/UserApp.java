@@ -79,6 +79,13 @@ public class UserApp {
                 deactivateHabit();
                 System.out.println("Habit now deactivated - Anything else? ");
             }
+            case "c" -> {
+                markHabitCompletedToday();
+                System.out.println("Habit marked complete for today - Anything else? ");
+            }
+            case "o" -> {
+                System.out.println("Feature coming soon! Anything else? ");
+            }
             case "d" -> {
                 removeHabit();
                 System.out.println("Habit deleted - Anything else? ");
@@ -97,6 +104,8 @@ public class UserApp {
         System.out.println("\ts -> View a specific habit");
         System.out.println("\te -> edit a habit");
         System.out.println("\ti -> Make habit inactive");
+        System.out.println("\tc -> Mark habit complete today");
+        System.out.println("\to -> View completion history");
         System.out.println("\td -> Delete habit");
         System.out.println("\tq -> quit");
     }
@@ -336,9 +345,25 @@ public class UserApp {
                 System.out.println("Priority level: " + habit.getPriority());
                 System.out.println("Active? : " + habit.getActiveStatus());
                 System.out.println("Schedule: " + habit.getSchedule());
+                System.out.println("Completion History: " + habit.getCompletions());
             }
         }
 
+    }
+
+    private void markHabitCompletedToday() {
+        UUID searchID = null;
+        do {
+            System.out.println("Enter habit name: ");
+            String habitName = input.next().toLowerCase();
+            searchID = HabitService.validIdExist(searchID, habitName);
+        } while (searchID == null);
+
+        try {
+            HabitService.markHabitCompletedToday(searchID);
+        } catch (HabitNotFoundException e) {
+            System.out.println("error: habit doesn't exist");
+        }
     }
 
 
