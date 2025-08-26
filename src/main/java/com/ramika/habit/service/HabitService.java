@@ -1,6 +1,7 @@
 package main.java.com.ramika.habit.service;
 
 import main.java.com.ramika.habit.exceptions.AlreadyNotActiveException;
+import main.java.com.ramika.habit.exceptions.HabitAlreadyCompleteException;
 import main.java.com.ramika.habit.exceptions.HabitNotFoundException;
 import main.java.com.ramika.habit.model.Category;
 import main.java.com.ramika.habit.model.Habit;
@@ -142,7 +143,7 @@ public class HabitService {
         }
     }
 
-    public static void markHabitCompletedToday(UUID habitId) throws HabitNotFoundException {
+    public static void markHabitCompletedToday(UUID habitId) throws HabitNotFoundException, HabitAlreadyCompleteException {
         Habit habit = allHabits.get(habitId);
         if (habit == null) {
             throw new HabitNotFoundException();

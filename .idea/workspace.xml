@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Implemented mark Habit Complete today in ui + added stub for viewing all habit completion history">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Ovveride toString in HabitCompletion.java to display date">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/exceptions/HabitAlreadyCompleteException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/HabitCompletion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/HabitCompletion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Habit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Habit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/UserApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/UserApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -351,11 +354,18 @@
       <option name="project" value="LOCAL" />
       <updated>1756235181825</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Ovveride toString in HabitCompletion.java to display date">
+      <option name="closed" value="true" />
+      <created>1756235524063</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1756235524063</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated Status to Status.ACTIVE and Status.INACTIVE" />
     <MESSAGE value="Specified + Implemented Habit Class" />
     <MESSAGE value="Specification for HabitService.java" />
     <MESSAGE value="Implemented createHabit in HabitService.java" />
@@ -380,7 +390,8 @@
     <MESSAGE value="added Marking habit completed today functionality" />
     <MESSAGE value="Updated HabitCompletion.java Constructor to not include habitId" />
     <MESSAGE value="Implemented mark Habit Complete today in ui + added stub for viewing all habit completion history" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented mark Habit Complete today in ui + added stub for viewing all habit completion history" />
+    <MESSAGE value="Ovveride toString in HabitCompletion.java to display date" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ovveride toString in HabitCompletion.java to display date" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

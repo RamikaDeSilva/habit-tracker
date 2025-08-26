@@ -1,6 +1,7 @@
 package main.java.com.ramika.habit.ui;
 
 import main.java.com.ramika.habit.exceptions.AlreadyNotActiveException;
+import main.java.com.ramika.habit.exceptions.HabitAlreadyCompleteException;
 import main.java.com.ramika.habit.exceptions.HabitNotFoundException;
 import main.java.com.ramika.habit.model.Category;
 import main.java.com.ramika.habit.model.Habit;
@@ -81,7 +82,6 @@ public class UserApp {
             }
             case "c" -> {
                 markHabitCompletedToday();
-                System.out.println("Habit marked complete for today - Anything else? ");
             }
             case "o" -> {
                 System.out.println("Feature coming soon! Anything else? ");
@@ -361,8 +361,11 @@ public class UserApp {
 
         try {
             HabitService.markHabitCompletedToday(searchID);
+            System.out.println("Habit marked complete for today - Anything else? ");
         } catch (HabitNotFoundException e) {
             System.out.println("error: habit doesn't exist");
+        } catch (HabitAlreadyCompleteException e) {
+            System.out.println("error: habit already completed today");
         }
     }
 

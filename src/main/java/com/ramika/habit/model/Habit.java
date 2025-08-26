@@ -1,5 +1,7 @@
 package main.java.com.ramika.habit.model;
 
+import main.java.com.ramika.habit.exceptions.HabitAlreadyCompleteException;
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -76,10 +78,16 @@ public class Habit {
         return completions;
     }
 
-    public void markCompletedToday() {
+    public void markCompletedToday() throws HabitAlreadyCompleteException {
         LocalDate today = LocalDate.now();
-        HabitCompletion completion = new HabitCompletion(today, true);
-        completions.add(completion);
+//        HabitCompletion completion = new HabitCompletion(today, true);
+        if (findCompletionByDate(today) == null) {
+            HabitCompletion completion = new HabitCompletion(today, true);
+            completions.add(completion);
+        } else {
+            throw new HabitAlreadyCompleteException();
+        }
+//        completions.add(completion);
     }
 
 //    public void addCompletion(HabitCompletion completion) {
