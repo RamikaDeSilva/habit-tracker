@@ -1,6 +1,7 @@
 package main.java.com.ramika.habit.model;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;

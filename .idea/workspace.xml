@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Added SummaryService.java">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/HabitCompletion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/SummaryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/SummaryService.java" afterDir="false" />
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Added CRUD Operations for completions field in Habit class">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Habit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Habit.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,12 +294,34 @@
       <option name="project" value="LOCAL" />
       <updated>1755921565406</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Added SummaryService.java">
+      <option name="closed" value="true" />
+      <created>1756233418082</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1756233418082</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Added HabitCompletion.java to store days habits are completed">
+      <option name="closed" value="true" />
+      <created>1756233752005</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1756233752005</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Added CRUD Operations for completions field in Habit class">
+      <option name="closed" value="true" />
+      <created>1756233793788</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1756233793788</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added README.md file details" />
-    <MESSAGE value="Created package folders" />
     <MESSAGE value="Added class diagram - MVP edition" />
     <MESSAGE value="Added raw Classes + Enums for MVP" />
     <MESSAGE value="Implemented Priority and Status Enum classes" />
@@ -325,7 +345,9 @@
     <MESSAGE value="Refactored addHabit() by using helper methods enterNewPriority() and enterNewCategory() for getting priority and category" />
     <MESSAGE value="Implemented MVP for habit schedule creation" />
     <MESSAGE value="Added SummaryService.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added SummaryService.java" />
+    <MESSAGE value="Added HabitCompletion.java to store days habits are completed" />
+    <MESSAGE value="Added CRUD Operations for completions field in Habit class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added CRUD Operations for completions field in Habit class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
