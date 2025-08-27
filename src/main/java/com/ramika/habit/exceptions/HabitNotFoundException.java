@@ -1,4 +1,4 @@
-package main.java.com.ramika.habit.exceptions;
+package com.ramika.habit.exceptions;
 
 public class HabitNotFoundException extends Exception {
 }

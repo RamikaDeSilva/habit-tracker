@@ -1,4 +1,4 @@
-package main.java.com.ramika.habit.model;
+package com.ramika.habit.model;
 
 import java.time.LocalDate;
 

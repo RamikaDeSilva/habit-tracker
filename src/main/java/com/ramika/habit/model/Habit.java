@@ -1,6 +1,6 @@
-package main.java.com.ramika.habit.model;
+package com.ramika.habit.model;
 
-import main.java.com.ramika.habit.exceptions.HabitAlreadyCompleteException;
+import com.ramika.habit.exceptions.HabitAlreadyCompleteException;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;

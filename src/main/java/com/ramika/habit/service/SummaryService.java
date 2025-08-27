@@ -1,4 +1,4 @@
-package main.java.com.ramika.habit.service;
+package com.ramika.habit.service;
 
 import java.time.LocalDate;
 import java.util.HashMap;

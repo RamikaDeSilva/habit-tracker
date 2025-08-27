@@ -1,13 +1,13 @@
-package main.java.com.ramika.habit.service;
+package com.ramika.habit.service;
 
-import main.java.com.ramika.habit.exceptions.AlreadyNotActiveException;
-import main.java.com.ramika.habit.exceptions.HabitAlreadyCompleteException;
-import main.java.com.ramika.habit.exceptions.HabitNotActiveTodayException;
-import main.java.com.ramika.habit.exceptions.HabitNotFoundException;
-import main.java.com.ramika.habit.model.Category;
-import main.java.com.ramika.habit.model.Habit;
-import main.java.com.ramika.habit.model.Priority;
-import main.java.com.ramika.habit.model.Status;
+import com.ramika.habit.exceptions.AlreadyNotActiveException;
+import com.ramika.habit.exceptions.HabitAlreadyCompleteException;
+import com.ramika.habit.exceptions.HabitNotActiveTodayException;
+import com.ramika.habit.exceptions.HabitNotFoundException;
+import com.ramika.habit.model.Category;
+import com.ramika.habit.model.Habit;
+import com.ramika.habit.model.Priority;
+import com.ramika.habit.model.Status;
 
 import java.time.DayOfWeek;
 import java.util.EnumSet;
