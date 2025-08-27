@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Added Gradle files + got JavaFX running">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Created HabitCard Class + Gui Class and Linked to Main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -493,11 +495,18 @@
       <option name="project" value="LOCAL" />
       <updated>1756323021023</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Created HabitCard Class + Gui Class and Linked to Main">
+      <option name="closed" value="true" />
+      <created>1756328325167</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1756328325167</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added AlreadyNotActiveException.java" />
     <MESSAGE value="Implemented deleting habit user story and changing active status" />
     <MESSAGE value="Refactored verifiying UUID exists of given habit name to HabitService.java from UserApp.java" />
     <MESSAGE value="changed processComand if statements to switch statement" />
@@ -522,7 +531,8 @@
     <MESSAGE value="Added HabitCard.java Gui class" />
     <MESSAGE value="Deleted HabitCard.java, Gradle files" />
     <MESSAGE value="Added Gradle files + got JavaFX running" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Gradle files + got JavaFX running" />
+    <MESSAGE value="Created HabitCard Class + Gui Class and Linked to Main" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created HabitCard Class + Gui Class and Linked to Main" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
