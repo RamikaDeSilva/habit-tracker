@@ -1,0 +1,17 @@
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'   // <- note: no hyphen
+}
+
+repositories { mavenCentral() }
+
+java { toolchain { languageVersion = JavaLanguageVersion.of(21) } }
+
+javafx {
+    version = '21.0.5'
+    modules = ['javafx.controls','javafx.fxml']
+}
+
+application { mainClass = 'com.ramika.habit.ui.Main' }
+
+
