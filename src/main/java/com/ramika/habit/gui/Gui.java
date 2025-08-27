@@ -16,12 +16,17 @@ public class Gui {
         DashboardView dv = new DashboardView();
         Parent root = dv.create();
 
+        ProgressCard prog = new ProgressCard();
+        dv.contentBox().getChildren().add(prog);       // add above the cards
+        prog.animateTo(0.7);
+
         // build your cards (sample)
         HabitCard c1 = new HabitCard("🏋️", "Morning Workout", "3 days/week");
         HabitCard c2 = new HabitCard("🧘", "Read 30 minutes", "5 days/week");
 
         // drop them into the dashboard content
         dv.contentBox().getChildren().addAll(c1, c2);
+
 
         return new Scene(root, 1000, 720);
     }
