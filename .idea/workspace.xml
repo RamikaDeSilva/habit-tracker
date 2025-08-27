@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Deleted HabitCard.java, Gradle files">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/javafx_sdk_24_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Added Gradle files + got JavaFX running">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/habit-tracker.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,12 +20,26 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="habit-tracker" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="habit-tracker" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="habit-tracker" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -85,6 +90,7 @@
     "Downloaded.Files.Path.Enabled": "false",
     "Gradle.Build habit-tracker.executor": "Run",
     "Gradle.habit-tracker [:com.ramika.habit.ui.Main.main()].executor": "Run",
+    "Gradle.habit-tracker [run].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -479,11 +485,18 @@
       <option name="project" value="LOCAL" />
       <updated>1756316383529</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Added Gradle files + got JavaFX running">
+      <option name="closed" value="true" />
+      <created>1756323021023</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1756323021023</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented add, view all, view specific book functionality" />
     <MESSAGE value="added AlreadyNotActiveException.java" />
     <MESSAGE value="Implemented deleting habit user story and changing active status" />
     <MESSAGE value="Refactored verifiying UUID exists of given habit name to HabitService.java from UserApp.java" />
@@ -508,7 +521,8 @@
     <MESSAGE value="Implemented functionality that checks if you are marking a habit that is supposed to be done this day of week" />
     <MESSAGE value="Added HabitCard.java Gui class" />
     <MESSAGE value="Deleted HabitCard.java, Gradle files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deleted HabitCard.java, Gradle files" />
+    <MESSAGE value="Added Gradle files + got JavaFX running" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Gradle files + got JavaFX running" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
