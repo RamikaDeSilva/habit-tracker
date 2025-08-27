@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
@@ -13,8 +14,18 @@ public class Gui {
 
     /** Build and return the main scene */
     public Scene createMainScene() {
+
+
+
         DashboardView dv = new DashboardView();
         Parent root = dv.create();
+
+        ScrollPane scroller = new ScrollPane(root);
+        scroller.setFitToWidth(true);           // content stretches to window width
+        scroller.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scroller.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        scroller.setPannable(true);
+        scroller.setStyle("-fx-background-color: transparent; -fx-padding: 0;");
 
         ProgressCard prog = new ProgressCard();
         dv.contentBox().getChildren().add(prog);       // add above the cards
@@ -33,7 +44,7 @@ public class Gui {
         // place it below the donut or wherever you like:
         dv.contentBox().getChildren().add(summary);
 
-        return new Scene(root, 1000, 720);
+        return new Scene(scroller, 1000, 720);
     }
 
     /** Convenience: set up and show the primary stage */
