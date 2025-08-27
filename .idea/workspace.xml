@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Implemented Basic DashboardView.java">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/DashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/DashboardView.java" afterDir="false" />
-    </list>
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Added ProgressDonut.java File" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -519,7 +516,23 @@
       <option name="project" value="LOCAL" />
       <updated>1756332162341</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Centered elements in habit Tracker">
+      <option name="closed" value="true" />
+      <created>1756332479437</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1756332479437</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Added ProgressDonut.java File">
+      <option name="closed" value="true" />
+      <created>1756332768154</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1756332768154</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -534,8 +547,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="changed processComand if statements to switch statement" />
-    <MESSAGE value="changed processCommand method if statements to switch statement" />
     <MESSAGE value="edited empty active habits message" />
     <MESSAGE value="Added change Priority and change Category user stories" />
     <MESSAGE value="Refactored addHabit() by using helper methods enterNewPriority() and enterNewCategory() for getting priority and category" />
@@ -559,7 +570,9 @@
     <MESSAGE value="Created HabitCard Class + Gui Class and Linked to Main" />
     <MESSAGE value="Fixed Package Issues with all files and imports" />
     <MESSAGE value="Implemented Basic DashboardView.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented Basic DashboardView.java" />
+    <MESSAGE value="Centered elements in habit Tracker" />
+    <MESSAGE value="Added ProgressDonut.java File" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ProgressDonut.java File" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
