@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Implemented LinearProgressBar + CompletionSummaryCard.java">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Made frame Scrollable">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/WeeklyRecapCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,14 +151,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Added class diagram - MVP edition">
-      <option name="closed" value="true" />
-      <created>1755561512766</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1755561512766</updated>
     </task>
     <task id="LOCAL-00005" summary="Added class diagram - MVP edition">
       <option name="closed" value="true" />
@@ -542,7 +536,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756336290878</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Made frame Scrollable">
+      <option name="closed" value="true" />
+      <created>1756336604895</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1756336604895</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -557,7 +559,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added SummaryService.java" />
     <MESSAGE value="Added HabitCompletion.java to store days habits are completed" />
     <MESSAGE value="Added CRUD Operations for completions field in Habit class" />
     <MESSAGE value="imported Local date to Habit.java" />
@@ -582,7 +583,8 @@
     <MESSAGE value="Implemented ProgressCard.java, ProgressDonut + Animation" />
     <MESSAGE value="Added CompletionSummaryCard.java, LinearProgressBar.java" />
     <MESSAGE value="Implemented LinearProgressBar + CompletionSummaryCard.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented LinearProgressBar + CompletionSummaryCard.java" />
+    <MESSAGE value="Made frame Scrollable" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made frame Scrollable" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

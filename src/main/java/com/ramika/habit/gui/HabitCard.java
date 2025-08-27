@@ -27,7 +27,7 @@ public class HabitCard extends StackPane {
         setEffect(new DropShadow(12, Color.rgb(0, 0, 0, 0.12)));
 
         // left checkbox
-        box = new Rectangle(28, 28);
+        box = new Rectangle(28, 75);
         box.setArcWidth(10);
         box.setArcHeight(10);
         box.setFill(Color.WHITE);
