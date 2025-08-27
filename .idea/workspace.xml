@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Fixed Package Issues with all files and imports">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/DashboardView.java" afterDir="false" />
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Implemented Basic DashboardView.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/DashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/DashboardView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -512,7 +511,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756331714928</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Implemented Basic DashboardView.java">
+      <option name="closed" value="true" />
+      <created>1756332162341</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1756332162341</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -527,7 +534,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactored verifiying UUID exists of given habit name to HabitService.java from UserApp.java" />
     <MESSAGE value="changed processComand if statements to switch statement" />
     <MESSAGE value="changed processCommand method if statements to switch statement" />
     <MESSAGE value="edited empty active habits message" />
@@ -552,7 +558,8 @@
     <MESSAGE value="Added Gradle files + got JavaFX running" />
     <MESSAGE value="Created HabitCard Class + Gui Class and Linked to Main" />
     <MESSAGE value="Fixed Package Issues with all files and imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Package Issues with all files and imports" />
+    <MESSAGE value="Implemented Basic DashboardView.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Basic DashboardView.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
