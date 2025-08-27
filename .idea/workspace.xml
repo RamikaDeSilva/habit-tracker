@@ -4,20 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Created HabitCard Class + Gui Class and Linked to Main">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Fixed Package Issues with all files and imports">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/DashboardView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/exceptions/AlreadyNotActiveException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/exceptions/AlreadyNotActiveException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/exceptions/HabitAlreadyCompleteException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/exceptions/HabitAlreadyCompleteException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/exceptions/HabitNotActiveTodayException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/exceptions/HabitNotActiveTodayException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/exceptions/HabitNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/exceptions/HabitNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Habit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Habit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/HabitCompletion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/HabitCompletion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Priority.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Priority.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/SummaryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/SummaryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/UserApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/UserApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -514,7 +504,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756328325167</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Fixed Package Issues with all files and imports">
+      <option name="closed" value="true" />
+      <created>1756331714928</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1756331714928</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -529,7 +527,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented deleting habit user story and changing active status" />
     <MESSAGE value="Refactored verifiying UUID exists of given habit name to HabitService.java from UserApp.java" />
     <MESSAGE value="changed processComand if statements to switch statement" />
     <MESSAGE value="changed processCommand method if statements to switch statement" />
@@ -554,7 +551,8 @@
     <MESSAGE value="Deleted HabitCard.java, Gradle files" />
     <MESSAGE value="Added Gradle files + got JavaFX running" />
     <MESSAGE value="Created HabitCard Class + Gui Class and Linked to Main" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created HabitCard Class + Gui Class and Linked to Main" />
+    <MESSAGE value="Fixed Package Issues with all files and imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Package Issues with all files and imports" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
