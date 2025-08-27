@@ -18,7 +18,7 @@ public class Gui {
 
         ProgressCard prog = new ProgressCard();
         dv.contentBox().getChildren().add(prog);       // add above the cards
-        prog.animateTo(0.7);
+        prog.animateTo(0.34);
 
         // build your cards (sample)
         HabitCard c1 = new HabitCard("🏋️", "Morning Workout", "3 days/week");
