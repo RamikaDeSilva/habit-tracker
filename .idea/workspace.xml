@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Implemented ProgressCard.java, ProgressDonut + Animation">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/LinearProgressBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Added CompletionSummaryCard.java, LinearProgressBar.java">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/CompletionSummaryCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/CompletionSummaryCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/LinearProgressBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/LinearProgressBar.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,14 +151,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Added README.md file details">
-      <option name="closed" value="true" />
-      <created>1755560809140</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1755560809140</updated>
     </task>
     <task id="LOCAL-00003" summary="Added class diagram - MVP edition">
       <option name="closed" value="true" />
@@ -544,7 +536,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756332949240</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Added CompletionSummaryCard.java, LinearProgressBar.java">
+      <option name="closed" value="true" />
+      <created>1756336005090</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1756336005090</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -559,7 +559,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactored addHabit() by using helper methods enterNewPriority() and enterNewCategory() for getting priority and category" />
     <MESSAGE value="Implemented MVP for habit schedule creation" />
     <MESSAGE value="Added SummaryService.java" />
     <MESSAGE value="Added HabitCompletion.java to store days habits are completed" />
@@ -584,7 +583,8 @@
     <MESSAGE value="Added ProgressDonut.java File" />
     <MESSAGE value="Added ProgressCard.java file" />
     <MESSAGE value="Implemented ProgressCard.java, ProgressDonut + Animation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented ProgressCard.java, ProgressDonut + Animation" />
+    <MESSAGE value="Added CompletionSummaryCard.java, LinearProgressBar.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added CompletionSummaryCard.java, LinearProgressBar.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

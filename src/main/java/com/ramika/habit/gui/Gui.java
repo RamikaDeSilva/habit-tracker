@@ -27,6 +27,11 @@ public class Gui {
         // drop them into the dashboard content
         dv.contentBox().getChildren().addAll(c1, c2);
 
+        CompletionSummaryCard summary = new CompletionSummaryCard();
+        summary.animateToCounts(1, 3);  // example numbers for now
+
+        // place it below the donut or wherever you like:
+        dv.contentBox().getChildren().add(summary);
 
         return new Scene(root, 1000, 720);
     }
