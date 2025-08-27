@@ -31,6 +31,14 @@ public class Gui {
         dv.contentBox().getChildren().add(prog);       // add above the cards
         prog.animateTo(0.34);
 
+        // Weekly recap (TEMP demo data)
+        WeeklyRecapCard recap = new WeeklyRecapCard();
+        dv.contentBox().getChildren().add(recap);
+
+        recap.setDayLabels(java.time.LocalDate.now());
+// Demo percentages oldest→newest (7 numbers)
+        recap.animateTo(new double[]{0.45, 0.62, 0.30, 0.80, 0.55, 0.41, 0.67});
+
         // build your cards (sample)
         HabitCard c1 = new HabitCard("🏋️", "Morning Workout", "3 days/week");
         HabitCard c2 = new HabitCard("🧘", "Read 30 minutes", "5 days/week");
