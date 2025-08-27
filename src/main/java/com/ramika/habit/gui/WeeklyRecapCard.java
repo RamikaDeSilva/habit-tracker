@@ -41,39 +41,53 @@ public class WeeklyRecapCard extends VBox {
         title.setStyle("-fx-font-size: 20px; -fx-font-weight: 700; -fx-text-fill: #0f172a;");
         getChildren().add(title);
 
-        // Bars row
-        HBox barsRow = new HBox(18);
-        barsRow.setAlignment(Pos.CENTER_LEFT);
+        // Bars row: 7 equal columns
+        GridPane grid = new GridPane();
+        grid.setHgap(0);
+        grid.setAlignment(Pos.CENTER_LEFT);
+
+        // 7 columns, each 1/7 of the width
+        for (int i = 0; i < DAYS; i++) {
+            ColumnConstraints cc = new ColumnConstraints();
+            cc.setPercentWidth(100.0 / DAYS);
+            cc.setHalignment(javafx.geometry.HPos.CENTER);
+            grid.getColumnConstraints().add(cc);
+        }
 
         for (int i = 0; i < DAYS; i++) {
             VBox one = new VBox(8);
             one.setAlignment(Pos.BOTTOM_CENTER);
 
-            // Track (light grey)
             StackPane slot = new StackPane();
-            slot.setPrefSize(BAR_W, MAX_BAR_H);
-            slot.setMinSize(BAR_W, MAX_BAR_H);
-            slot.setMaxSize(BAR_W, MAX_BAR_H);
+            slot.setPrefHeight(MAX_BAR_H);
+            slot.setMinHeight(MAX_BAR_H);
+            slot.setMaxHeight(MAX_BAR_H);
 
-            Rectangle track = new Rectangle(BAR_W, MAX_BAR_H, Color.web("#e5e7eb"));
+            // keep bars a nice fixed width (looks like your Figma ~48–56px)
+            double barW = 56;
+
+            Rectangle track = new Rectangle(barW, MAX_BAR_H, Color.web("#e5e7eb"));
             track.setArcWidth(12); track.setArcHeight(12);
 
-            Rectangle fill = new Rectangle(BAR_W, 0, Color.web("#34d399")); // emerald-400-ish
+            Rectangle fill = new Rectangle(barW, 0, Color.web("#34d399"));
             fill.setArcWidth(12); fill.setArcHeight(12);
-            StackPane.setAlignment(fill, Pos.BOTTOM_CENTER); // grow from bottom
+            StackPane.setAlignment(fill, Pos.BOTTOM_CENTER);
 
             slot.getChildren().addAll(track, fill);
             fills.add(fill);
 
             Label day = new Label("—");
-            day.setStyle("-fx-text-fill:#475569; -fx-font-size: 13px;");
+            day.setStyle("-fx-text-fill:#475569; -fx-font-size:13px;");
             dayLabels.add(day);
 
             one.getChildren().addAll(slot, day);
-            barsRow.getChildren().add(one);
+
+            // put this day in column i, row 0
+            grid.add(one, i, 0);
         }
 
-        getChildren().add(barsRow);
+        getChildren().add(grid);
+
 
         // Footer
         HBox footer = new HBox();
