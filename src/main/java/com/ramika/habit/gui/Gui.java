@@ -1,11 +1,14 @@
 package com.ramika.habit.gui;
 
 import com.ramika.habit.model.Priority;
+import javafx.beans.binding.DoubleBinding;
+import javafx.geometry.Orientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;

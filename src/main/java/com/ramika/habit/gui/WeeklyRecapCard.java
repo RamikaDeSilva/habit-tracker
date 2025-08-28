@@ -46,7 +46,7 @@ public class WeeklyRecapCard extends VBox {
         grid.setHgap(0);
         grid.setAlignment(Pos.CENTER_LEFT);
 
-        // 7 columns, each 1/7 of the width
+// 7 columns, each 1/7 of the width
         for (int i = 0; i < DAYS; i++) {
             ColumnConstraints cc = new ColumnConstraints();
             cc.setPercentWidth(100.0 / DAYS);
