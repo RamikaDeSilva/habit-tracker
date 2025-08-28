@@ -17,9 +17,6 @@ public class Gui {
 
     /** Build and return the main scene */
     public Scene createMainScene() {
-
-
-
         DashboardView dv = new DashboardView();
         Parent root = dv.create();
 
