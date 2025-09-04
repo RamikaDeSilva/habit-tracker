@@ -101,6 +101,10 @@ public class AddHabitScene {
         sun = new ToggleButton("Sun");
         daysPane.getChildren().addAll(mon, tue, wed, thu, fri, sat, sun);
 
+        styleGeneralButton(allDaysBtn);
+        styleGeneralButton(weekdaysBtn);
+        styleGeneralButton(weekendsBtn);
+        styleGeneralButton(clearBtn);
         styleDayButton(mon);
         styleDayButton(tue);
         styleDayButton(wed);
@@ -200,6 +204,57 @@ public class AddHabitScene {
                 button.setStyle(""); // Reset to default
             }
         });
+    }
+
+    private void styleGeneralButton(Button button) {
+        button.setStyle(
+                "-fx-background-color: linear-gradient(to right, #7b61ff, #b06efc);" +
+                        "-fx-text-fill: white;" +
+                        "-fx-font-weight: 600;" +
+                        "-fx-background-radius: 12;" +
+                        "-fx-padding: 10 16 10 16;"
+        );
+        switch (button.getText()) {
+            case "All Days" -> button.setOnAction(e -> {
+                mon.setSelected(true);
+                tue.setSelected(true);
+                wed.setSelected(true);
+                thu.setSelected(true);
+                fri.setSelected(true);
+                sat.setSelected(true);
+                sun.setSelected(true);
+            });
+            case "Weekdays" -> button.setOnAction(e -> {
+                mon.setSelected(true);
+                tue.setSelected(true);
+                wed.setSelected(true);
+                thu.setSelected(true);
+                fri.setSelected(true);
+                sat.setSelected(false);
+                sun.setSelected(false);
+            });
+            case "Weekends" -> button.setOnAction(e -> {
+                mon.setSelected(false);
+                tue.setSelected(false);
+                wed.setSelected(false);
+                thu.setSelected(false);
+                fri.setSelected(false);
+                sat.setSelected(true);
+                sun.setSelected(true);
+            });
+            case "Clear" -> button.setOnAction(e -> {
+                mon.setSelected(false);
+                tue.setSelected(false);
+                wed.setSelected(false);
+                thu.setSelected(false);
+                fri.setSelected(false);
+                sat.setSelected(false);
+                sun.setSelected(false);
+            });
+            default -> {
+                // Optional: no action
+            }
+        }
     }
 }
 
