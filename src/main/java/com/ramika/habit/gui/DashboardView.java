@@ -24,6 +24,12 @@ public class DashboardView {
     private VBox content;
     private Stage stage;
 
+    // Header elements
+    private VBox hero;
+    private Label dateText;
+    private Label subIcon;
+    private Label subText;
+
     public DashboardView(Stage stage) {
         this.stage = stage;
         content = new VBox();
@@ -77,25 +83,66 @@ public class DashboardView {
     }
 
     private Node buildHeader() {
-        VBox box = new VBox(8);
-        box.setAlignment(Pos.CENTER);             // <- center the three lines
 
-        String dateText = LocalDate.now().format(DateTimeFormatter.ofPattern("EEEE, MMMM d"));
-        Label date = new Label("📅  " + dateText);
-        date.setStyle("-fx-text-fill:#475569;-fx-font-size:16px;");
-        date.setTextAlignment(TextAlignment.CENTER);
+        hero = new VBox();
+        hero.getStyleClass().addAll("hero");        // base
+        // If ALL habits complete, also add "completed"
+        // hero.getStyleClass().add("completed");
+
+        HBox dateRow = new HBox();
+        dateRow.getStyleClass().addAll("hero-row");
+        Label dateIcon = new Label("\uD83D\uDCC5");   // 📅
+        dateIcon.getStyleClass().add("hero-icon");
+
+        dateText = new Label(formattedDate());  // e.g., "Thursday, September 4"
+        dateText.getStyleClass().add("hero-date");
+        dateRow.getChildren().addAll(dateIcon, dateText);
 
         Label title = new Label("Your Habits Today");
-        title.setFont(Font.font("System", FontWeight.EXTRA_BOLD, 40));
-        title.setTextFill(Color.web("#0f172a"));
-        title.setTextAlignment(TextAlignment.CENTER);
+        title.getStyleClass().add("hero-title");
 
-        Label sub = new Label("💪 Great progress! Keep it up!");
-        sub.setStyle("-fx-text-fill:#64748b;-fx-font-size:18px;");
-        sub.setTextAlignment(TextAlignment.CENTER);
+        HBox subRow = new HBox();
+        subRow.getStyleClass().addAll("hero-row");
+        subIcon = new Label("\uD83C\uDF05");     // 🌅 (fresh start)
+        subIcon.getStyleClass().add("hero-icon");
 
-        box.getChildren().addAll(date, title, sub);
-        return box;
+        subText = new Label("A fresh start awaits! Let's begin!");
+        subText.getStyleClass().add("hero-sub");
+        subRow.getChildren().addAll(subIcon, subText);
+
+        hero.getChildren().addAll(dateRow, title, subRow);
+
+        return hero;
     }
+
+    // formats to example:  "Thursday, September 4"
+    private String formattedDate() {
+        java.time.format.DateTimeFormatter fmt =
+                java.time.format.DateTimeFormatter.ofPattern("EEEE, MMMM d");
+        return java.time.LocalDate.now().format(fmt);
+    }
+
+
+    /** Helper: toggle header state based on completion */
+    public void setCompleted(boolean done) {
+        if (hero == null) return; // header not built yet
+        var classes = hero.getStyleClass();
+
+        if (done) {
+            if (!classes.contains("completed")) classes.add("completed");
+            subIcon.setText("\uD83C\uDF89"); // 🎉
+            subText.setText("Perfect day! You're crushing it!");
+        } else {
+            classes.remove("completed");
+            subIcon.setText("\uD83C\uDF05"); // 🌅
+            subText.setText("A fresh start awaits! Let's begin!");
+        }
+    }
+
+    /** Optional: call this at midnight or when you refresh the page */
+    public void refreshDate() {
+        if (dateText != null) dateText.setText(formattedDate());
+    }
+
 }
 

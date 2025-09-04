@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Made sunday button first instead of last - looks better in my opinion">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Made enum values be entered through AddHabitScene.java">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Inter_18pt-ExtraBold.ttf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/AddHabitScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/AddHabitScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/DashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/DashboardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,14 +156,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Linked Main to UserApp Console">
-      <option name="closed" value="true" />
-      <created>1755568771472</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1755568771472</updated>
     </task>
     <task id="LOCAL-00017" summary="Specified + Implemented displayMenu, processCommand, and runApp">
       <option name="closed" value="true" />
@@ -547,7 +541,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757021994830</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Made enum values be entered through AddHabitScene.java">
+      <option name="closed" value="true" />
+      <created>1757022396476</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1757022396476</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -562,7 +564,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added HabitCard.java Gui class" />
     <MESSAGE value="Deleted HabitCard.java, Gradle files" />
     <MESSAGE value="Added Gradle files + got JavaFX running" />
     <MESSAGE value="Created HabitCard Class + Gui Class and Linked to Main" />
@@ -587,7 +588,8 @@
     <MESSAGE value="Made so that clicking weekday buttons changes their colour" />
     <MESSAGE value="Made clicking button functionality work for weekdays, weekends, clear and all buttons" />
     <MESSAGE value="Made sunday button first instead of last - looks better in my opinion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made sunday button first instead of last - looks better in my opinion" />
+    <MESSAGE value="Made enum values be entered through AddHabitScene.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made enum values be entered through AddHabitScene.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

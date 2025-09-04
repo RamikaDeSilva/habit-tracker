@@ -2,7 +2,77 @@
     font-family: "InterRegular";
     src: url("fonts/Inter_18pt-Regular.ttf");
 }
+
+@font-face {
+    font-family: "InterBold";
+    src: url("fonts/Inter_18pt-ExtraBold.ttf");
+}
+
 .label {
     -fx-font-family: "InterRegular";
     -fx-font-size: 18px;
+}
+
+/* Dashboard CSS */
+.hero {
+    /* layout */
+    -fx-spacing: 6;
+    -fx-padding: 0 0 8 0;
+
+    /* fonts */
+    -fx-font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+    -fx-font-smoothing-type: gray;
+    -fx-alignment: CENTER;
+}
+
+/* date row: "📅 Thursday, September 4" */
+.hero-date {
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #6B7280; /* gray-500 */
+    -fx-opacity: 0.95;
+}
+
+/* big title: "Your Habits Today" */
+.hero-title {
+    -fx-font-size: 60px; // 32px;     /* bump to 36 if you want bigger */
+    -fx-font-weight: 800;
+    -fx-text-fill: #0F172A;  /* slate-900 */
+    -fx-font-family: "InterBold";
+}
+
+/* subline: "A fresh start awaits…" */
+.hero-sub {
+    -fx-font-size: 15px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #6B7280; /* gray-500 */
+}
+
+/* small icon labels beside text (emoji or glyphs) */
+.hero-icon {
+    -fx-font-size: 16px;
+    -fx-opacity: 0.95;
+    -fx-translate-y: 1; /* nudges emoji to align with baseline */
+}
+
+/* spacing helpers for rows */
+.hero-row {
+    -fx-spacing: 8;
+    -fx-alignment: CENTER;
+}
+
+/* === COMPLETED STATE OVERRIDES === */
+/* Add the `completed` class to the hero container to switch look+feel */
+.hero.completed .hero-title {
+    -fx-text-fill: #0B1220; /* slightly darker */
+}
+
+.hero.completed .hero-sub {
+    -fx-text-fill: #475569; /* slate-600 */
+}
+
+/* Optional: subtle celebration emphasis */
+.hero.completed {
+    /* soft “lift” */
+    -fx-effect: dropshadow(gaussian, rgba(123,97,255,0.15), 12, 0.2, 0, 2);
 }
