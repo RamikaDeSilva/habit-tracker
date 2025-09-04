@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Implemented better design of AddHabitScene.java">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Linked adding habit to displaying habit basic MVP">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Inter_18pt-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/AddHabitScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/AddHabitScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/DashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/DashboardView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,6 +113,9 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/fonts" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/ramika/habit/resources/fonts" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
@@ -153,14 +156,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Updated Status to Status.ACTIVE and Status.INACTIVE">
-      <option name="closed" value="true" />
-      <created>1755562435508</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1755562435508</updated>
     </task>
     <task id="LOCAL-00011" summary="Specified + Implemented Habit Class">
       <option name="closed" value="true" />
@@ -546,7 +541,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756953771541</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Linked adding habit to displaying habit basic MVP">
+      <option name="closed" value="true" />
+      <created>1756957373613</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1756957373613</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -561,7 +564,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Ovveride toString in HabitCompletion.java to display date" />
     <MESSAGE value="Added HabitAlreadyCompleteException.java" />
     <MESSAGE value="Handled bug of marking habit completed multiple times in a day - prevent duplicates in completions field" />
     <MESSAGE value="Implemented viewing all habits completed today" />
@@ -586,7 +588,8 @@
     <MESSAGE value="Added CSS File + package" />
     <MESSAGE value="Implemented AddHabitScene MVP and linked to button" />
     <MESSAGE value="Implemented better design of AddHabitScene.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented better design of AddHabitScene.java" />
+    <MESSAGE value="Linked adding habit to displaying habit basic MVP" />
+    <option name="LAST_COMMIT_MESSAGE" value="Linked adding habit to displaying habit basic MVP" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

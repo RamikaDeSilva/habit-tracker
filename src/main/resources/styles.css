@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "InterRegular";
+    src: url("fonts/Inter_18pt-Regular.ttf");
+}
+.label {
+    -fx-font-family: "InterRegular";
+    -fx-font-size: 18px;
+}
