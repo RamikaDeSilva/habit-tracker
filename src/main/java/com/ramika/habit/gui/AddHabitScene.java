@@ -150,10 +150,23 @@ public class AddHabitScene {
         String category = categoryBox.getValue();
         String priority = priorityBox.getValue();
         List<String> days = selectedDays();
+        EnumSet<DayOfWeek> schedule = EnumSet.noneOf(DayOfWeek.class);
+
+        for (String day : days) {
+            switch (day) {
+                case "Mon": schedule.add(DayOfWeek.MONDAY); break;
+                case "Tue": schedule.add(DayOfWeek.TUESDAY); break;
+                case "Wed": schedule.add(DayOfWeek.WEDNESDAY); break;
+                case "Thu": schedule.add(DayOfWeek.THURSDAY); break;
+                case "Fri": schedule.add(DayOfWeek.FRIDAY); break;
+                case "Sat": schedule.add(DayOfWeek.SATURDAY); break;
+                case "Sun": schedule.add(DayOfWeek.SUNDAY); break;
+            }
+        }
 
         //TODO
         // CHANGE INPUTS INTO RESPECTIVE ENUMS / LIST OF DAYS
-        EnumSet<DayOfWeek> schedule = EnumSet.noneOf(DayOfWeek.class);
+        // EnumSet<DayOfWeek> schedule = EnumSet.allOf(DayOfWeek.class);
 
         System.out.println("New Habit Created:");
         System.out.println("Title: " + title);
