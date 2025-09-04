@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Made so that clicking weekday buttons changes their colour">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Made sunday button first instead of last - looks better in my opinion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/AddHabitScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/AddHabitScene.java" afterDir="false" />
     </list>
@@ -154,22 +154,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Implemented HabitNotFoundException.java">
-      <option name="closed" value="true" />
-      <created>1755563742302</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1755563742302</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Implemented deleteHabit method in HabitService.java">
-      <option name="closed" value="true" />
-      <created>1755563765496</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1755563765496</updated>
     </task>
     <task id="LOCAL-00016" summary="Linked Main to UserApp Console">
       <option name="closed" value="true" />
@@ -547,7 +531,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757021208086</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Made clicking button functionality work for weekdays, weekends, clear and all buttons">
+      <option name="closed" value="true" />
+      <created>1757021774986</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1757021774986</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Made sunday button first instead of last - looks better in my opinion">
+      <option name="closed" value="true" />
+      <created>1757021994830</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1757021994830</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -562,8 +562,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added HabitNotActiveTodayException.java" />
-    <MESSAGE value="Implemented functionality that checks if you are marking a habit that is supposed to be done this day of week" />
     <MESSAGE value="Added HabitCard.java Gui class" />
     <MESSAGE value="Deleted HabitCard.java, Gradle files" />
     <MESSAGE value="Added Gradle files + got JavaFX running" />
@@ -587,7 +585,9 @@
     <MESSAGE value="Linked CSS + Added first font to project" />
     <MESSAGE value="Fixed adding weekdays to habit" />
     <MESSAGE value="Made so that clicking weekday buttons changes their colour" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made so that clicking weekday buttons changes their colour" />
+    <MESSAGE value="Made clicking button functionality work for weekdays, weekends, clear and all buttons" />
+    <MESSAGE value="Made sunday button first instead of last - looks better in my opinion" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made sunday button first instead of last - looks better in my opinion" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

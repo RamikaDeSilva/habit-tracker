@@ -162,7 +162,9 @@ public class AddHabitScene {
     private void handleCreate() {
         String title = titleField.getText().trim();
         String category = categoryBox.getValue();
+        Category categoryValue = validateCategory(category);
         String priority = priorityBox.getValue();
+        Priority priorityValue = validatePriority(priority);
 
         List<String> days = selectedDays();
         EnumSet<DayOfWeek> schedule = EnumSet.noneOf(DayOfWeek.class);
@@ -180,8 +182,9 @@ public class AddHabitScene {
 
         //TODO
         // CHANGE INPUTS INTO RESPECTIVE ENUMS / LIST OF DAYS
+        // ADD VALIDATION (E.G. TITLE NOT EMPTY, AT LEAST ONE DAY SELECTED)
         // TODO: hook this into your data model
-        HabitService.createHabit(title, Priority.HIGH, Category.FINANCIAL, schedule);
+        HabitService.createHabit(title, priorityValue, categoryValue, schedule);
         goBack();
     }
 
@@ -255,6 +258,24 @@ public class AddHabitScene {
             });
             default -> {}
         }
+    }
+
+    private Priority validatePriority(String priority) {
+        return switch (priority) {
+            case "Low" -> Priority.LOW;
+            case "Medium" -> Priority.MEDIUM;
+            case "High" -> Priority.HIGH;
+            default -> Priority.MEDIUM; // Default to MEDIUM if unrecognized
+        };
+    }
+    private Category validateCategory(String category) {
+        return switch (category) {
+            case "Fitness" -> Category.FITNESS;
+            case "Mental Health" -> Category.MENTALHEALTH;
+            case "Financial" -> Category.FINANCIAL;
+            case "Other" -> Category.OTHER;
+            default -> Category.OTHER; // Default to OTHER if unrecognized
+        };
     }
 }
 
