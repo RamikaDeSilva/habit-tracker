@@ -16,8 +16,8 @@ import javafx.geometry.Insets;
 public class Gui {
 
     /** Build and return the main scene */
-    public Scene createMainScene() {
-        DashboardView dv = new DashboardView();
+    public Scene createMainScene(Stage stage) {
+        DashboardView dv = new DashboardView(stage);
         Parent root = dv.create();
 
         ScrollPane scroller = new ScrollPane(root);
@@ -58,7 +58,7 @@ public class Gui {
     /** Convenience: set up and show the primary stage */
     public void show(Stage stage) {
         stage.setTitle("Habit Tracker");
-        stage.setScene(createMainScene());
+        stage.setScene(createMainScene(stage));
         stage.show();
     }
 }

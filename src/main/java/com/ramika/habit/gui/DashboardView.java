@@ -5,6 +5,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -14,12 +15,20 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class DashboardView {
     private VBox content;
+    private Stage stage;
+
+    public DashboardView(Stage stage) {
+        this.stage = stage;
+        content = new VBox();
+    }
+
 
     public Parent create() {
         BorderPane shell = new BorderPane();
@@ -55,6 +64,13 @@ public class DashboardView {
         Button addHabit = new Button("+  Add Habit");
         addHabit.setStyle("-fx-background-color:transparent;-fx-text-fill:#2563eb;-fx-font-weight:700;"
                 + "-fx-padding:10 12;");
+
+        addHabit.setOnAction(e -> {
+            AddHabitScene addHabitScene = new AddHabitScene();
+            Scene scene = addHabitScene.create(stage);
+            stage.setScene(scene);
+        });
+
         nav.getChildren().addAll(dashboard, addHabit);
         return nav;
     }
