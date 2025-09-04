@@ -92,26 +92,28 @@ public class AddHabitScene {
         quickSelect.getChildren().addAll(allDaysBtn, weekdaysBtn, weekendsBtn, clearBtn);
 
         FlowPane daysPane = new FlowPane(8, 8);
+        sun = new ToggleButton("Sun");
         mon = new ToggleButton("Mon");
         tue = new ToggleButton("Tue");
         wed = new ToggleButton("Wed");
         thu = new ToggleButton("Thu");
         fri = new ToggleButton("Fri");
         sat = new ToggleButton("Sat");
-        sun = new ToggleButton("Sun");
-        daysPane.getChildren().addAll(mon, tue, wed, thu, fri, sat, sun);
+
+        daysPane.getChildren().addAll(sun, mon, tue, wed, thu, fri, sat);
 
         styleGeneralButton(allDaysBtn);
         styleGeneralButton(weekdaysBtn);
         styleGeneralButton(weekendsBtn);
         styleGeneralButton(clearBtn);
+        styleDayButton(sun);
         styleDayButton(mon);
         styleDayButton(tue);
         styleDayButton(wed);
         styleDayButton(thu);
         styleDayButton(fri);
         styleDayButton(sat);
-        styleDayButton(sun);
+
 
         scheduleBox.getChildren().addAll(quickSelect, daysPane);
 
@@ -166,13 +168,13 @@ public class AddHabitScene {
         EnumSet<DayOfWeek> schedule = EnumSet.noneOf(DayOfWeek.class);
         for (String day : days) {
             switch (day) {
+                case "Sun": schedule.add(DayOfWeek.SUNDAY); break;
                 case "Mon": schedule.add(DayOfWeek.MONDAY); break;
                 case "Tue": schedule.add(DayOfWeek.TUESDAY); break;
                 case "Wed": schedule.add(DayOfWeek.WEDNESDAY); break;
                 case "Thu": schedule.add(DayOfWeek.THURSDAY); break;
                 case "Fri": schedule.add(DayOfWeek.FRIDAY); break;
                 case "Sat": schedule.add(DayOfWeek.SATURDAY); break;
-                case "Sun": schedule.add(DayOfWeek.SUNDAY); break;
             }
         }
 
@@ -185,13 +187,13 @@ public class AddHabitScene {
 
     private List<String> selectedDays() {
         List<String> days = new ArrayList<>();
+        if (sun.isSelected()) days.add("Sun");
         if (mon.isSelected()) days.add("Mon");
         if (tue.isSelected()) days.add("Tue");
         if (wed.isSelected()) days.add("Wed");
         if (thu.isSelected()) days.add("Thu");
         if (fri.isSelected()) days.add("Fri");
         if (sat.isSelected()) days.add("Sat");
-        if (sun.isSelected()) days.add("Sun");
         return days;
     }
 
@@ -251,9 +253,7 @@ public class AddHabitScene {
                 sat.setSelected(false);
                 sun.setSelected(false);
             });
-            default -> {
-                // Optional: no action
-            }
+            default -> {}
         }
     }
 }
