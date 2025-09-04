@@ -101,6 +101,14 @@ public class AddHabitScene {
         sun = new ToggleButton("Sun");
         daysPane.getChildren().addAll(mon, tue, wed, thu, fri, sat, sun);
 
+        styleDayButton(mon);
+        styleDayButton(tue);
+        styleDayButton(wed);
+        styleDayButton(thu);
+        styleDayButton(fri);
+        styleDayButton(sat);
+        styleDayButton(sun);
+
         scheduleBox.getChildren().addAll(quickSelect, daysPane);
 
         // Add to form
@@ -149,9 +157,9 @@ public class AddHabitScene {
         String title = titleField.getText().trim();
         String category = categoryBox.getValue();
         String priority = priorityBox.getValue();
+
         List<String> days = selectedDays();
         EnumSet<DayOfWeek> schedule = EnumSet.noneOf(DayOfWeek.class);
-
         for (String day : days) {
             switch (day) {
                 case "Mon": schedule.add(DayOfWeek.MONDAY); break;
@@ -166,15 +174,6 @@ public class AddHabitScene {
 
         //TODO
         // CHANGE INPUTS INTO RESPECTIVE ENUMS / LIST OF DAYS
-        // EnumSet<DayOfWeek> schedule = EnumSet.allOf(DayOfWeek.class);
-
-        System.out.println("New Habit Created:");
-        System.out.println("Title: " + title);
-        System.out.println("Category: " + category);
-        System.out.println("Priority: " + priority);
-        System.out.println("Days: " + days);
-
-
         // TODO: hook this into your data model
         HabitService.createHabit(title, Priority.HIGH, Category.FINANCIAL, schedule);
         goBack();
@@ -190,6 +189,17 @@ public class AddHabitScene {
         if (sat.isSelected()) days.add("Sat");
         if (sun.isSelected()) days.add("Sun");
         return days;
+    }
+
+    // Add this method to your class
+    private void styleDayButton(ToggleButton button) {
+        button.selectedProperty().addListener((obs, wasSelected, isSelected) -> {
+            if (isSelected) {
+                button.setStyle("-fx-background-color: #7b61ff; -fx-text-fill: white;");
+            } else {
+                button.setStyle(""); // Reset to default
+            }
+        });
     }
 }
 

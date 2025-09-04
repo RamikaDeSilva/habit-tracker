@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Linked CSS + Added first font to project">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Fixed adding weekdays to habit">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/AddHabitScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/AddHabitScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -155,14 +153,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Specification for HabitService.java">
-      <option name="closed" value="true" />
-      <created>1755563128995</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1755563128995</updated>
     </task>
     <task id="LOCAL-00013" summary="Implemented createHabit in HabitService.java">
       <option name="closed" value="true" />
@@ -548,7 +538,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756960624933</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Fixed adding weekdays to habit">
+      <option name="closed" value="true" />
+      <created>1757020729291</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1757020729291</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -563,7 +561,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Handled bug of marking habit completed multiple times in a day - prevent duplicates in completions field" />
     <MESSAGE value="Implemented viewing all habits completed today" />
     <MESSAGE value="Added HabitNotActiveTodayException.java" />
     <MESSAGE value="Implemented functionality that checks if you are marking a habit that is supposed to be done this day of week" />
@@ -588,7 +585,8 @@
     <MESSAGE value="Implemented better design of AddHabitScene.java" />
     <MESSAGE value="Linked adding habit to displaying habit basic MVP" />
     <MESSAGE value="Linked CSS + Added first font to project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Linked CSS + Added first font to project" />
+    <MESSAGE value="Fixed adding weekdays to habit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed adding weekdays to habit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
