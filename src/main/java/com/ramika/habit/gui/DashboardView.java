@@ -8,6 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -16,6 +18,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -91,11 +94,24 @@ public class DashboardView {
 
         HBox dateRow = new HBox();
         dateRow.getStyleClass().addAll("hero-row");
-        Label dateIcon = new Label("\uD83D\uDCC5");   // 📅
+
+
+        // Label dateIcon = new Label("\uD83D\uDCC5");   // 📅
+        ImageView dateIcon = new ImageView(
+                new Image(getClass().getResourceAsStream("/images/calendar-symbol.png"))
+        );
+        dateIcon.setFitWidth(15);          // size to taste
+        dateIcon.setFitHeight(15);
+        dateIcon.setPreserveRatio(true);
+        dateIcon.setSmooth(true);
         dateIcon.getStyleClass().add("hero-icon");
+
+        //dateIcon.getStyleClass().add("hero-icon");
 
         dateText = new Label(formattedDate());  // e.g., "Thursday, September 4"
         dateText.getStyleClass().add("hero-date");
+        HBox.setMargin(dateIcon, new Insets(-3, 1, 0, 0)); // nudges icon up to better center with date text
+
         dateRow.getChildren().addAll(dateIcon, dateText);
 
         Label title = new Label("Your Habits Today");
