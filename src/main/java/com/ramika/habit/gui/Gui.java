@@ -1,6 +1,8 @@
 package com.ramika.habit.gui;
 
+import com.ramika.habit.model.Habit;
 import com.ramika.habit.model.Priority;
+import com.ramika.habit.service.HabitService;
 import javafx.beans.binding.DoubleBinding;
 import javafx.geometry.Orientation;
 import javafx.scene.Parent;
@@ -12,6 +14,9 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
+
+import java.time.DayOfWeek;
+import java.util.EnumSet;
 
 public class Gui {
 
@@ -40,6 +45,13 @@ public class Gui {
         recap.animateTo(new double[]{0.45, 0.62, 0.30, 0.80, 0.55, 0.41, 0.67});
 
         // build your cards (sample)
+        for (Habit habit : HabitService.getAllHabits().values()) {
+            // get habit information, enter into constructor
+            String habitName = habit.getName();
+            EnumSet<DayOfWeek> days = habit.getSchedule();
+            HabitCard card = new HabitCard("🏋️", habitName, days.toString());
+            dv.contentBox().getChildren().add(card);
+        }
         HabitCard c1 = new HabitCard("🏋️", "Morning Workout", "3 days/week");
         HabitCard c2 = new HabitCard("🧘", "Read 30 minutes", "5 days/week");
 

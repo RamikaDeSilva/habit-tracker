@@ -66,8 +66,9 @@ public class DashboardView {
                 + "-fx-padding:10 12;");
 
         addHabit.setOnAction(e -> {
-            AddHabitScene addHabitScene = new AddHabitScene();
-            Scene scene = addHabitScene.create(stage);
+            AddHabitScene addHabitScene = new AddHabitScene(stage);
+            //Scene scene = addHabitScene.create(stage);
+            Scene scene = addHabitScene.getScene();
             stage.setScene(scene);
         });
 
