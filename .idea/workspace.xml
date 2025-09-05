@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Added images folder + calendar-symbol.svg in resources root">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/calendar-symbol.png" afterDir="false" />
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Deleted svg of calendar symbol and added png version">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/DashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/DashboardView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/calendar-symbol.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/ProgressCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/ProgressCard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,14 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Implemented deleting habit user story and changing active status">
-      <option name="closed" value="true" />
-      <created>1755577787026</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1755577787026</updated>
     </task>
     <task id="LOCAL-00021" summary="Refactored verifiying UUID exists of given habit name to HabitService.java from UserApp.java">
       <option name="closed" value="true" />
@@ -549,7 +540,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757024855453</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="Deleted svg of calendar symbol and added png version">
+      <option name="closed" value="true" />
+      <created>1757025690335</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1757025690336</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -564,7 +563,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed Package Issues with all files and imports" />
     <MESSAGE value="Implemented Basic DashboardView.java" />
     <MESSAGE value="Centered elements in habit Tracker" />
     <MESSAGE value="Added ProgressDonut.java File" />
@@ -589,7 +587,8 @@
     <MESSAGE value="Added Inter_18pt-ExtraBold.ttf" />
     <MESSAGE value="Fix Header Text on front page CSS" />
     <MESSAGE value="Added images folder + calendar-symbol.svg in resources root" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added images folder + calendar-symbol.svg in resources root" />
+    <MESSAGE value="Deleted svg of calendar symbol and added png version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleted svg of calendar symbol and added png version" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

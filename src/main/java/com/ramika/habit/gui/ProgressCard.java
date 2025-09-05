@@ -17,7 +17,7 @@ public class ProgressCard extends VBox {
 
         setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(20), Insets.EMPTY)));
         setEffect(new DropShadow(20, Color.rgb(15, 23, 42, 0.10))); // soft card shadow
-        setMaxWidth(760);  // keep a nice width like your Figma
+        setMaxWidth(400);  // keep a nice width like your Figma
 
         Label title = new Label("Today's Progress");
         title.setStyle("-fx-font-size: 22px; -fx-font-weight: 700; -fx-text-fill: #0f172a;");

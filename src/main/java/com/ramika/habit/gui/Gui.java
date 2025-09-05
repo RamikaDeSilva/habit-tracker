@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
@@ -33,13 +34,17 @@ public class Gui {
         scroller.setPannable(true);
         scroller.setStyle("-fx-background-color: transparent; -fx-padding: 0;");
 
-        ProgressCard prog = new ProgressCard();
-        dv.contentBox().getChildren().add(prog);       // add above the cards
-        prog.animateTo(0.34);
+        HBox progressBox = new HBox(30);
 
+        ProgressCard prog = new ProgressCard();
+        prog.animateTo(0.34);
+       // dv.contentBox().getChildren().add(prog);       // add above the cards
         // Weekly recap (TEMP demo data)
         WeeklyRecapCard recap = new WeeklyRecapCard();
-        dv.contentBox().getChildren().add(recap);
+
+        progressBox.getChildren().add(prog);
+        progressBox.getChildren().add(recap);
+        dv.contentBox().getChildren().add(progressBox);
 
         recap.setDayLabels(java.time.LocalDate.now());
 // Demo percentages oldest→newest (7 numbers)
