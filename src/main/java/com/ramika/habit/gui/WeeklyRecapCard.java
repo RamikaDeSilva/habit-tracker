@@ -37,6 +37,7 @@ public class WeeklyRecapCard extends VBox {
         setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(20), Insets.EMPTY)));
         setEffect(new DropShadow(20, Color.rgb(15, 23, 42, 0.10)));
         setMaxWidth(760);
+        setPrefWidth(500);
 
         // Title
         Label title = new Label("Weekly Recap");

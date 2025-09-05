@@ -35,7 +35,8 @@ public class Gui {
         scroller.setPannable(true);
         scroller.setStyle("-fx-background-color: transparent; -fx-padding: 0;");
 
-        HBox progressBox = new HBox(30);
+        HBox progressBox = new HBox(20);
+        progressBox.setPadding(new Insets(0, 0, 20, 0));
 
         ProgressCard prog = new ProgressCard();
         prog.animateTo(0.34);
