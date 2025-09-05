@@ -29,6 +29,8 @@ public class WeeklyRecapCard extends VBox {
     private final List<Label> dayLabels = new ArrayList<>();
 
     public WeeklyRecapCard() {
+        // TODO
+        // FIX SPACING BETWEEN DAY BARS
         setSpacing(16);
         setPadding(new Insets(22));
         setAlignment(Pos.TOP_LEFT);

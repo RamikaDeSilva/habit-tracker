@@ -17,7 +17,7 @@ public class ProgressCard extends VBox {
 
         setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(20), Insets.EMPTY)));
         setEffect(new DropShadow(20, Color.rgb(15, 23, 42, 0.10))); // soft card shadow
-        setMaxWidth(400);  // keep a nice width like your Figma
+        //setMaxWidth(400);  // keep width Figma
 
         Label title = new Label("Today's Progress");
         title.setStyle("-fx-font-size: 22px; -fx-font-weight: 700; -fx-text-fill: #0f172a;");
@@ -25,6 +25,9 @@ public class ProgressCard extends VBox {
         donut = new ProgressDonut(220);
 
         getChildren().addAll(title, donut);
+
+        //TODO
+        // Make the card wider
     }
 
     public void animateTo(double p) { donut.animateTo(p); }

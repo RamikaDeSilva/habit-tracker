@@ -5,6 +5,7 @@ import com.ramika.habit.model.Priority;
 import com.ramika.habit.service.HabitService;
 import javafx.beans.binding.DoubleBinding;
 import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -44,6 +45,7 @@ public class Gui {
 
         progressBox.getChildren().add(prog);
         progressBox.getChildren().add(recap);
+        progressBox.setAlignment(Pos.CENTER);
         dv.contentBox().getChildren().add(progressBox);
 
         recap.setDayLabels(java.time.LocalDate.now());
