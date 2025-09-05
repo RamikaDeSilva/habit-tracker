@@ -38,12 +38,12 @@ public class CompletionSummaryCard extends VBox {
 
         // header row (emoji centered)
         Text emoji = new Text("💪");
-        emoji.setFont(Font.font("System", FontWeight.BOLD, 28));
+        emoji.setFont(Font.font("System", FontWeight.BOLD, 20));
 
         // "X of Y habits completed" (X green)
         Text pre  = new Text("  ");
-        Text of   = new Text(" of ");
-        Text mid  = new Text(" habits completed");
+        Text of   = new Text("  of  ");
+        Text mid  = new Text("  habits completed");
 
         pre.getStyleClass().add("completion-text");
         of.getStyleClass().add("completion-text");
@@ -51,8 +51,8 @@ public class CompletionSummaryCard extends VBox {
 
         completedTxt.getStyleClass().add("completion-text");
         completedTxt.setId("completed-text");
-        totalTxt.setId("total-text");
         totalTxt.getStyleClass().add("completion-text");
+        totalTxt.setId("total-text");
 
         TextFlow line = new TextFlow(emoji, pre, completedTxt, of, totalTxt, mid);
         line.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);

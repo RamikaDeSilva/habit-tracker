@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
@@ -50,7 +51,7 @@ public class Gui {
         dv.contentBox().getChildren().add(progressBox);
 
         recap.setDayLabels(java.time.LocalDate.now());
-// Demo percentages oldest→newest (7 numbers)
+        // Demo percentages oldest→newest (7 numbers)
         recap.animateTo(new double[]{0.45, 0.62, 0.30, 0.80, 0.55, 0.41, 0.67});
 
         // build your cards (sample)
@@ -67,9 +68,11 @@ public class Gui {
         // drop them into the dashboard content
         dv.contentBox().getChildren().addAll(c1, c2);
 
-        CompletionSummaryCard summary = new CompletionSummaryCard();
-        summary.animateToCounts(1, 3);  // example numbers for now
+        Region spacer = new Region();
 
+        CompletionSummaryCard summary = new CompletionSummaryCard();
+        summary.animateToCounts(3, 3);  // example numbers for now
+        VBox.setMargin(summary, new Insets(20, 0, 20, 0));
         // place it below the donut or wherever you like:
         dv.contentBox().getChildren().add(summary);
         Scene scene = new Scene(scroller, 1200, 720);

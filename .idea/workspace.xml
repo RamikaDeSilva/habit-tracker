@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Fixed width of cards + spacing between habit cards and progress donut / weekly recap">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Added CSS Styling to bottom bar card MVP">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/CompletionSummaryCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/CompletionSummaryCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,14 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Refactored addHabit() by using helper methods enterNewPriority() and enterNewCategory() for getting priority and category">
-      <option name="closed" value="true" />
-      <created>1755653730023</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1755653730023</updated>
     </task>
     <task id="LOCAL-00026" summary="Implemented MVP for habit schedule creation">
       <option name="closed" value="true" />
@@ -548,7 +540,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757090335105</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Added CSS Styling to bottom bar card MVP">
+      <option name="closed" value="true" />
+      <created>1757091567310</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1757091567310</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -563,7 +563,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented ProgressCard.java, ProgressDonut + Animation" />
     <MESSAGE value="Added CompletionSummaryCard.java, LinearProgressBar.java" />
     <MESSAGE value="Implemented LinearProgressBar + CompletionSummaryCard.java" />
     <MESSAGE value="Made frame Scrollable" />
@@ -588,7 +587,8 @@
     <MESSAGE value="Centered progressCard + recap" />
     <MESSAGE value="adjusted width of habit cards" />
     <MESSAGE value="Fixed width of cards + spacing between habit cards and progress donut / weekly recap" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed width of cards + spacing between habit cards and progress donut / weekly recap" />
+    <MESSAGE value="Added CSS Styling to bottom bar card MVP" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added CSS Styling to bottom bar card MVP" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -597,6 +597,11 @@
           <url>file://$PROJECT_DIR$/untitled/src/Main.java</url>
           <line>11</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
