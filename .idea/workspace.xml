@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="adjusted width of habit cards">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Fixed width of cards + spacing between habit cards and progress donut / weekly recap">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/ProgressCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/ProgressCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/WeeklyRecapCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/WeeklyRecapCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/CompletionSummaryCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/CompletionSummaryCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,14 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Added change Priority and change Category user stories">
-      <option name="closed" value="true" />
-      <created>1755651770156</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1755651770156</updated>
     </task>
     <task id="LOCAL-00025" summary="Refactored addHabit() by using helper methods enterNewPriority() and enterNewCategory() for getting priority and category">
       <option name="closed" value="true" />
@@ -549,7 +540,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757050622541</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Fixed width of cards + spacing between habit cards and progress donut / weekly recap">
+      <option name="closed" value="true" />
+      <created>1757090335104</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1757090335105</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -564,7 +563,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added ProgressCard.java file" />
     <MESSAGE value="Implemented ProgressCard.java, ProgressDonut + Animation" />
     <MESSAGE value="Added CompletionSummaryCard.java, LinearProgressBar.java" />
     <MESSAGE value="Implemented LinearProgressBar + CompletionSummaryCard.java" />
@@ -589,7 +587,8 @@
     <MESSAGE value="Placed the recap + progress donut beside each other" />
     <MESSAGE value="Centered progressCard + recap" />
     <MESSAGE value="adjusted width of habit cards" />
-    <option name="LAST_COMMIT_MESSAGE" value="adjusted width of habit cards" />
+    <MESSAGE value="Fixed width of cards + spacing between habit cards and progress donut / weekly recap" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed width of cards + spacing between habit cards and progress donut / weekly recap" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

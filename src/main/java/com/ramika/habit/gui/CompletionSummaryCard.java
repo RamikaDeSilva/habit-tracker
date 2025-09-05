@@ -45,11 +45,14 @@ public class CompletionSummaryCard extends VBox {
         Text of   = new Text(" of ");
         Text mid  = new Text(" habits completed");
 
-        completedTxt.setFill(Color.web("#16a34a")); // green number
-        completedTxt.setFont(Font.font("System", FontWeight.EXTRA_BOLD, 28));
+        pre.getStyleClass().add("completion-text");
+        of.getStyleClass().add("completion-text");
+        mid.getStyleClass().add("completion-text");
 
-        totalTxt.setFill(Color.web("#0f172a"));
-        totalTxt.setFont(Font.font("System", FontWeight.EXTRA_BOLD, 28));
+        completedTxt.getStyleClass().add("completion-text");
+        completedTxt.setId("completed-text");
+        totalTxt.setId("total-text");
+        totalTxt.getStyleClass().add("completion-text");
 
         TextFlow line = new TextFlow(emoji, pre, completedTxt, of, totalTxt, mid);
         line.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
