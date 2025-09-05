@@ -24,7 +24,7 @@ public class CompletionSummaryCard extends VBox {
         setSpacing(18);
         setPadding(new Insets(28, 28, 28, 28));
         setAlignment(Pos.TOP_CENTER);
-        setMaxWidth(980);
+        setMaxWidth(1100);
 
         // soft blue → lavender background like Figma
         setBackground(new Background(new BackgroundFill(
