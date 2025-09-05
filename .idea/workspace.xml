@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Placed the recap + progress donut beside each other">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Centered progressCard + recap">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/ProgressCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/ProgressCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/WeeklyRecapCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/WeeklyRecapCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,14 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00022" summary="changed processComand if statements to switch statement">
-      <option name="closed" value="true" />
-      <created>1755619989115</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1755619989115</updated>
     </task>
     <task id="LOCAL-00023" summary="edited empty active habits message">
       <option name="closed" value="true" />
@@ -548,7 +540,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757036256021</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Centered progressCard + recap">
+      <option name="closed" value="true" />
+      <created>1757036459293</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1757036459293</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -563,7 +563,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Centered elements in habit Tracker" />
     <MESSAGE value="Added ProgressDonut.java File" />
     <MESSAGE value="Added ProgressCard.java file" />
     <MESSAGE value="Implemented ProgressCard.java, ProgressDonut + Animation" />
@@ -588,7 +587,8 @@
     <MESSAGE value="Added images folder + calendar-symbol.svg in resources root" />
     <MESSAGE value="Deleted svg of calendar symbol and added png version" />
     <MESSAGE value="Placed the recap + progress donut beside each other" />
-    <option name="LAST_COMMIT_MESSAGE" value="Placed the recap + progress donut beside each other" />
+    <MESSAGE value="Centered progressCard + recap" />
+    <option name="LAST_COMMIT_MESSAGE" value="Centered progressCard + recap" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

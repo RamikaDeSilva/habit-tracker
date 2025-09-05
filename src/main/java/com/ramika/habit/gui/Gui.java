@@ -71,7 +71,7 @@ public class Gui {
 
         // place it below the donut or wherever you like:
         dv.contentBox().getChildren().add(summary);
-        Scene scene = new Scene(scroller, 1000, 720);
+        Scene scene = new Scene(scroller, 1200, 720);
 
         // adds css
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
