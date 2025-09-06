@@ -40,7 +40,7 @@ public class Gui {
         progressBox.setPadding(new Insets(0, 0, 20, 0));
 
         ProgressCard prog = new ProgressCard();
-        prog.animateTo(0.34);
+        prog.animateTo(1.0);  // demo 100% progress
        // dv.contentBox().getChildren().add(prog);       // add above the cards
         // Weekly recap (TEMP demo data)
         WeeklyRecapCard recap = new WeeklyRecapCard();
@@ -52,7 +52,7 @@ public class Gui {
 
         recap.setDayLabels(java.time.LocalDate.now());
         // Demo percentages oldest→newest (7 numbers)
-        recap.animateTo(new double[]{0.45, 0.62, 0.30, 0.80, 0.55, 0.41, 0.67});
+        recap.animateTo(new double[]{0.45, 0.62, 0.30, 0.80, 1, 0.41, 0.67});
 
         // build your cards (sample)
         for (Habit habit : HabitService.getAllHabits().values()) {
