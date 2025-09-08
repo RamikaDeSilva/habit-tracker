@@ -71,13 +71,13 @@ public class AddHabitScene {
         Label categoryLbl = new Label("Category");
         categoryBox = new ComboBox<>();
         categoryBox.getItems().addAll("\uD83C\uDFCB\uFE0F  Fitness",  "\uD83D\uDCB0  Financial", "\uD83E\uDDE0 Mental Health", "\uD83D\uDCCB  Other");
-        categoryBox.getSelectionModel().select("Other");
+        categoryBox.getSelectionModel().select("\uD83D\uDCCB  Other");
 
         // Priority
         Label priorityLbl = new Label("Priority");
         priorityBox = new ComboBox<>();
         priorityBox.getItems().addAll("\uD83D\uDFE2  Low", "\uD83D\uDFE1  Medium", "\uD83D\uDD34  High");
-        priorityBox.getSelectionModel().select("Medium");
+        priorityBox.getSelectionModel().select("\uD83D\uDFE1  Medium");
 
         // Schedule days
         Label scheduleLbl = new Label("Schedule Days");

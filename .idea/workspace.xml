@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Fixed width on CompletionSummaryCard.java">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="added emojis to categories and priority levels in add habit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/AddHabitScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/AddHabitScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,14 +153,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Added SummaryService.java">
-      <option name="closed" value="true" />
-      <created>1756233418082</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1756233418082</updated>
     </task>
     <task id="LOCAL-00029" summary="Added HabitCompletion.java to store days habits are completed">
       <option name="closed" value="true" />
@@ -548,7 +538,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757093209777</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="added emojis to categories and priority levels in add habit">
+      <option name="closed" value="true" />
+      <created>1757194016004</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1757194016004</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -563,7 +561,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Made frame Scrollable" />
     <MESSAGE value="Added WeeklyRecapCard" />
     <MESSAGE value="Implemented Basic WeeklyRecapCard.java" />
     <MESSAGE value="Centered and Stretched Bars in WeeklyRecapCard.java" />
@@ -588,7 +585,8 @@
     <MESSAGE value="Added CSS Styling to bottom bar card MVP" />
     <MESSAGE value="Fixed margin on CompletionSummaryCard.java" />
     <MESSAGE value="Fixed width on CompletionSummaryCard.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed width on CompletionSummaryCard.java" />
+    <MESSAGE value="added emojis to categories and priority levels in add habit" />
+    <option name="LAST_COMMIT_MESSAGE" value="added emojis to categories and priority levels in add habit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
