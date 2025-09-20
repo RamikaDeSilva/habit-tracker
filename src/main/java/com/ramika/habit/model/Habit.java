@@ -9,6 +9,8 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.UUID;
 
+import java.time.LocalDate;
+
 // represents a Habit with a unique id, a name, priority level,
 // category and active status
 public class Habit {
@@ -118,8 +120,6 @@ public class Habit {
         return null;
     }
 
-    // in Habit.java
-import java.time.LocalDate;
 
     public boolean isCompletedOn(LocalDate date) {
         HabitCompletion hc = findCompletionByDate(date);
