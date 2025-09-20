@@ -82,4 +82,3 @@ public class CompletionSummaryCard extends VBox {
         bar.animateTo(ratio());
     }
 }
-

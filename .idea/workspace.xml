@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Added helpers to Habit class to begin Syncing habits">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Updated habit class to be ready for habit syncing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/CompletionSummaryCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/CompletionSummaryCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Habit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/model/Habit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" afterDir="false" />
     </list>
@@ -155,22 +158,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00031" summary="imported Local date to Habit.java">
-      <option name="closed" value="true" />
-      <created>1756233905287</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1756233905287</updated>
-    </task>
-    <task id="LOCAL-00032" summary="added Marking habit completed today functionality">
-      <option name="closed" value="true" />
-      <created>1756234629762</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1756234629762</updated>
     </task>
     <task id="LOCAL-00033" summary="Updated HabitCompletion.java Constructor to not include habitId">
       <option name="closed" value="true" />
@@ -548,7 +535,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758406223700</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="Fixed import being in wrong place in Habit">
+      <option name="closed" value="true" />
+      <created>1758406482465</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1758406482465</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Updated habit class to be ready for habit syncing">
+      <option name="closed" value="true" />
+      <created>1758406494616</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1758406494616</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -563,8 +566,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Centered and Stretched Bars in WeeklyRecapCard.java" />
-    <MESSAGE value="Added CSS File + package" />
     <MESSAGE value="Implemented AddHabitScene MVP and linked to button" />
     <MESSAGE value="Implemented better design of AddHabitScene.java" />
     <MESSAGE value="Linked adding habit to displaying habit basic MVP" />
@@ -588,7 +589,9 @@
     <MESSAGE value="added emojis to categories and priority levels in add habit" />
     <MESSAGE value="Updated default select habit properties to have emojis" />
     <MESSAGE value="Added helpers to Habit class to begin Syncing habits" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added helpers to Habit class to begin Syncing habits" />
+    <MESSAGE value="Fixed import being in wrong place in Habit" />
+    <MESSAGE value="Updated habit class to be ready for habit syncing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated habit class to be ready for habit syncing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -29,7 +29,7 @@ public class HabitService {
     private static final Map<UUID, Habit> allHabits = new LinkedHashMap<>();
     private static final Map<UUID, Habit> activeHabits = new LinkedHashMap<>();
 
-    // === Dashboard metric properties ===
+    // === Dashboard metric properties (bind from UI) ===
     private static final IntegerProperty totalDisplayed     = new SimpleIntegerProperty(0);
     private static final IntegerProperty completedDisplayed = new SimpleIntegerProperty(0);
     private static final DoubleProperty  percentDisplayed   = new SimpleDoubleProperty(0.0);
@@ -37,22 +37,15 @@ public class HabitService {
     private HabitService() {}
 
     public static HabitService getInstance() {
-        if (instance != null) {
-            return instance;
-        }
+        if (instance != null) return instance;
         instance = new HabitService();
         return instance;
     }
 
-    public static Map<UUID, Habit> getAllHabits() {
-        return allHabits;
-    }
+    public static Map<UUID, Habit> getAllHabits() { return allHabits; }
+    public static Map<UUID, Habit> getActiveHabits() { return activeHabits; }
 
-    public static Map<UUID, Habit> getActiveHabits() {
-        return activeHabits;
-    }
-
-    // === Recompute totals for dashboard ===
+    // === Recompute totals for dashboard (active habits, for TODAY) ===
     private static void recomputeDashboardMetrics() {
         int total = activeHabits.size();
         int completedToday = 0;
@@ -73,7 +66,6 @@ public class HabitService {
     public static ReadOnlyDoubleProperty  percentDisplayedProperty()   { return percentDisplayed; }
 
     // MODIFIES: allHabits, activeHabits
-    // EFFECTS: Creates new habit and adds to both maps
     public static void createHabit(String name, Priority priority, Category category, EnumSet<DayOfWeek> schedule) {
         UUID id = UUID.randomUUID();
         Habit habit = new Habit(id, name, priority, category, schedule);
@@ -83,40 +75,29 @@ public class HabitService {
     }
 
     // MODIFIES: allHabits, activeHabits
-    // EFFECTS: Removes habit from allHabits and activeHabits if active
     public static void removeHabit(UUID habitID) throws HabitNotFoundException {
-        if (!allHabits.containsKey(habitID)) {
-            throw new HabitNotFoundException();
-        } else {
-            Habit removedHabit = allHabits.get(habitID);
-            if (removedHabit.getActiveStatus() == Status.ACTIVE) {
-                if (!activeHabits.containsKey(habitID)) {
-                    throw new HabitNotFoundException();
-                } else {
-                    activeHabits.remove(habitID);
-                }
-                allHabits.remove(habitID);
-            } else {
-                allHabits.remove(habitID);
-            }
+        if (!allHabits.containsKey(habitID)) throw new HabitNotFoundException();
+
+        Habit removedHabit = allHabits.get(habitID);
+        if (removedHabit.getActiveStatus() == Status.ACTIVE) {
+            if (!activeHabits.containsKey(habitID)) throw new HabitNotFoundException();
+            activeHabits.remove(habitID);
         }
+        allHabits.remove(habitID);
         recomputeDashboardMetrics();
     }
 
     // MODIFIES: allHabits, activeHabits
-    // EFFECTS: deactivates habit - removes from activeHabits
     public static void deactivateHabit(UUID habitID) throws HabitNotFoundException, AlreadyNotActiveException {
-        if (!allHabits.containsKey(habitID)) {
-            throw new HabitNotFoundException();
+        if (!allHabits.containsKey(habitID)) throw new HabitNotFoundException();
+
+        Habit deactivatedHabit = allHabits.get(habitID);
+        if (deactivatedHabit.getActiveStatus() == Status.ACTIVE) {
+            deactivatedHabit.setActiveStatus(Status.INACTIVE);
+            activeHabits.remove(habitID);
+            recomputeDashboardMetrics();
         } else {
-            Habit deactivatedHabit = allHabits.get(habitID);
-            if (deactivatedHabit.getActiveStatus() == Status.ACTIVE) {
-                deactivatedHabit.setActiveStatus(Status.INACTIVE);
-                activeHabits.remove(habitID);
-                recomputeDashboardMetrics();
-            } else {
-                throw new AlreadyNotActiveException();
-            }
+            throw new AlreadyNotActiveException();
         }
     }
 
@@ -125,9 +106,7 @@ public class HabitService {
         for (UUID id : allHabits.keySet()) {
             if (allHabits.get(id) != null) {
                 String name = allHabits.get(id).getName().toLowerCase();
-                if (name.equals(habitName)) {
-                    searchId = id;
-                }
+                if (name.equals(habitName)) searchId = id;
             }
         }
         return searchId;
@@ -135,33 +114,27 @@ public class HabitService {
 
     public static void changeName(UUID searchId, String name) {
         for (UUID id : allHabits.keySet()) {
-            if (searchId.equals(id)) {
-                if (allHabits.get(id) != null) {
-                    allHabits.get(id).setName(name);
-                    break;
-                }
+            if (searchId.equals(id) && allHabits.get(id) != null) {
+                allHabits.get(id).setName(name);
+                break;
             }
         }
     }
 
     public static void changePriority(UUID searchId, Priority priority) {
         for (UUID id : allHabits.keySet()) {
-            if (searchId.equals(id)) {
-                if (allHabits.get(id) != null) {
-                    allHabits.get(id).setPriority(priority);
-                    break;
-                }
+            if (searchId.equals(id) && allHabits.get(id) != null) {
+                allHabits.get(id).setPriority(priority);
+                break;
             }
         }
     }
 
     public static void changeCategory(UUID searchId, Category category) {
         for (UUID id : allHabits.keySet()) {
-            if (searchId.equals(id)) {
-                if (allHabits.get(id) != null) {
-                    allHabits.get(id).setCategory(category);
-                    break;
-                }
+            if (searchId.equals(id) && allHabits.get(id) != null) {
+                allHabits.get(id).setCategory(category);
+                break;
             }
         }
     }
@@ -169,14 +142,11 @@ public class HabitService {
     public static void markHabitCompletedToday(UUID habitId)
             throws HabitNotFoundException, HabitAlreadyCompleteException, HabitNotActiveTodayException {
         Habit habit = allHabits.get(habitId);
-        if (habit == null) {
-            throw new HabitNotFoundException();
-        }
+        if (habit == null) throw new HabitNotFoundException();
 
         DayOfWeek today = java.time.LocalDate.now().getDayOfWeek();
-        if (!habit.getSchedule().contains(today)) {
-            throw new HabitNotActiveTodayException();
-        }
+        if (!habit.getSchedule().contains(today)) throw new HabitNotActiveTodayException();
+
         habit.markCompletedToday();
         recomputeDashboardMetrics();
     }
