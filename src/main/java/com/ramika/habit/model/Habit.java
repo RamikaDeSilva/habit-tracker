@@ -118,4 +118,41 @@ public class Habit {
         return null;
     }
 
+    // in Habit.java
+import java.time.LocalDate;
+
+    public boolean isCompletedOn(LocalDate date) {
+        HabitCompletion hc = findCompletionByDate(date);
+        return hc != null && hc.isCompleted();  // assumes HabitCompletion has isCompleted()
+    }
+
+    public boolean isCompletedToday() {
+        return isCompletedOn(LocalDate.now());
+    }
+
+    public void unmarkCompletedOn(LocalDate date) {
+        // simplest: remove the entry for that day
+        completions.removeIf(hc -> hc.getDate().equals(date));
+    }
+
+    public void unmarkCompletedToday() {
+        unmarkCompletedOn(LocalDate.now());
+    }
+
+    // sets completion status for a given date
+    public void setCompletedOn(LocalDate date, boolean completed) throws HabitAlreadyCompleteException {
+        if (completed) {
+            // reuse your existing guard
+            if (findCompletionByDate(date) == null) {
+                completions.add(new HabitCompletion(date, true));
+            } else {
+                // already completed → keep as is or throw if you want strictness
+                // throw new HabitAlreadyCompleteException();
+            }
+        } else {
+            unmarkCompletedOn(date);
+        }
+    }
+
+
 }
