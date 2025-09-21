@@ -21,11 +21,11 @@ import java.util.UUID;
 public class HabitCard extends StackPane {
 
     private final CheckBox checkBox = new CheckBox();
-    private final Label titleLbl;
-    private final Button deleteBtn;
-    private final Label[] dayChips = new Label[7];  // Sun → Sat
+    private final Label    titleLbl;
+    private final Button   deleteBtn;
+    private final HBox     daysRow = new HBox(6);
 
-    private UUID habitId;
+    private UUID    habitId;
     private boolean activeToday;
     private boolean updatingFromService = false; // prevent loops
 
@@ -39,17 +39,14 @@ public class HabitCard extends StackPane {
 
         // --- Checkbox (real JavaFX control) ---
         checkBox.getStyleClass().add("habit-checkbox");
-        checkBox.setFocusTraversable(false);     // no blue focus ring
+        checkBox.setFocusTraversable(false);
         checkBox.setCursor(Cursor.HAND);
 
-        // Title
+        // Text column
         titleLbl = new Label(emoji + "  " + title);
         titleLbl.setStyle("-fx-font-size: 22px; -fx-font-weight: 700; -fx-text-fill: #111827;");
 
-        // Days row (Sun → Sat)
-        HBox daysRow = buildDaysRow();
-
-        VBox textCol = new VBox(6, titleLbl, daysRow);
+        VBox textCol = new VBox(10, titleLbl, daysRow);
         textCol.setAlignment(Pos.CENTER_LEFT);
 
         HBox row = new HBox(12, checkBox, textCol);
@@ -75,56 +72,9 @@ public class HabitCard extends StackPane {
         setOnContextMenuRequested(e -> menu.show(this, e.getScreenX(), e.getScreenY()));
     }
 
-    /** Build a row of capsules Sun → Sat */
-    private HBox buildDaysRow() {
-        HBox row = new HBox(8);
-        row.getStyleClass().add("days-row");
-        row.setAlignment(Pos.CENTER_LEFT);
-
-        String[] labels = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
-        for (int i = 0; i < 7; i++) {
-            Label chip = new Label(labels[i]);
-            chip.getStyleClass().addAll("day-chip", "inactive"); // default
-            chip.setPadding(new Insets(4, 10, 4, 10));
-            dayChips[i] = chip;
-            row.getChildren().add(chip);
-        }
-        return row;
-    }
-
-    /** Update active/inactive styles based on schedule */
-    private void updateDayChips(EnumSet<DayOfWeek> schedule) {
-        if (schedule == null) schedule = EnumSet.noneOf(DayOfWeek.class);
-
-        DayOfWeek[] order = {
-                DayOfWeek.SUNDAY,
-                DayOfWeek.MONDAY,
-                DayOfWeek.TUESDAY,
-                DayOfWeek.WEDNESDAY,
-                DayOfWeek.THURSDAY,
-                DayOfWeek.FRIDAY,
-                DayOfWeek.SATURDAY
-        };
-
-        for (int i = 0; i < 7; i++) {
-            DayOfWeek dow = order[i];
-            Label chip = dayChips[i];
-
-            chip.getStyleClass().removeAll("active", "inactive");
-            if (schedule.contains(dow)) {
-                chip.getStyleClass().addAll("day-chip", "active");
-            } else {
-                chip.getStyleClass().addAll("day-chip", "inactive");
-            }
-        }
-    }
-
     /** Connect this card to a Habit and wire service calls. */
     public void bindToHabit(Habit habit) {
         this.habitId = habit.getId();
-
-        // Update day chips with schedule
-        updateDayChips(habit.getSchedule());
 
         // Is this habit scheduled for TODAY?
         DayOfWeek todayDow = LocalDate.now().getDayOfWeek();
@@ -134,15 +84,16 @@ public class HabitCard extends StackPane {
         boolean doneToday = activeToday && habit.isCompletedOn(LocalDate.now());
         checkBox.setSelected(doneToday);
 
+        // Draw the weekly schedule row
+        updateDayChips(habit.getSchedule());
+
         if (!activeToday) {
-            // Grey out + disable interaction
             getStyleClass().add("habit-card-inactive");
             setOpacity(0.55);
             checkBox.setDisable(true);
             checkBox.setCursor(Cursor.DEFAULT);
             Tooltip.install(this, new Tooltip("Not scheduled for today"));
         } else {
-            // When user clicks, ask service to set today's completion
             checkBox.selectedProperty().addListener((obs, oldVal, newVal) -> {
                 if (updatingFromService) return;
                 try {
@@ -160,6 +111,45 @@ public class HabitCard extends StackPane {
                     revert();
                 }
             });
+        }
+    }
+
+    /** Draw the row of day chips (Sun → Sat). */
+    private void updateDayChips(EnumSet<DayOfWeek> schedule) {
+        daysRow.getChildren().clear();
+        if (schedule == null) return;
+
+        DayOfWeek[] order = {
+                DayOfWeek.SUNDAY,
+                DayOfWeek.MONDAY,
+                DayOfWeek.TUESDAY,
+                DayOfWeek.WEDNESDAY,
+                DayOfWeek.THURSDAY,
+                DayOfWeek.FRIDAY,
+                DayOfWeek.SATURDAY
+        };
+        String[] labels = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+
+        DayOfWeek today = LocalDate.now().getDayOfWeek();
+
+        for (int i = 0; i < order.length; i++) {
+            DayOfWeek dow = order[i];
+            Label chip = new Label(labels[i]);
+            chip.setPadding(new Insets(4, 10, 4, 10));
+
+            if (schedule.contains(dow)) {
+                chip.getStyleClass().setAll("day-chip", "active");
+            } else {
+                chip.getStyleClass().setAll("day-chip", "inactive");
+            }
+
+            // Highlight today's chip with a bold border
+            if (dow == today) {
+                chip.setStyle(chip.getStyle() +
+                        "; -fx-border-color: #111827; -fx-border-width: 1.5px; -fx-border-radius: 20px;");
+            }
+
+            daysRow.getChildren().add(chip);
         }
     }
 
