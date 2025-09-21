@@ -143,6 +143,11 @@
     -fx-background-color: transparent;
 }
 
+.habit-checkbox {
+    -fx-padding: 0 10 0 0; /* top right bottom left */
+}
+
+
 .habit-checkbox:selected > .box > .mark {
     -fx-background-color: white; /* white tick on green */
 }
