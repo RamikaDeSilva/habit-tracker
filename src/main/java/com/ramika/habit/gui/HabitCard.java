@@ -5,9 +5,6 @@ import com.ramika.habit.exceptions.HabitNotActiveTodayException;
 import com.ramika.habit.exceptions.HabitNotFoundException;
 import com.ramika.habit.model.Habit;
 import com.ramika.habit.service.HabitService;
-
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
@@ -15,103 +12,69 @@ import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.UUID;
 
 public class HabitCard extends StackPane {
-    private final BooleanProperty completed = new SimpleBooleanProperty(false);
 
-    private final StackPane checkbox;   // left box we click
-    private final Rectangle box;        // the square outline/background
-    private final Label check;          // the ✓ label
-    private final StackPane greenFill;  // the green fill when complete
+    private final CheckBox checkBox = new CheckBox();
+    private final Label    titleLbl;
+    private final Label    freqLbl;
+    private final Button   deleteBtn;  // <-- new
 
-    private final Button deleteBtn;     // small "×" button on the right
-
-    private UUID habitId;               // bound habit id for service calls
-    private boolean activeToday;        // whether this habit is scheduled today
+    private UUID    habitId;
+    private boolean activeToday;
+    private boolean updatingFromService = false; // prevent loops
 
     public HabitCard(String emoji, String title, String frequencyText) {
-        // card surface
+        // Card surface
         setPadding(new Insets(18));
         setBackground(new Background(new BackgroundFill(Color.web("#FCFCFF"), new CornerRadii(20), Insets.EMPTY)));
         setEffect(new DropShadow(12, Color.rgb(0, 0, 0, 0.12)));
         setMaxWidth(850);
+        getStyleClass().add("habit-card");
 
-        // left checkbox (tall style like your design)
-        box = new Rectangle(28, 75);
-        box.setArcWidth(10);
-        box.setArcHeight(10);
-        box.setFill(Color.WHITE);
-        box.setStroke(Color.web("#D1D5DB"));
-        box.setStrokeWidth(1.5);
+        // --- Checkbox (real JavaFX control) ---
+        checkBox.getStyleClass().add("habit-checkbox");
+        checkBox.setFocusTraversable(false);     // no blue focus ring
+        checkBox.setCursor(Cursor.HAND);
 
-        check = new Label("✓");
-        check.setStyle("-fx-text-fill: white; -fx-font-size: 16px;");
-        check.setVisible(false);
-
-        greenFill = new StackPane(check);
-        greenFill.setBackground(new Background(new BackgroundFill(Color.web("#16a34a"), new CornerRadii(8), Insets.EMPTY)));
-        greenFill.setMaxSize(24, 24);
-        greenFill.setVisible(false);
-
-        checkbox = new StackPane(box, greenFill);
-        checkbox.setMinSize(32, 32);
-        checkbox.setAlignment(Pos.CENTER_LEFT);
-        checkbox.setCursor(Cursor.HAND);
-
-        // title + frequency
-        Label titleLbl = new Label(emoji + "  " + title);
+        // Text column
+        titleLbl = new Label(emoji + "  " + title);
         titleLbl.setStyle("-fx-font-size: 22px; -fx-font-weight: 700; -fx-text-fill: #111827;");
 
-        Label freqLbl = new Label("📅  " + frequencyText);
+        freqLbl  = new Label("📅  " + frequencyText);
         freqLbl.setStyle("-fx-font-size: 14px; -fx-text-fill: #6B7280; -fx-font-weight: 600;");
 
         VBox textCol = new VBox(6, titleLbl, freqLbl);
         textCol.setAlignment(Pos.CENTER_LEFT);
 
-        // --- delete button (right) ---
+        HBox row = new HBox(12, checkBox, textCol);
+        row.setAlignment(Pos.CENTER_LEFT);
+
+        // --- Delete button (top-right corner) ---
         deleteBtn = new Button("✕");
         deleteBtn.getStyleClass().add("habit-delete-btn");
-        deleteBtn.setCursor(Cursor.HAND);
         deleteBtn.setFocusTraversable(false);
+        deleteBtn.setCursor(Cursor.HAND);
         deleteBtn.setOnAction(e -> confirmAndDelete());
         Tooltip.install(deleteBtn, new Tooltip("Delete habit"));
 
-        Region spacer = new Region();
-        HBox.setHgrow(spacer, Priority.ALWAYS);
+        // Add row as main content, delete button overlaid top-right
+        getChildren().addAll(row, deleteBtn);
+        StackPane.setAlignment(deleteBtn, Pos.TOP_RIGHT);
+        StackPane.setMargin(deleteBtn, new Insets(6, 8, 0, 0));
 
-        HBox row = new HBox(12, checkbox, textCol, spacer, deleteBtn);
-        row.setAlignment(Pos.CENTER_LEFT);
-
-        getChildren().add(row);
-
-        // visual reaction when 'completed' changes
-        completed.addListener((obs, was, is) -> {
-            greenFill.setVisible(is);
-            check.setVisible(is);
-            box.setStroke(is ? Color.web("#16a34a") : Color.web("#D1D5DB"));
-        });
-
-        // Optional context menu delete (kept)
+        // Right-click: delete (still available)
         MenuItem delete = new MenuItem("Delete habit");
         delete.setOnAction(e -> confirmAndDelete());
         ContextMenu menu = new ContextMenu(delete);
         setOnContextMenuRequested(e -> menu.show(this, e.getScreenX(), e.getScreenY()));
     }
 
-    // -------- public API you already use --------
-    public BooleanProperty completedProperty() { return completed; }
-    public boolean isCompleted() { return completed.get(); }
-    public void setCompleted(boolean value) { completed.set(value); }
-
-    // -------- binding to the model/service --------
-    /** Connect this card’s UI to a Habit model and wire service actions. */
+    /** Connect this card to a Habit and wire service calls. */
     public void bindToHabit(Habit habit) {
         this.habitId = habit.getId();
 
@@ -119,42 +82,52 @@ public class HabitCard extends StackPane {
         DayOfWeek todayDow = LocalDate.now().getDayOfWeek();
         this.activeToday = habit.getSchedule() != null && habit.getSchedule().contains(todayDow);
 
-        // initialize checkbox from today’s state if active; else force unchecked
+        // Initial state
         boolean doneToday = activeToday && habit.isCompletedOn(LocalDate.now());
-        setCompleted(doneToday);
+        checkBox.setSelected(doneToday);
 
-        // If NOT active today → grey out + disable interactions (but keep delete active)
         if (!activeToday) {
-            getStyleClass().add("habit-card-inactive"); // CSS hook
+            // Grey out + disable interaction
+            getStyleClass().add("habit-card-inactive");
             setOpacity(0.55);
-            checkbox.setDisable(true);
-            checkbox.setCursor(Cursor.DEFAULT);
+            checkBox.setDisable(true);
+            checkBox.setCursor(Cursor.DEFAULT);
             Tooltip.install(this, new Tooltip("Not scheduled for today"));
-            checkbox.setOnMouseClicked(e -> e.consume());
         } else {
-            // If active today → clicking the box toggles via service
-            checkbox.setOnMouseClicked(e -> {
-                boolean target = !isCompleted(); // desired state after click
+            // When user clicks, ask service to set today's completion
+            checkBox.selectedProperty().addListener((obs, oldVal, newVal) -> {
+                if (updatingFromService) return;
                 try {
-                    HabitService.setCompletedToday(habitId, target);
-                    setCompleted(target); // reflect success
+                    HabitService.setCompletedToday(habitId, newVal);
                 } catch (HabitNotFoundException ex) {
-                    setCompleted(!target);
                     showInfo("Habit not found.");
+                    revert();
                 } catch (HabitNotActiveTodayException ex) {
-                    setCompleted(!target);
                     showInfo("This habit isn’t scheduled for today.");
+                    revert();
                 } catch (HabitAlreadyCompleteException ex) {
-                    setCompleted(true); // benign; keep consistent
+                    checkBox.setSelected(true);
                 } catch (Exception ex) {
-                    setCompleted(!target);
                     showInfo("Couldn’t update. Please try again.");
+                    revert();
                 }
             });
         }
     }
 
-    // ---- deletion flow ----
+    /** Let external code programmatically reflect today's completion. */
+    public void setCompletedToday(boolean completed) {
+        updatingFromService = true;
+        checkBox.setSelected(completed);
+        updatingFromService = false;
+    }
+
+    private void revert() {
+        updatingFromService = true;
+        checkBox.setSelected(!checkBox.isSelected());
+        updatingFromService = false;
+    }
+
     private void confirmAndDelete() {
         if (habitId == null) return;
 
@@ -162,15 +135,13 @@ public class HabitCard extends StackPane {
         alert.setTitle("Delete Habit");
         alert.setHeaderText(null);
 
-        // Build “Are you sure you want to delete this habit PERMANENTLY?” with bold permanently
-        Text t1 = new Text("Are you sure you want to delete this habit ");
-        Text t2 = new Text("permanently");
-        t2.setStyle("-fx-font-weight: bold;");
-        Text t3 = new Text("?");
-        TextFlow flow = new TextFlow(t1, t2, t3);
+        Label msg = new Label("Are you sure you want to delete this habit ");
+        Label perm = new Label("permanently");
+        perm.setStyle("-fx-font-weight: bold;");
+        Label q = new Label("?");
 
-        DialogPane pane = alert.getDialogPane();
-        pane.setContent(flow);
+        HBox content = new HBox(2, msg, perm, q);
+        alert.getDialogPane().setContent(content);
 
         ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
         ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
