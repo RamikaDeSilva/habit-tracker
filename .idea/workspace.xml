@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Updated HabitService.java so that only habits active today would be in the total progress bar">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
-    </list>
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Updated HabitService.java so that only habits active today would be in the total progress bar" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
