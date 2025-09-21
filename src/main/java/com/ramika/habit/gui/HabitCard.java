@@ -146,7 +146,7 @@ public class HabitCard extends StackPane {
             // Highlight today's chip with a bold border
             if (dow == today) {
                 chip.setStyle(chip.getStyle() +
-                        "; -fx-border-color: #111827; -fx-border-width: 1.5px; -fx-border-radius: 20px;");
+                        "; -fx-border-color: #333333; -fx-border-width: 1.5px; -fx-border-radius: 20px;");
             }
 
             daysRow.getChildren().add(chip);
