@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Changed checkbox to JavaFX type from Label" />
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Fixed padding between checkbox and other parts of habitCard">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -151,22 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Added HabitAlreadyCompleteException.java">
-      <option name="closed" value="true" />
-      <created>1756235875663</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1756235875663</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Handled bug of marking habit completed multiple times in a day - prevent duplicates in completions field">
-      <option name="closed" value="true" />
-      <created>1756235916018</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1756235916018</updated>
     </task>
     <task id="LOCAL-00038" summary="Implemented viewing all habits completed today">
       <option name="closed" value="true" />
@@ -544,7 +532,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758426747304</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="Added CSS Styling to checkbox in habitcards">
+      <option name="closed" value="true" />
+      <created>1758426955500</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1758426955500</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Fixed padding between checkbox and other parts of habitCard">
+      <option name="closed" value="true" />
+      <created>1758427132238</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1758427132238</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -559,8 +563,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Linked CSS + Added first font to project" />
-    <MESSAGE value="Fixed adding weekdays to habit" />
     <MESSAGE value="Made so that clicking weekday buttons changes their colour" />
     <MESSAGE value="Made clicking button functionality work for weekdays, weekends, clear and all buttons" />
     <MESSAGE value="Made sunday button first instead of last - looks better in my opinion" />
@@ -584,7 +586,9 @@
     <MESSAGE value="Habit Syncing Fixed across progress bars and donut - now working" />
     <MESSAGE value="Updated HabitService.java so that only habits active today would be in the total progress bar" />
     <MESSAGE value="Changed checkbox to JavaFX type from Label" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed checkbox to JavaFX type from Label" />
+    <MESSAGE value="Added CSS Styling to checkbox in habitcards" />
+    <MESSAGE value="Fixed padding between checkbox and other parts of habitCard" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed padding between checkbox and other parts of habitCard" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

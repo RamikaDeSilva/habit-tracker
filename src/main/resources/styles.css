@@ -156,3 +156,24 @@
 .habit-checkbox:focused > .box {
     -fx-effect: null;
 }
+
+.habit-delete-btn {
+    -fx-background-color: #eef2f7;
+    -fx-text-fill: #111827;
+    -fx-font-size: 12px;
+    -fx-font-weight: 700;
+    -fx-padding: 2 7 2 7;        /* top right bottom left */
+    -fx-background-radius: 999px;
+    -fx-border-radius: 999px;
+    -fx-border-color: transparent;
+}
+
+.habit-delete-btn:hover {
+    -fx-background-color: #fde8e8;   /* soft red hover */
+    -fx-text-fill: #991b1b;
+}
+
+.habit-card-inactive {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 10, 0.0, 0, 2);
+}
+
