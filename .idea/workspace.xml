@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Added delete habit functionality">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Fixed Checkbox styling to match original + moved delete habit button to top right of habit card">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,14 +156,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Added HabitNotActiveTodayException.java">
-      <option name="closed" value="true" />
-      <created>1756236584686</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1756236584686</updated>
     </task>
     <task id="LOCAL-00040" summary="Implemented functionality that checks if you are marking a habit that is supposed to be done this day of week">
       <option name="closed" value="true" />
@@ -547,7 +541,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758467525896</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="Fixed Checkbox styling to match original + moved delete habit button to top right of habit card">
+      <option name="closed" value="true" />
+      <created>1758468387350</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1758468387350</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -562,7 +564,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Made clicking button functionality work for weekdays, weekends, clear and all buttons" />
     <MESSAGE value="Made sunday button first instead of last - looks better in my opinion" />
     <MESSAGE value="Made enum values be entered through AddHabitScene.java" />
     <MESSAGE value="Added Inter_18pt-ExtraBold.ttf" />
@@ -587,7 +588,8 @@
     <MESSAGE value="Added CSS Styling to checkbox in habitcards" />
     <MESSAGE value="Fixed padding between checkbox and other parts of habitCard" />
     <MESSAGE value="Added delete habit functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added delete habit functionality" />
+    <MESSAGE value="Fixed Checkbox styling to match original + moved delete habit button to top right of habit card" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Checkbox styling to match original + moved delete habit button to top right of habit card" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

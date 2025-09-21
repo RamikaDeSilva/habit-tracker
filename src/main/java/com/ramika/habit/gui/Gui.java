@@ -108,6 +108,8 @@ public class Gui {
         prog.animateTo(p);
     }
 
+
+    //TODO - PICK ICON TO CATEGORY, NOT RANDOM NAME
     private String pickIconFor(Habit h) {
         String lower = h.getName() == null ? "" : h.getName().toLowerCase();
         if (lower.contains("workout") || lower.contains("run") || lower.contains("gym")) return "🏋️";

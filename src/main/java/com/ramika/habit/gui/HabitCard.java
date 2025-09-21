@@ -15,16 +15,17 @@ import javafx.scene.paint.Color;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.EnumSet;
 import java.util.UUID;
 
 public class HabitCard extends StackPane {
 
     private final CheckBox checkBox = new CheckBox();
-    private final Label    titleLbl;
-    private final Label    freqLbl;
-    private final Button   deleteBtn;  // <-- new
+    private final Label titleLbl;
+    private final Button deleteBtn;
+    private final Label[] dayChips = new Label[7];  // Sun → Sat
 
-    private UUID    habitId;
+    private UUID habitId;
     private boolean activeToday;
     private boolean updatingFromService = false; // prevent loops
 
@@ -41,14 +42,14 @@ public class HabitCard extends StackPane {
         checkBox.setFocusTraversable(false);     // no blue focus ring
         checkBox.setCursor(Cursor.HAND);
 
-        // Text column
+        // Title
         titleLbl = new Label(emoji + "  " + title);
         titleLbl.setStyle("-fx-font-size: 22px; -fx-font-weight: 700; -fx-text-fill: #111827;");
 
-        freqLbl  = new Label("📅  " + frequencyText);
-        freqLbl.setStyle("-fx-font-size: 14px; -fx-text-fill: #6B7280; -fx-font-weight: 600;");
+        // Days row (Sun → Sat)
+        HBox daysRow = buildDaysRow();
 
-        VBox textCol = new VBox(6, titleLbl, freqLbl);
+        VBox textCol = new VBox(6, titleLbl, daysRow);
         textCol.setAlignment(Pos.CENTER_LEFT);
 
         HBox row = new HBox(12, checkBox, textCol);
@@ -74,9 +75,56 @@ public class HabitCard extends StackPane {
         setOnContextMenuRequested(e -> menu.show(this, e.getScreenX(), e.getScreenY()));
     }
 
+    /** Build a row of capsules Sun → Sat */
+    private HBox buildDaysRow() {
+        HBox row = new HBox(8);
+        row.getStyleClass().add("days-row");
+        row.setAlignment(Pos.CENTER_LEFT);
+
+        String[] labels = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
+        for (int i = 0; i < 7; i++) {
+            Label chip = new Label(labels[i]);
+            chip.getStyleClass().addAll("day-chip", "inactive"); // default
+            chip.setPadding(new Insets(4, 10, 4, 10));
+            dayChips[i] = chip;
+            row.getChildren().add(chip);
+        }
+        return row;
+    }
+
+    /** Update active/inactive styles based on schedule */
+    private void updateDayChips(EnumSet<DayOfWeek> schedule) {
+        if (schedule == null) schedule = EnumSet.noneOf(DayOfWeek.class);
+
+        DayOfWeek[] order = {
+                DayOfWeek.SUNDAY,
+                DayOfWeek.MONDAY,
+                DayOfWeek.TUESDAY,
+                DayOfWeek.WEDNESDAY,
+                DayOfWeek.THURSDAY,
+                DayOfWeek.FRIDAY,
+                DayOfWeek.SATURDAY
+        };
+
+        for (int i = 0; i < 7; i++) {
+            DayOfWeek dow = order[i];
+            Label chip = dayChips[i];
+
+            chip.getStyleClass().removeAll("active", "inactive");
+            if (schedule.contains(dow)) {
+                chip.getStyleClass().addAll("day-chip", "active");
+            } else {
+                chip.getStyleClass().addAll("day-chip", "inactive");
+            }
+        }
+    }
+
     /** Connect this card to a Habit and wire service calls. */
     public void bindToHabit(Habit habit) {
         this.habitId = habit.getId();
+
+        // Update day chips with schedule
+        updateDayChips(habit.getSchedule());
 
         // Is this habit scheduled for TODAY?
         DayOfWeek todayDow = LocalDate.now().getDayOfWeek();

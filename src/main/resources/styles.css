@@ -157,6 +157,39 @@
     -fx-effect: null;
 }
 
+/* habit days row active styling */
+/* Row wrapper inside the card */
+.days-row {
+    -fx-spacing: 8;                    /* matches HBox(8) but good to keep */
+}
+
+/* Base chip style */
+.day-chip {
+    -fx-background-radius: 999;
+    -fx-border-radius: 999;
+    -fx-font-size: 10px;
+    -fx-font-weight: 700;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 2, 0.0, 0, 1);
+}
+
+/* Inactive (light gray, outlined) */
+.day-chip.inactive {
+    -fx-background-color: #F3F4F6;     /* light gray fill */
+    -fx-text-fill: #6B7280;            /* gray text */
+    -fx-border-color: #D1D5DB;         /* subtle outline */
+    -fx-border-width: 1;
+}
+
+/* Active (soft green, white text) */
+.day-chip.active {
+    -fx-background-color: #67db90;     /* soft green #16a34a; */
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+}
+
+/* Delete button styling */
+
+
 .habit-delete-btn {
     -fx-background-color: #eef2f7;
     -fx-text-fill: #111827;
