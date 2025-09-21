@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Habit Syncing Fixed across progress bars and donut - now working" />
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Updated HabitService.java so that only habits active today would be in the total progress bar">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -151,14 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Implemented mark Habit Complete today in ui + added stub for viewing all habit completion history">
-      <option name="closed" value="true" />
-      <created>1756235181825</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1756235181825</updated>
     </task>
     <task id="LOCAL-00035" summary="Ovveride toString in HabitCompletion.java to display date">
       <option name="closed" value="true" />
@@ -544,7 +540,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758408540958</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="Updated HabitService.java so that only habits active today would be in the total progress bar">
+      <option name="closed" value="true" />
+      <created>1758408979238</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1758408979238</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -559,7 +563,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented better design of AddHabitScene.java" />
     <MESSAGE value="Linked adding habit to displaying habit basic MVP" />
     <MESSAGE value="Linked CSS + Added first font to project" />
     <MESSAGE value="Fixed adding weekdays to habit" />
@@ -584,7 +587,8 @@
     <MESSAGE value="Fixed import being in wrong place in Habit" />
     <MESSAGE value="Updated habit class to be ready for habit syncing" />
     <MESSAGE value="Habit Syncing Fixed across progress bars and donut - now working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Habit Syncing Fixed across progress bars and donut - now working" />
+    <MESSAGE value="Updated HabitService.java so that only habits active today would be in the total progress bar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated HabitService.java so that only habits active today would be in the total progress bar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

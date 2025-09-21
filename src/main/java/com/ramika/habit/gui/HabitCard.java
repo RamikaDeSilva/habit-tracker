@@ -15,11 +15,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Tooltip;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -29,9 +31,10 @@ public class HabitCard extends StackPane {
     private final StackPane checkbox;   // left box we click
     private final Rectangle box;        // the square outline/background
     private final Label check;          // the ✓ label
-    private final StackPane greenFill;  // the green fill that appears when complete
+    private final StackPane greenFill;  // the green fill when complete
 
     private UUID habitId;               // bound habit id for service calls
+    private boolean activeToday;        // whether this habit is scheduled today
 
     public HabitCard(String emoji, String title, String frequencyText) {
         // card surface
@@ -91,7 +94,7 @@ public class HabitCard extends StackPane {
         setOnContextMenuRequested(e -> menu.show(this, e.getScreenX(), e.getScreenY()));
     }
 
-    // -------- public API you already used --------
+    // -------- public API you already use --------
     public BooleanProperty completedProperty() { return completed; }
     public boolean isCompleted() { return completed.get(); }
     public void setCompleted(boolean value) { completed.set(value); }
@@ -101,29 +104,44 @@ public class HabitCard extends StackPane {
     public void bindToHabit(Habit habit) {
         this.habitId = habit.getId();
 
-        // initialize checkbox from today’s state
-        boolean doneToday = habit.isCompletedOn(LocalDate.now());
+        // Is this habit scheduled for TODAY?
+        DayOfWeek todayDow = LocalDate.now().getDayOfWeek();
+        this.activeToday = habit.getSchedule() != null && habit.getSchedule().contains(todayDow);
+
+        // initialize checkbox from today’s state if active; else force unchecked
+        boolean doneToday = activeToday && habit.isCompletedOn(LocalDate.now());
         setCompleted(doneToday);
 
-        // clicking the box → call service → reflect or revert
+        // If NOT active today → grey out + disable interactions
+        if (!activeToday) {
+            getStyleClass().add("habit-card-inactive"); // CSS hook
+            setOpacity(0.55);
+            checkbox.setDisable(true);
+            checkbox.setCursor(Cursor.DEFAULT);
+            Tooltip.install(this, new Tooltip("Not scheduled for today"));
+            // Also ensure clicks don’t toggle accidentally:
+            checkbox.setOnMouseClicked(e -> e.consume());
+            return; // don't attach toggle handler
+        }
+
+        // If active today → clicking the box toggles via service
         checkbox.setOnMouseClicked(e -> {
             boolean target = !isCompleted(); // desired state after click
             try {
                 HabitService.setCompletedToday(habitId, target);
                 setCompleted(target); // reflect success
             } catch (HabitNotFoundException ex) {
+                setCompleted(!target);
                 showInfo("Habit not found.");
-                // revert visual
-                setCompleted(!target);
             } catch (HabitNotActiveTodayException ex) {
-                showInfo("This habit isn’t scheduled for today.");
                 setCompleted(!target);
+                showInfo("This habit isn’t scheduled for today.");
             } catch (HabitAlreadyCompleteException ex) {
-                // benign in your model, but keep UI consistent
+                // benign in your model; keep UI consistent
                 setCompleted(true);
             } catch (Exception ex) {
-                showInfo("Couldn’t update. Please try again.");
                 setCompleted(!target);
+                showInfo("Couldn’t update. Please try again.");
             }
         });
     }
