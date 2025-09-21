@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Black border around day today of week in habit card">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" afterDir="false" />
-    </list>
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="changed Black border around day today of week in habit card to lighter black #333333" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -153,14 +151,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Deleted HabitCard.java, Gradle files">
-      <option name="closed" value="true" />
-      <created>1756316383529</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1756316383529</updated>
     </task>
     <task id="LOCAL-00043" summary="Added Gradle files + got JavaFX running">
       <option name="closed" value="true" />
@@ -546,7 +536,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758478236870</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="changed Black border around day today of week in habit card to lighter black #333333">
+      <option name="closed" value="true" />
+      <created>1758478433869</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1758478433869</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -561,7 +559,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Inter_18pt-ExtraBold.ttf" />
     <MESSAGE value="Fix Header Text on front page CSS" />
     <MESSAGE value="Added images folder + calendar-symbol.svg in resources root" />
     <MESSAGE value="Deleted svg of calendar symbol and added png version" />
@@ -586,7 +583,8 @@
     <MESSAGE value="Fixed Checkbox styling to match original + moved delete habit button to top right of habit card" />
     <MESSAGE value="Added basic CSS Styling to days habit active" />
     <MESSAGE value="Black border around day today of week in habit card" />
-    <option name="LAST_COMMIT_MESSAGE" value="Black border around day today of week in habit card" />
+    <MESSAGE value="changed Black border around day today of week in habit card to lighter black #333333" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed Black border around day today of week in habit card to lighter black #333333" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

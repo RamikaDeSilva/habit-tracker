@@ -11,6 +11,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
 public class Gui {
 
     private ProgressCard prog;
@@ -74,19 +80,44 @@ public class Gui {
         return scene;
     }
 
-    /** Refresh all habit cards and keep summary at the bottom. */
+    /** Refresh all habit cards and keep summary at the bottom.
+     *  Active-today habits appear first, inactive habits after. */
     private void refreshHabitCards(DashboardView dv) {
         // Remove existing HabitCard nodes and any existing summary instance
         dv.contentBox().getChildren().removeIf(node ->
                 node instanceof HabitCard || node instanceof CompletionSummaryCard);
 
-        // Rebuild cards from service
-        HabitService.getActiveHabits().values().forEach(habit -> {
-            String icon = pickIconFor(habit);
-            HabitCard card = new HabitCard(icon, habit.getName(), habit.getSchedule().toString());
-            card.bindToHabit(habit); // uses the binder we added in HabitCard
+        // Partition habits
+        List<Habit> activeToday = new ArrayList<>();
+        List<Habit> inactive = new ArrayList<>();
+
+        DayOfWeek today = LocalDate.now().getDayOfWeek();
+        for (Habit h : HabitService.getAllHabits().values()) {
+            if (h.getSchedule() != null && h.getSchedule().contains(today)) {
+                activeToday.add(h);
+            } else {
+                inactive.add(h);
+            }
+        }
+
+        // Sort alphabetically inside groups (optional)
+        Comparator<Habit> byName = Comparator.comparing(h -> h.getName().toLowerCase());
+        activeToday.sort(byName);
+        inactive.sort(byName);
+
+        // Add active cards first
+        for (Habit h : activeToday) {
+            HabitCard card = new HabitCard(pickIconFor(h), h.getName(), h.getSchedule().toString());
+            card.bindToHabit(h);
             dv.contentBox().getChildren().add(card);
-        });
+        }
+
+        // Then add inactive
+        for (Habit h : inactive) {
+            HabitCard card = new HabitCard(pickIconFor(h), h.getName(), h.getSchedule().toString());
+            card.bindToHabit(h);
+            dv.contentBox().getChildren().add(card);
+        }
 
         // Always append summary LAST
         VBox.setMargin(summary, new Insets(20, 0, 20, 0));
@@ -107,7 +138,6 @@ public class Gui {
         summary.animateToCounts(done, total);
         prog.animateTo(p);
     }
-
 
     //TODO - PICK ICON TO CATEGORY, NOT RANDOM NAME
     private String pickIconFor(Habit h) {
