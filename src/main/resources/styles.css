@@ -35,7 +35,7 @@
 
 /* big title: "Your Habits Today" */
 .hero-title {
-    -fx-font-size: 60px; // 32px;     /* bump to 36 if you want bigger */
+    -fx-font-size: 60px; /* bump to 36 if you want bigger */
     -fx-font-weight: 800;
     -fx-text-fill: #0F172A;  /* slate-900 */
     -fx-font-family: "InterBold";
@@ -77,12 +77,12 @@
     -fx-effect: dropshadow(gaussian, rgba(123,97,255,0.15), 12, 0.2, 0, 2);
 }
 
+/* Inactive habit cards */
 .habit-card-inactive {
     -fx-background-radius: 16;
     -fx-background-color: #dcdfe6;    /* slightly cooler background */
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 10, 0.0, 0, 2);
 }
-
 
 /* === Bottom Progress bar === */
 .completion-text {
@@ -103,4 +103,51 @@
     -fx-font-size: 20px;
     -fx-font-weight: 700;
     -fx-font-family: "InterBold";
+}
+
+/* ============================= */
+/*    HABIT CHECKBOX STYLING     */
+/* ============================= */
+
+/* Custom checkbox inside HabitCard */
+.habit-checkbox {
+    -fx-padding: 0;
+    -fx-cursor: hand;
+}
+
+/* Square box */
+.habit-checkbox > .box {
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+
+    -fx-pref-width: 28;
+    -fx-pref-height: 28;
+    -fx-min-width: 28;
+    -fx-min-height: 28;
+    -fx-max-width: 28;
+    -fx-max-height: 28;
+
+    -fx-background-color: white;
+    -fx-border-color: #D1D5DB;  /* subtle gray outline */
+    -fx-border-width: 1.2;
+}
+
+/* Selected: green fill with white tick */
+.habit-checkbox:selected > .box {
+    -fx-background-color: #16a34a;
+    -fx-border-color: #16a34a;
+}
+
+/* Tick color */
+.habit-checkbox > .box > .mark {
+    -fx-background-color: transparent;
+}
+
+.habit-checkbox:selected > .box > .mark {
+    -fx-background-color: white; /* white tick on green */
+}
+
+/* Remove the dotted focus ring */
+.habit-checkbox:focused > .box {
+    -fx-effect: null;
 }

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Updated HabitService.java so that only habits active today would be in the total progress bar" />
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Changed checkbox to JavaFX type from Label" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -151,14 +151,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Ovveride toString in HabitCompletion.java to display date">
-      <option name="closed" value="true" />
-      <created>1756235524063</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1756235524063</updated>
     </task>
     <task id="LOCAL-00036" summary="Added HabitAlreadyCompleteException.java">
       <option name="closed" value="true" />
@@ -544,7 +536,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758408979238</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Changed checkbox to JavaFX type from Label">
+      <option name="closed" value="true" />
+      <created>1758426747304</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1758426747304</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -559,7 +559,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Linked adding habit to displaying habit basic MVP" />
     <MESSAGE value="Linked CSS + Added first font to project" />
     <MESSAGE value="Fixed adding weekdays to habit" />
     <MESSAGE value="Made so that clicking weekday buttons changes their colour" />
@@ -584,7 +583,8 @@
     <MESSAGE value="Updated habit class to be ready for habit syncing" />
     <MESSAGE value="Habit Syncing Fixed across progress bars and donut - now working" />
     <MESSAGE value="Updated HabitService.java so that only habits active today would be in the total progress bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated HabitService.java so that only habits active today would be in the total progress bar" />
+    <MESSAGE value="Changed checkbox to JavaFX type from Label" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed checkbox to JavaFX type from Label" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
