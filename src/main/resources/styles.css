@@ -136,7 +136,7 @@
 .toggle-button.pill .label {
     -fx-font-size: 12px;
     -fx-font-weight: 600;
-    -fx-padding: 0;             /* no extra offset */
+    -fx-padding: 1;             /* no extra offset */
 }
 
 /* Hover state */

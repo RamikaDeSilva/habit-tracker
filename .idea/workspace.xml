@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Fixed filtering - completed and remaining don't show inactive habits for today">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Fixed CSS for filtering buttons">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
     </list>
@@ -154,14 +154,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Centered elements in habit Tracker">
-      <option name="closed" value="true" />
-      <created>1756332479437</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1756332479437</updated>
     </task>
     <task id="LOCAL-00048" summary="Added ProgressDonut.java File">
       <option name="closed" value="true" />
@@ -547,7 +539,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758518153343</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="Fixed CSS for filtering buttons">
+      <option name="closed" value="true" />
+      <created>1758519180005</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1758519180005</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -562,7 +562,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Centered progressCard + recap" />
     <MESSAGE value="adjusted width of habit cards" />
     <MESSAGE value="Fixed width of cards + spacing between habit cards and progress donut / weekly recap" />
     <MESSAGE value="Added CSS Styling to bottom bar card MVP" />
@@ -587,7 +586,8 @@
     <MESSAGE value="Fixed correct emoji categories displaying  for each HabitCard" />
     <MESSAGE value="Added basic filtering buttons - still includes inactive habits though" />
     <MESSAGE value="Fixed filtering - completed and remaining don't show inactive habits for today" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed filtering - completed and remaining don't show inactive habits for today" />
+    <MESSAGE value="Fixed CSS for filtering buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed CSS for filtering buttons" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
