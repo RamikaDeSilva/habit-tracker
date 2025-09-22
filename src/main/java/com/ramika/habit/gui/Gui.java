@@ -7,8 +7,13 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -23,6 +28,15 @@ public class Gui {
     private ProgressCard prog;
     private WeeklyRecapCard recap;
     private CompletionSummaryCard summary;
+
+    // ── NEW: filter state (applies ONLY to active-today habits)
+    private enum ActiveFilter { ALL, COMPLETED, REMAINING }
+    private ActiveFilter activeFilter = ActiveFilter.ALL;
+
+    // ── NEW: UI refs for counts on the pills
+    private Label allCountLbl     = new Label("0");
+    private Label doneCountLbl    = new Label("0");
+    private Label remainCountLbl  = new Label("0");
 
     /** Build and return the main scene */
     public Scene createMainScene(Stage stage) {
@@ -44,11 +58,16 @@ public class Gui {
 
         prog  = new ProgressCard();
         recap = new WeeklyRecapCard();
-        recap.setDayLabels(java.time.LocalDate.now());
+        recap.setDayLabels(LocalDate.now());
         recap.animateTo(new double[]{0, 0, 0, 0, 0, 0, 0}); // placeholder until weekly data wired
 
         progressBox.getChildren().addAll(prog, recap);
         dv.contentBox().getChildren().add(progressBox);
+
+        // ── NEW: tiny filter bar (affects only active-today)
+        HBox filterBar = buildFilterBar(dv);
+        VBox.setMargin(filterBar, new Insets(0, 0, 12, 0));
+        dv.contentBox().getChildren().add(filterBar);
 
         // Create summary (but add it later so it stays at the bottom)
         summary = new CompletionSummaryCard();
@@ -63,26 +82,91 @@ public class Gui {
             if (summary != null) {
                 summary.animateToCounts(newV.intValue(), HabitService.totalDisplayedProperty().get());
             }
+            // counts may change -> refresh pills
+            updateFilterCounts();
         });
 
         HabitService.totalDisplayedProperty().addListener((obs, oldV, newV) -> {
             if (summary != null) {
                 summary.animateToCounts(HabitService.completedDisplayedProperty().get(), newV.intValue());
             }
-            // Rebuild cards when total changes (add/remove/deactivate)
-            refreshHabitCards(dv);
+            refreshHabitCards(dv);      // rebuild when total set changes
+            updateFilterCounts();        // and keep pill counts in sync
         });
 
         // ── Build habit cards AFTER listeners are wired; summary will be appended last
         refreshHabitCards(dv);
+        updateFilterCounts();
 
         Scene scene = new Scene(scroller, 1200, 720);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         return scene;
     }
 
+    /** Build the pill filter bar (All / Completed / Remaining) */
+    private HBox buildFilterBar(DashboardView dv) {
+        Label prefix = new Label("Filter:");
+        prefix.getStyleClass().add("filter-prefix");
+
+        ToggleGroup tg = new ToggleGroup();
+
+        ToggleButton allBtn = pill("📋", "All", allCountLbl);
+        ToggleButton doneBtn = pill("✅", "Completed", doneCountLbl);
+        ToggleButton remainBtn = pill("⏳", "Remaining", remainCountLbl);
+
+        allBtn.setToggleGroup(tg);
+        doneBtn.setToggleGroup(tg);
+        remainBtn.setToggleGroup(tg);
+
+        allBtn.setSelected(true);
+
+        allBtn.setOnAction(e -> {
+            activeFilter = ActiveFilter.ALL;
+            refreshHabitCards(dv);
+        });
+        doneBtn.setOnAction(e -> {
+            activeFilter = ActiveFilter.COMPLETED;
+            refreshHabitCards(dv);
+        });
+        remainBtn.setOnAction(e -> {
+            activeFilter = ActiveFilter.REMAINING;
+            refreshHabitCards(dv);
+        });
+
+        HBox box = new HBox(12, prefix, allBtn, doneBtn, remainBtn);
+        box.setAlignment(Pos.CENTER_LEFT);
+        return box;
+    }
+
+    /** Small helper to create a pill with icon, label, and count bubble */
+    private ToggleButton pill(String icon, String label, Label countLbl) {
+        Label text = new Label(label);
+        Label emoji = new Label(icon);
+        emoji.getStyleClass().add("pill-emoji");
+
+        countLbl.getStyleClass().add("pill-count");
+
+        HBox inner = new HBox(8, emoji, text, spacer(6), countLbl);
+        inner.setAlignment(Pos.CENTER_LEFT);
+
+        ToggleButton tb = new ToggleButton();
+        tb.setGraphic(inner);
+        tb.getStyleClass().add("pill");
+        tb.setFocusTraversable(false);
+        return tb;
+    }
+
+    private Region spacer(double w) {
+        Region r = new Region();
+        r.setMinWidth(w);
+        r.setPrefWidth(w);
+        r.setMaxWidth(w);
+        return r;
+    }
+
     /** Refresh all habit cards and keep summary at the bottom.
-     *  Active-today habits appear first, inactive habits after. */
+     *  Active-today habits appear first, inactive habits after.
+     *  The filter applies ONLY to the active-today list. */
     private void refreshHabitCards(DashboardView dv) {
         // Remove existing HabitCard nodes and any existing summary instance
         dv.contentBox().getChildren().removeIf(node ->
@@ -101,19 +185,30 @@ public class Gui {
             }
         }
 
+        // ── Apply filter to active-today only
+        List<Habit> filteredActive = new ArrayList<>();
+        for (Habit h : activeToday) {
+            boolean done = isCompletedToday(h);
+            switch (activeFilter) {
+                case ALL       -> filteredActive.add(h);
+                case COMPLETED -> { if (done) filteredActive.add(h); }
+                case REMAINING -> { if (!done) filteredActive.add(h); }
+            }
+        }
+
         // Sort alphabetically inside groups (optional)
         Comparator<Habit> byName = Comparator.comparing(h -> h.getName().toLowerCase());
-        activeToday.sort(byName);
+        filteredActive.sort(byName);
         inactive.sort(byName);
 
-        // Add active cards first
-        for (Habit h : activeToday) {
+        // Add active cards first (filtered)
+        for (Habit h : filteredActive) {
             HabitCard card = new HabitCard(pickIconFor(h), h.getName(), h.getSchedule().toString());
             card.bindToHabit(h);
             dv.contentBox().getChildren().add(card);
         }
 
-        // Then add inactive
+        // Then add inactive (unfiltered, always shown for "All" category meaning)
         for (Habit h : inactive) {
             HabitCard card = new HabitCard(pickIconFor(h), h.getName(), h.getSchedule().toString());
             card.bindToHabit(h);
@@ -128,6 +223,9 @@ public class Gui {
         if (summary != null) {
             summaryUpdateSnapshot();
         }
+
+        // Keep pill counts up to date
+        updateFilterCounts();
     }
 
     /** Ensure summary + donut reflect current service state */
@@ -140,33 +238,61 @@ public class Gui {
         prog.animateTo(p);
     }
 
+    // ── NEW: helper to compute counts for the pills
+    private void updateFilterCounts() {
+        DayOfWeek today = LocalDate.now().getDayOfWeek();
+
+        int totalAll = HabitService.getAllHabits().size(); // active + inactive
+        int activeCompleted = 0;
+        int activeRemaining = 0;
+
+        for (Habit h : HabitService.getAllHabits().values()) {
+            boolean isActiveToday = h.getSchedule() != null && h.getSchedule().contains(today);
+            if (!isActiveToday) continue;
+
+            if (isCompletedToday(h)) activeCompleted++;
+            else activeRemaining++;
+        }
+
+        allCountLbl.setText(String.valueOf(totalAll));
+        doneCountLbl.setText(String.valueOf(activeCompleted));
+        remainCountLbl.setText(String.valueOf(activeRemaining));
+    }
+
     /**
      * Pick icon by Category first; if category is null or unknown,
      * fall back to a simple name-based heuristic.
      */
     private String pickIconFor(Habit h) {
-        // Try category route first (preferred)
         System.out.println("Habit: " + h.getName() + " category=" + h.getCategory());
         try {
-            Category cat = h.getCategory(); // assumes Habit has getCategory()
+            Category cat = h.getCategory();
             if (cat != null) {
                 return switch (cat) {
-                    case FITNESS       -> "💪";   // or 🏃‍♂️ / 🏋️
-                    case FINANCIAL     -> "💸";   // or 💰 / 📈
-                    case MENTALHEALTH  -> "🧘";   // or 🧠 / 🌿
+                    case FITNESS       -> "\uD83C\uDFCB\uFE0F";
+                    case FINANCIAL     -> "\uD83D\uDCB0";
+                    case MENTALHEALTH  -> "\uD83E\uDDE0";
                     case OTHER         -> "⭐";
                 };
             }
-        } catch (Throwable ignored) {
-            // If your Habit model doesn't have getCategory() yet, we gracefully fall back below.
-        }
+        } catch (Throwable ignored) {}
 
-        // Fallback: name-based heuristic (your old logic)
         String lower = h.getName() == null ? "" : h.getName().toLowerCase();
         if (lower.contains("workout") || lower.contains("run") || lower.contains("gym")) return "🏋️";
         if (lower.contains("read") || lower.contains("book")) return "📚";
         if (lower.contains("meditat") || lower.contains("breath")) return "🧘";
         return "✅";
+    }
+
+    // ── NEW: centralized way to ask if a habit is completed today
+    // Rename this to match your model/service if needed.
+    private boolean isCompletedToday(Habit h) {
+        try {
+            return h.isCompletedToday();       // preferred if available
+        } catch (Throwable ignored) {
+            // If your API differs, adapt here (e.g., HabitService.isCompletedToday(h))
+            return false;
+        }
     }
 
     /** Convenience: set up and show the primary stage */

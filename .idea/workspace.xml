@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Displaying active habits above non active for the day in gui">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Fixed correct emoji categories displaying  for each HabitCard">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/AddHabitScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/AddHabitScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,14 +154,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Created HabitCard Class + Gui Class and Linked to Main">
-      <option name="closed" value="true" />
-      <created>1756328325167</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1756328325167</updated>
     </task>
     <task id="LOCAL-00045" summary="Fixed Package Issues with all files and imports">
       <option name="closed" value="true" />
@@ -550,7 +539,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758479105756</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="Fixed correct emoji categories displaying  for each HabitCard">
+      <option name="closed" value="true" />
+      <created>1758502729934</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1758502729934</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -565,7 +562,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added images folder + calendar-symbol.svg in resources root" />
     <MESSAGE value="Deleted svg of calendar symbol and added png version" />
     <MESSAGE value="Placed the recap + progress donut beside each other" />
     <MESSAGE value="Centered progressCard + recap" />
@@ -590,7 +586,8 @@
     <MESSAGE value="Black border around day today of week in habit card" />
     <MESSAGE value="changed Black border around day today of week in habit card to lighter black #333333" />
     <MESSAGE value="Displaying active habits above non active for the day in gui" />
-    <option name="LAST_COMMIT_MESSAGE" value="Displaying active habits above non active for the day in gui" />
+    <MESSAGE value="Fixed correct emoji categories displaying  for each HabitCard" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed correct emoji categories displaying  for each HabitCard" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
