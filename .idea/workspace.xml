@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Added weekly recap bar updating to todays completion rate">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Added habit and dayss scheduled popups to prevent empty habits">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/AddHabitScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/AddHabitScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,14 +153,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Implemented ProgressCard.java, ProgressDonut + Animation">
-      <option name="closed" value="true" />
-      <created>1756332949240</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1756332949240</updated>
     </task>
     <task id="LOCAL-00051" summary="Added CompletionSummaryCard.java, LinearProgressBar.java">
       <option name="closed" value="true" />
@@ -547,7 +538,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758565914760</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="Added habit and dayss scheduled popups to prevent empty habits">
+      <option name="closed" value="true" />
+      <created>1758573302104</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1758573302104</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -562,7 +561,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added CSS Styling to bottom bar card MVP" />
     <MESSAGE value="Fixed margin on CompletionSummaryCard.java" />
     <MESSAGE value="Fixed width on CompletionSummaryCard.java" />
     <MESSAGE value="added emojis to categories and priority levels in add habit" />
@@ -587,7 +585,8 @@
     <MESSAGE value="Fixed CSS for filtering buttons" />
     <MESSAGE value="little more filtering button css" />
     <MESSAGE value="Added weekly recap bar updating to todays completion rate" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added weekly recap bar updating to todays completion rate" />
+    <MESSAGE value="Added habit and dayss scheduled popups to prevent empty habits" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added habit and dayss scheduled popups to prevent empty habits" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -292,7 +292,7 @@ public class Gui {
 
     /** Convenience: set up and show the primary stage */
     public void show(Stage stage) {
-        stage.setTitle("Habit Tracker");
+        stage.setTitle("Habit Hero - Track Your Habits, Achieve Your Goals");
         stage.setScene(createMainScene(stage));
         stage.show();
     }
