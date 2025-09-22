@@ -166,29 +166,58 @@ public class AddHabitScene {
     }
 
     private void handleCreate() {
-        String title = titleField.getText().trim();
+        String title = titleField.getText() == null ? "" : titleField.getText().trim();
+
+        // 1) Validate title
+        if (title.isEmpty()) {
+            showWarn("Missing habit name", "Please enter a habit name before creating it.");
+            return;
+        }
+
+        // 2) Collect selected days, validate at least one
+        List<String> days = selectedDays();
+        if (days.isEmpty()) {
+            showWarn("No days selected", "Choose at least one day for your habit schedule.");
+            return;
+        }
+
+        // 3) Build rest of the payload
         String category = categoryBox.getValue();
         Category categoryValue = validateCategory(category);
+
         String priority = priorityBox.getValue();
         Priority priorityValue = validatePriority(priority);
 
-        List<String> days = selectedDays();
+        // 4) Convert day labels -> EnumSet<DayOfWeek>
         EnumSet<DayOfWeek> schedule = EnumSet.noneOf(DayOfWeek.class);
         for (String day : days) {
             switch (day) {
-                case "Sun": schedule.add(DayOfWeek.SUNDAY); break;
-                case "Mon": schedule.add(DayOfWeek.MONDAY); break;
-                case "Tue": schedule.add(DayOfWeek.TUESDAY); break;
-                case "Wed": schedule.add(DayOfWeek.WEDNESDAY); break;
-                case "Thu": schedule.add(DayOfWeek.THURSDAY); break;
-                case "Fri": schedule.add(DayOfWeek.FRIDAY); break;
-                case "Sat": schedule.add(DayOfWeek.SATURDAY); break;
+                case "Sun" -> schedule.add(DayOfWeek.SUNDAY);
+                case "Mon" -> schedule.add(DayOfWeek.MONDAY);
+                case "Tue" -> schedule.add(DayOfWeek.TUESDAY);
+                case "Wed" -> schedule.add(DayOfWeek.WEDNESDAY);
+                case "Thu" -> schedule.add(DayOfWeek.THURSDAY);
+                case "Fri" -> schedule.add(DayOfWeek.FRIDAY);
+                case "Sat" -> schedule.add(DayOfWeek.SATURDAY);
             }
         }
 
+        // 5) Create and go back
         HabitService.createHabit(title, priorityValue, categoryValue, schedule);
         goBack();
     }
+
+    /** Show a simple warning popup (matches your dialog flow). */
+    private void showWarn(String header, String content) {
+        Alert a = new Alert(Alert.AlertType.WARNING);
+        a.setTitle("Validation");
+        a.setHeaderText(header);
+        a.setContentText(content);
+        a.getButtonTypes().setAll(ButtonType.OK);
+        a.showAndWait();
+    }
+
+
 
     private List<String> selectedDays() {
         List<String> days = new ArrayList<>();
@@ -289,4 +318,5 @@ public class AddHabitScene {
             default              -> Category.OTHER;
         };
     }
+
 }

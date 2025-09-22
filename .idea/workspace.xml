@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="little more filtering button css">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Added weekly recap bar updating to todays completion rate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/WeeklyRecapCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/WeeklyRecapCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/AddHabitScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/AddHabitScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,14 +154,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Added ProgressCard.java file">
-      <option name="closed" value="true" />
-      <created>1756332808702</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1756332808702</updated>
     </task>
     <task id="LOCAL-00050" summary="Implemented ProgressCard.java, ProgressDonut + Animation">
       <option name="closed" value="true" />
@@ -548,7 +539,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758520270487</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="Added weekly recap bar updating to todays completion rate">
+      <option name="closed" value="true" />
+      <created>1758565914760</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1758565914760</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -563,7 +562,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed width of cards + spacing between habit cards and progress donut / weekly recap" />
     <MESSAGE value="Added CSS Styling to bottom bar card MVP" />
     <MESSAGE value="Fixed margin on CompletionSummaryCard.java" />
     <MESSAGE value="Fixed width on CompletionSummaryCard.java" />
@@ -588,7 +586,8 @@
     <MESSAGE value="Fixed filtering - completed and remaining don't show inactive habits for today" />
     <MESSAGE value="Fixed CSS for filtering buttons" />
     <MESSAGE value="little more filtering button css" />
-    <option name="LAST_COMMIT_MESSAGE" value="little more filtering button css" />
+    <MESSAGE value="Added weekly recap bar updating to todays completion rate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added weekly recap bar updating to todays completion rate" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
