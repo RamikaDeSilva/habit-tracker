@@ -14,7 +14,6 @@ import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
-import java.util.UUID;
 
 public class AddHabitScene {
 
@@ -70,13 +69,22 @@ public class AddHabitScene {
         // Category
         Label categoryLbl = new Label("Category");
         categoryBox = new ComboBox<>();
-        categoryBox.getItems().addAll("\uD83C\uDFCB\uFE0F  Fitness",  "\uD83D\uDCB0  Financial", "\uD83E\uDDE0 Mental Health", "\uD83D\uDCCB  Other");
+        categoryBox.getItems().addAll(
+                "\uD83C\uDFCB\uFE0F  Fitness",
+                "\uD83D\uDCB0  Financial",
+                "\uD83E\uDDE0 Mental Health",
+                "\uD83D\uDCCB  Other"
+        );
         categoryBox.getSelectionModel().select("\uD83D\uDCCB  Other");
 
         // Priority
         Label priorityLbl = new Label("Priority");
         priorityBox = new ComboBox<>();
-        priorityBox.getItems().addAll("\uD83D\uDFE2  Low", "\uD83D\uDFE1  Medium", "\uD83D\uDD34  High");
+        priorityBox.getItems().addAll(
+                "\uD83D\uDFE2  Low",
+                "\uD83D\uDFE1  Medium",
+                "\uD83D\uDD34  High"
+        );
         priorityBox.getSelectionModel().select("\uD83D\uDFE1  Medium");
 
         // Schedule days
@@ -113,7 +121,6 @@ public class AddHabitScene {
         styleDayButton(thu);
         styleDayButton(fri);
         styleDayButton(sat);
-
 
         scheduleBox.getChildren().addAll(quickSelect, daysPane);
 
@@ -152,7 +159,6 @@ public class AddHabitScene {
     }
 
     private void goBack() {
-        // For now just print; later you can swap back to dashboard
         Gui gui = new Gui();
         Scene mainScene = gui.createMainScene(stage);
         stage.setScene(mainScene);
@@ -180,10 +186,6 @@ public class AddHabitScene {
             }
         }
 
-        //TODO
-        // CHANGE INPUTS INTO RESPECTIVE ENUMS / LIST OF DAYS
-        // ADD VALIDATION (E.G. TITLE NOT EMPTY, AT LEAST ONE DAY SELECTED)
-        // TODO: hook this into your data model
         HabitService.createHabit(title, priorityValue, categoryValue, schedule);
         goBack();
     }
@@ -200,7 +202,7 @@ public class AddHabitScene {
         return days;
     }
 
-    // Add this method to your class
+    // --- Style Helpers ---
     private void styleDayButton(ToggleButton button) {
         button.selectedProperty().addListener((obs, wasSelected, isSelected) -> {
             if (isSelected) {
@@ -260,22 +262,31 @@ public class AddHabitScene {
         }
     }
 
+    // --- Normalization + Validation ---
+    private static String normalizeLabel(String s) {
+        if (s == null) return "";
+        String core = s.replaceAll("[^A-Za-z ]", "").trim().replaceAll("\\s+", " ");
+        return core;
+    }
+
     private Priority validatePriority(String priority) {
-        return switch (priority) {
-            case "Low" -> Priority.LOW;
-            case "Medium" -> Priority.MEDIUM;
-            case "High" -> Priority.HIGH;
-            default -> Priority.MEDIUM; // Default to MEDIUM if unrecognized
+        String core = normalizeLabel(priority).toLowerCase();
+        return switch (core) {
+            case "low"    -> Priority.LOW;
+            case "high"   -> Priority.HIGH;
+            case "medium" -> Priority.MEDIUM;
+            default       -> Priority.MEDIUM;
         };
     }
+
     private Category validateCategory(String category) {
-        return switch (category) {
-            case "Fitness" -> Category.FITNESS;
-            case "Mental Health" -> Category.MENTALHEALTH;
-            case "Financial" -> Category.FINANCIAL;
-            case "Other" -> Category.OTHER;
-            default -> Category.OTHER; // Default to OTHER if unrecognized
+        String core = normalizeLabel(category).toLowerCase();
+        return switch (core) {
+            case "fitness"       -> Category.FITNESS;
+            case "financial"     -> Category.FINANCIAL;
+            case "mental health" -> Category.MENTALHEALTH;
+            case "other"         -> Category.OTHER;
+            default              -> Category.OTHER;
         };
     }
 }
-

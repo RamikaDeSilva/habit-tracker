@@ -1,5 +1,6 @@
 package com.ramika.habit.gui;
 
+import com.ramika.habit.model.Category;
 import com.ramika.habit.model.Habit;
 import com.ramika.habit.service.HabitService;
 import javafx.geometry.Insets;
@@ -139,8 +140,28 @@ public class Gui {
         prog.animateTo(p);
     }
 
-    //TODO - PICK ICON TO CATEGORY, NOT RANDOM NAME
+    /**
+     * Pick icon by Category first; if category is null or unknown,
+     * fall back to a simple name-based heuristic.
+     */
     private String pickIconFor(Habit h) {
+        // Try category route first (preferred)
+        System.out.println("Habit: " + h.getName() + " category=" + h.getCategory());
+        try {
+            Category cat = h.getCategory(); // assumes Habit has getCategory()
+            if (cat != null) {
+                return switch (cat) {
+                    case FITNESS       -> "💪";   // or 🏃‍♂️ / 🏋️
+                    case FINANCIAL     -> "💸";   // or 💰 / 📈
+                    case MENTALHEALTH  -> "🧘";   // or 🧠 / 🌿
+                    case OTHER         -> "⭐";
+                };
+            }
+        } catch (Throwable ignored) {
+            // If your Habit model doesn't have getCategory() yet, we gracefully fall back below.
+        }
+
+        // Fallback: name-based heuristic (your old logic)
         String lower = h.getName() == null ? "" : h.getName().toLowerCase();
         if (lower.contains("workout") || lower.contains("run") || lower.contains("gym")) return "🏋️";
         if (lower.contains("read") || lower.contains("book")) return "📚";

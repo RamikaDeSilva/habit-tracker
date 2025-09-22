@@ -13,6 +13,13 @@
     -fx-font-size: 18px;
 }
 
+.emoji {
+    -fx-font-family: "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji","Segoe UI Symbol";
+    -fx-font-size: 22px;
+    -fx-label-padding: 0 6 0 0;
+}
+
+
 /* Dashboard CSS */
 .hero {
     /* layout */

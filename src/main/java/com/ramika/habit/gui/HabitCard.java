@@ -42,11 +42,21 @@ public class HabitCard extends StackPane {
         checkBox.setFocusTraversable(false);
         checkBox.setCursor(Cursor.HAND);
 
-        // Text column
-        titleLbl = new Label(emoji + "  " + title);
+        // Text column (emoji and title split into two labels so emoji uses emoji-capable font)
+        Label emojiLbl = new Label(emoji);
+        emojiLbl.setStyle(
+                "-fx-font-family: 'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji','Segoe UI Symbol';" +
+                        "-fx-font-size: 22px;" +
+                        "-fx-label-padding: 0 6 0 0;"
+        );
+
+        titleLbl = new Label(title);
         titleLbl.setStyle("-fx-font-size: 22px; -fx-font-weight: 700; -fx-text-fill: #111827;");
 
-        VBox textCol = new VBox(10, titleLbl, daysRow);
+        HBox titleRow = new HBox(6, emojiLbl, titleLbl);
+        titleRow.setAlignment(Pos.CENTER_LEFT);
+
+        VBox textCol = new VBox(10, titleRow, daysRow);
         textCol.setAlignment(Pos.CENTER_LEFT);
 
         HBox row = new HBox(12, checkBox, textCol);
