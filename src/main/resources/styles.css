@@ -112,6 +112,93 @@
     -fx-font-family: "InterBold";
 }
 
+/* ---- Filter bar look ---- */
+.filter-prefix {
+    -fx-text-fill: #6B7280;          /* slate-500 */
+    -fx-font-weight: 600;
+    -fx-font-size: 12px;             /* smaller */
+    -fx-padding: 0 6 0 65;
+}
+
+.toggle-button.pill {
+    -fx-background-color: white;     /* base: white chip */
+    -fx-text-fill: #111827;          /* gray-900 */
+    -fx-background-radius: 999;      /* fully rounded */
+    -fx-border-radius: 999;
+    /* -fx-border-color: #E5E7EB;       gray-200 outline */
+    -fx-padding: 6 10;               /* smaller */
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(17,24,39,0.04), 6, 0.1, 0, 1); /* softer shadow */
+    -fx-font-size: 12px;             /* smaller text */
+}
+
+/* Smaller text inside pills */
+.toggle-button.pill .label {
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+    -fx-padding: 0;             /* no extra offset */
+}
+
+/* Hover state */
+.toggle-button.pill:hover {
+    -fx-background-color: #F9FAFB;   /* gray-50 */
+}
+
+/* Focus ring (keyboard nav) */
+.toggle-button.pill:focused {
+    -fx-effect: dropshadow(gaussian, rgba(37,99,235,0.35), 10, 0.3, 0, 0);
+}
+
+/* Selected (active) pill like the blue one in your screenshot */
+.toggle-button.pill:selected {
+    -fx-background-color: #2563EB;   /* primary blue */
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(37,99,235,0.25), 8, 0.3, 0, 1);
+}
+
+/* Force text inside pill to turn white when selected */
+.toggle-button.pill:selected .label,
+.toggle-button.pill:selected .pill-emoji {
+    -fx-text-fill: white;
+}
+
+/* Emoji/icon spacing + opacity */
+.pill-emoji {
+    -fx-font-size: 11px;
+    -fx-opacity: 0.9;
+    -fx-translate-y: 0;         /* no vertical nudge */
+    -fx-padding: 0;             /* reset padding */
+}
+
+/* Count bubble (the small rounded badge on the right) */
+.pill-count {
+    -fx-background-color: rgba(17,24,39,0.06);
+    -fx-text-fill: #111827;
+    -fx-background-radius: 999;
+    -fx-padding: 0 6;           /* tighter padding */
+    -fx-font-size: 10px;
+    -fx-font-weight: 600;
+}
+
+/* Count bubble when selected (translucent white) */
+.toggle-button.pill:selected .pill-count {
+    -fx-background-color: rgba(255,255,255,0.25);
+    -fx-text-fill: white;
+}
+
+/* Make the inner HBox content align nicely and not squeeze */
+.toggle-button.pill > .graphic {
+    -fx-spacing: 6;             /* consistent spacing between all children */
+    -fx-alignment: CENTER;
+}
+
+/* Optional: tighten the entire filter row spacing/margins */
+.hbox > .pill {
+    -fx-margin: 0 8 0 0;  /* if your CSS manager supports margin; otherwise keep HBox spacing in code */
+}
+
+
 /* ============================= */
 /*    HABIT CHECKBOX STYLING     */
 /* ============================= */
@@ -216,4 +303,3 @@
 .habit-card-inactive {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 10, 0.0, 0, 2);
 }
-
