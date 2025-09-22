@@ -82,7 +82,6 @@ public class Gui {
             if (summary != null) {
                 summary.animateToCounts(newV.intValue(), HabitService.totalDisplayedProperty().get());
             }
-            // counts may change -> refresh pills
             updateFilterCounts();
         });
 
@@ -90,8 +89,8 @@ public class Gui {
             if (summary != null) {
                 summary.animateToCounts(HabitService.completedDisplayedProperty().get(), newV.intValue());
             }
-            refreshHabitCards(dv);      // rebuild when total set changes
-            updateFilterCounts();        // and keep pill counts in sync
+            refreshHabitCards(dv);
+            updateFilterCounts();
         });
 
         // ── Build habit cards AFTER listeners are wired; summary will be appended last
@@ -208,11 +207,13 @@ public class Gui {
             dv.contentBox().getChildren().add(card);
         }
 
-        // Then add inactive (unfiltered, always shown for "All" category meaning)
-        for (Habit h : inactive) {
-            HabitCard card = new HabitCard(pickIconFor(h), h.getName(), h.getSchedule().toString());
-            card.bindToHabit(h);
-            dv.contentBox().getChildren().add(card);
+        // ── CHANGE: only show inactive when filter = ALL
+        if (activeFilter == ActiveFilter.ALL) {
+            for (Habit h : inactive) {
+                HabitCard card = new HabitCard(pickIconFor(h), h.getName(), h.getSchedule().toString());
+                card.bindToHabit(h);
+                dv.contentBox().getChildren().add(card);
+            }
         }
 
         // Always append summary LAST
@@ -224,7 +225,6 @@ public class Gui {
             summaryUpdateSnapshot();
         }
 
-        // Keep pill counts up to date
         updateFilterCounts();
     }
 
@@ -259,10 +259,7 @@ public class Gui {
         remainCountLbl.setText(String.valueOf(activeRemaining));
     }
 
-    /**
-     * Pick icon by Category first; if category is null or unknown,
-     * fall back to a simple name-based heuristic.
-     */
+    /** Pick icon by Category or name */
     private String pickIconFor(Habit h) {
         System.out.println("Habit: " + h.getName() + " category=" + h.getCategory());
         try {
@@ -285,12 +282,10 @@ public class Gui {
     }
 
     // ── NEW: centralized way to ask if a habit is completed today
-    // Rename this to match your model/service if needed.
     private boolean isCompletedToday(Habit h) {
         try {
-            return h.isCompletedToday();       // preferred if available
+            return h.isCompletedToday();  // adapt to your Habit model
         } catch (Throwable ignored) {
-            // If your API differs, adapt here (e.g., HabitService.isCompletedToday(h))
             return false;
         }
     }
