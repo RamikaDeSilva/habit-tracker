@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Fixed CSS for filtering buttons">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="little more filtering button css">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/WeeklyRecapCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/WeeklyRecapCard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,14 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Added ProgressDonut.java File">
-      <option name="closed" value="true" />
-      <created>1756332768154</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1756332768154</updated>
     </task>
     <task id="LOCAL-00049" summary="Added ProgressCard.java file">
       <option name="closed" value="true" />
@@ -547,7 +540,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758519180005</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="little more filtering button css">
+      <option name="closed" value="true" />
+      <created>1758520270487</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1758520270487</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -562,7 +563,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adjusted width of habit cards" />
     <MESSAGE value="Fixed width of cards + spacing between habit cards and progress donut / weekly recap" />
     <MESSAGE value="Added CSS Styling to bottom bar card MVP" />
     <MESSAGE value="Fixed margin on CompletionSummaryCard.java" />
@@ -587,7 +587,8 @@
     <MESSAGE value="Added basic filtering buttons - still includes inactive habits though" />
     <MESSAGE value="Fixed filtering - completed and remaining don't show inactive habits for today" />
     <MESSAGE value="Fixed CSS for filtering buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed CSS for filtering buttons" />
+    <MESSAGE value="little more filtering button css" />
+    <option name="LAST_COMMIT_MESSAGE" value="little more filtering button css" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

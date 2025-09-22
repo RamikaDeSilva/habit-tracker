@@ -58,8 +58,12 @@ public class Gui {
 
         prog  = new ProgressCard();
         recap = new WeeklyRecapCard();
+        // INIT recap with real data (Map -> List)
+        recap.updateToday(new ArrayList<>(HabitService.getAllHabits().values()));
+
+        /*recap = new WeeklyRecapCard();
         recap.setDayLabels(LocalDate.now());
-        recap.animateTo(new double[]{0, 0, 0, 0, 0, 0, 0}); // placeholder until weekly data wired
+        recap.animateTo(new double[]{0, 0, 0, 0, 0, 0, 0}); // placeholder until weekly data wired*/
 
         progressBox.getChildren().addAll(prog, recap);
         dv.contentBox().getChildren().add(progressBox);
@@ -83,6 +87,8 @@ public class Gui {
                 summary.animateToCounts(newV.intValue(), HabitService.totalDisplayedProperty().get());
             }
             updateFilterCounts();
+            // >>> keep recap in sync when a habit is checked/unchecked
+            recap.updateToday(new ArrayList<>(HabitService.getAllHabits().values()));
         });
 
         HabitService.totalDisplayedProperty().addListener((obs, oldV, newV) -> {
@@ -91,6 +97,8 @@ public class Gui {
             }
             refreshHabitCards(dv);
             updateFilterCounts();
+            // >>> also refresh recap when totals change (habit added/removed, schedule change, etc.)
+            recap.updateToday(new ArrayList<>(HabitService.getAllHabits().values()));
         });
 
         // ── Build habit cards AFTER listeners are wired; summary will be appended last
@@ -167,11 +175,9 @@ public class Gui {
      *  Active-today habits appear first, inactive habits after.
      *  The filter applies ONLY to the active-today list. */
     private void refreshHabitCards(DashboardView dv) {
-        // Remove existing HabitCard nodes and any existing summary instance
         dv.contentBox().getChildren().removeIf(node ->
                 node instanceof HabitCard || node instanceof CompletionSummaryCard);
 
-        // Partition habits
         List<Habit> activeToday = new ArrayList<>();
         List<Habit> inactive = new ArrayList<>();
 
@@ -184,7 +190,6 @@ public class Gui {
             }
         }
 
-        // ── Apply filter to active-today only
         List<Habit> filteredActive = new ArrayList<>();
         for (Habit h : activeToday) {
             boolean done = isCompletedToday(h);
@@ -195,19 +200,16 @@ public class Gui {
             }
         }
 
-        // Sort alphabetically inside groups (optional)
         Comparator<Habit> byName = Comparator.comparing(h -> h.getName().toLowerCase());
         filteredActive.sort(byName);
         inactive.sort(byName);
 
-        // Add active cards first (filtered)
         for (Habit h : filteredActive) {
             HabitCard card = new HabitCard(pickIconFor(h), h.getName(), h.getSchedule().toString());
             card.bindToHabit(h);
             dv.contentBox().getChildren().add(card);
         }
 
-        // ── CHANGE: only show inactive when filter = ALL
         if (activeFilter == ActiveFilter.ALL) {
             for (Habit h : inactive) {
                 HabitCard card = new HabitCard(pickIconFor(h), h.getName(), h.getSchedule().toString());
@@ -216,11 +218,9 @@ public class Gui {
             }
         }
 
-        // Always append summary LAST
         VBox.setMargin(summary, new Insets(20, 0, 20, 0));
         dv.contentBox().getChildren().add(summary);
 
-        // Initial sync after rebuild
         if (summary != null) {
             summaryUpdateSnapshot();
         }
@@ -284,7 +284,7 @@ public class Gui {
     // ── NEW: centralized way to ask if a habit is completed today
     private boolean isCompletedToday(Habit h) {
         try {
-            return h.isCompletedToday();  // adapt to your Habit model
+            return h.isCompletedToday();
         } catch (Throwable ignored) {
             return false;
         }
