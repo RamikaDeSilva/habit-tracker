@@ -23,29 +23,23 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
 
-// Singleton class to handle all habit functionality
 public class HabitService {
     private static HabitService instance;
     private static final Map<UUID, Habit> allHabits    = new LinkedHashMap<>();
     private static final Map<UUID, Habit> activeHabits = new LinkedHashMap<>();
 
-    // Dashboard metric properties (bind from UI)
     private static final IntegerProperty totalDisplayed     = new SimpleIntegerProperty(0);
     private static final IntegerProperty completedDisplayed = new SimpleIntegerProperty(0);
     private static final DoubleProperty  percentDisplayed   = new SimpleDoubleProperty(0.0);
 
     private HabitService() {}
-
-    public static HabitService getInstance() {
-        if (instance != null) return instance;
-        instance = new HabitService();
-        return instance;
-    }
+    public static HabitService getInstance() { if (instance != null) return instance; instance = new HabitService(); return instance; }
 
     public static Map<UUID, Habit> getAllHabits()    { return allHabits; }
     public static Map<UUID, Habit> getActiveHabits() { return activeHabits; }
 
-    // Recompute totals for dashboard (ONLY habits scheduled for TODAY)
+    public static void forceRecompute() { recomputeDashboardMetrics(); }
+
     private static void recomputeDashboardMetrics() {
         LocalDate today = LocalDate.now();
         DayOfWeek dow   = today.getDayOfWeek();
@@ -54,7 +48,6 @@ public class HabitService {
         int completedToday = 0;
 
         for (Habit h : activeHabits.values()) {
-            // count only habits whose schedule includes TODAY
             if (h.getSchedule() != null && h.getSchedule().contains(dow)) {
                 total++;
                 if (h.isCompletedOn(today)) {
@@ -65,53 +58,26 @@ public class HabitService {
 
         totalDisplayed.set(total);
         completedDisplayed.set(completedToday);
-
-        // On a rest day (no scheduled habits) show 100% to avoid a sad 0%
         percentDisplayed.set(total == 0 ? 1.0 : (double) completedToday / (double) total);
     }
 
-    // Expose properties to UI
     public static ReadOnlyIntegerProperty totalDisplayedProperty()     { return totalDisplayed; }
     public static ReadOnlyIntegerProperty completedDisplayedProperty() { return completedDisplayed; }
     public static ReadOnlyDoubleProperty  percentDisplayedProperty()   { return percentDisplayed; }
 
-    // Create
-    public static void createHabit(String name, Priority priority, Category category, EnumSet<DayOfWeek> schedule) {
-        UUID id = UUID.randomUUID();
+    public static void createHabitFromPersistence(UUID id, String name, Priority priority,
+                                                  Category category, EnumSet<DayOfWeek> schedule,
+                                                  Status status) {
         Habit habit = new Habit(id, name, priority, category, schedule);
         allHabits.put(id, habit);
-        activeHabits.put(id, habit);
-        recomputeDashboardMetrics();
-    }
-
-    // Remove
-    public static void removeHabit(UUID habitID) throws HabitNotFoundException {
-        if (!allHabits.containsKey(habitID)) throw new HabitNotFoundException();
-
-        Habit removedHabit = allHabits.get(habitID);
-        if (removedHabit.getActiveStatus() == Status.ACTIVE) {
-            if (!activeHabits.containsKey(habitID)) throw new HabitNotFoundException();
-            activeHabits.remove(habitID);
-        }
-        allHabits.remove(habitID);
-        recomputeDashboardMetrics();
-    }
-
-    // Deactivate
-    public static void deactivateHabit(UUID habitID) throws HabitNotFoundException, AlreadyNotActiveException {
-        if (!allHabits.containsKey(habitID)) throw new HabitNotFoundException();
-
-        Habit deactivatedHabit = allHabits.get(habitID);
-        if (deactivatedHabit.getActiveStatus() == Status.ACTIVE) {
-            deactivatedHabit.setActiveStatus(Status.INACTIVE);
-            activeHabits.remove(habitID);
-            recomputeDashboardMetrics();
+        if (status == Status.ACTIVE) {
+            activeHabits.put(id, habit);
         } else {
-            throw new AlreadyNotActiveException();
+            habit.setActiveStatus(Status.INACTIVE);
         }
+        recomputeDashboardMetrics();
     }
 
-    // Find by name (kept as-is)
     public static UUID validIdExist(UUID searchId, String habitName) {
         for (UUID id : allHabits.keySet()) {
             if (allHabits.get(id) != null) {
@@ -122,37 +88,64 @@ public class HabitService {
         return searchId;
     }
 
-    public static void changeName(UUID searchId, String name) {
-        for (UUID id : allHabits.keySet()) {
-            if (searchId.equals(id) && allHabits.get(id) != null) {
-                allHabits.get(id).setName(name);
-                break;
-            }
-        }
+    public static void createHabit(String name, Priority priority, Category category, EnumSet<DayOfWeek> schedule) {
+        UUID id = UUID.randomUUID();
+        Habit habit = new Habit(id, name, priority, category, schedule);
+        allHabits.put(id, habit);
+        activeHabits.put(id, habit);
         recomputeDashboardMetrics();
+        Persistence.saveSnapshot();
+    }
+
+    public static void removeHabit(UUID habitID) throws HabitNotFoundException {
+        if (!allHabits.containsKey(habitID)) throw new HabitNotFoundException();
+
+        Habit removedHabit = allHabits.get(habitID);
+        if (removedHabit.getActiveStatus() == Status.ACTIVE) {
+            if (!activeHabits.containsKey(habitID)) throw new HabitNotFoundException();
+            activeHabits.remove(habitID);
+        }
+        allHabits.remove(habitID);
+        recomputeDashboardMetrics();
+        Persistence.saveSnapshot();
+    }
+
+    public static void deactivateHabit(UUID habitID) throws HabitNotFoundException, AlreadyNotActiveException {
+        if (!allHabits.containsKey(habitID)) throw new HabitNotFoundException();
+
+        Habit deactivatedHabit = allHabits.get(habitID);
+        if (deactivatedHabit.getActiveStatus() == Status.ACTIVE) {
+            deactivatedHabit.setActiveStatus(Status.INACTIVE);
+            activeHabits.remove(habitID);
+            recomputeDashboardMetrics();
+            Persistence.saveSnapshot();
+        } else {
+            throw new AlreadyNotActiveException();
+        }
+    }
+
+    public static void changeName(UUID searchId, String name) {
+        Habit h = allHabits.get(searchId);
+        if (h != null) h.setName(name);
+        recomputeDashboardMetrics();
+        Persistence.saveSnapshot();
     }
 
     public static void changePriority(UUID searchId, Priority priority) {
-        for (UUID id : allHabits.keySet()) {
-            if (searchId.equals(id) && allHabits.get(id) != null) {
-                allHabits.get(id).setPriority(priority);
-                break;
-            }
-        }
+        Habit h = allHabits.get(searchId);
+        if (h != null) h.setPriority(priority);
         recomputeDashboardMetrics();
+        Persistence.saveSnapshot();
     }
 
     public static void changeCategory(UUID searchId, Category category) {
-        for (UUID id : allHabits.keySet()) {
-            if (searchId.equals(id) && allHabits.get(id) != null) {
-                allHabits.get(id).setCategory(category);
-                break;
-            }
-        }
+        Habit h = allHabits.get(searchId);
+        if (h != null) h.setCategory(category);
         recomputeDashboardMetrics();
+        Persistence.saveSnapshot();
     }
 
-    // Mark completed for TODAY (respect schedule)
+    // Mark completed for TODAY
     public static void markHabitCompletedToday(UUID habitId)
             throws HabitNotFoundException, HabitAlreadyCompleteException, HabitNotActiveTodayException {
         Habit habit = allHabits.get(habitId);
@@ -163,25 +156,23 @@ public class HabitService {
 
         habit.markCompletedToday();
         recomputeDashboardMetrics();
+        Persistence.saveSnapshot();
     }
 
     // Unmark today's completion
     public static void unmarkHabitCompletedToday(UUID habitId) throws HabitNotFoundException {
         Habit habit = allHabits.get(habitId);
         if (habit == null) throw new HabitNotFoundException();
+
         habit.unmarkCompletedToday();
         recomputeDashboardMetrics();
+        Persistence.saveSnapshot();
     }
 
-    // Toggle for TODAY
     public static void setCompletedToday(UUID habitId, boolean completed)
             throws HabitNotFoundException, HabitAlreadyCompleteException, HabitNotActiveTodayException {
-        if (completed) {
-            markHabitCompletedToday(habitId);
-        } else {
-            unmarkHabitCompletedToday(habitId);
-        }
-        // mark/unmark already recompute, but harmless to call again
+        if (completed) markHabitCompletedToday(habitId);
+        else unmarkHabitCompletedToday(habitId);
         recomputeDashboardMetrics();
     }
 }

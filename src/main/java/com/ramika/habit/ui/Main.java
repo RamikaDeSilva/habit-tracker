@@ -1,27 +1,21 @@
 package com.ramika.habit.ui;
 
 import com.ramika.habit.gui.Gui;
+import com.ramika.habit.service.Persistence;   // added
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-//        Label label = new Label("Hello, JavaFX!");
-//        Scene scene = new Scene(label, 400, 200);
-//        primaryStage.setTitle("JavaFX Base App");
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
+        // Load from JSON before building UI
+        Persistence.bootstrapLoad();
 
-        new Gui().show(primaryStage);   // delegate all UI to Gui
+        new Gui().show(primaryStage);
     }
-
 
     public static void main(String[] args) {
         launch(args);
-        // new UserApp();
     }
 }
