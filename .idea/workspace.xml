@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Updated tab title">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Made gui frame not resizable to keep design from moving">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,14 +154,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Implemented LinearProgressBar + CompletionSummaryCard.java">
-      <option name="closed" value="true" />
-      <created>1756336290878</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1756336290878</updated>
     </task>
     <task id="LOCAL-00053" summary="Made frame Scrollable">
       <option name="closed" value="true" />
@@ -547,7 +539,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758580773861</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="Made gui frame not resizable to keep design from moving">
+      <option name="closed" value="true" />
+      <created>1758652547094</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1758652547094</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -562,7 +562,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed width on CompletionSummaryCard.java" />
     <MESSAGE value="added emojis to categories and priority levels in add habit" />
     <MESSAGE value="Updated default select habit properties to have emojis" />
     <MESSAGE value="Added helpers to Habit class to begin Syncing habits" />
@@ -587,7 +586,8 @@
     <MESSAGE value="Added weekly recap bar updating to todays completion rate" />
     <MESSAGE value="Added habit and dayss scheduled popups to prevent empty habits" />
     <MESSAGE value="Updated tab title" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated tab title" />
+    <MESSAGE value="Made gui frame not resizable to keep design from moving" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made gui frame not resizable to keep design from moving" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
