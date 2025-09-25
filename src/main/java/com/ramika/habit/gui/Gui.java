@@ -3,6 +3,8 @@ package com.ramika.habit.gui;
 import com.ramika.habit.model.Category;
 import com.ramika.habit.model.Habit;
 import com.ramika.habit.service.HabitService;
+import com.ramika.habit.service.MidnightScheduler;   // <<< added
+import javafx.application.Platform;                  // <<< added
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -61,19 +63,15 @@ public class Gui {
         // INIT recap with real data (Map -> List)
         recap.updateToday(new ArrayList<>(HabitService.getAllHabits().values()));
 
-        /*recap = new WeeklyRecapCard();
-        recap.setDayLabels(LocalDate.now());
-        recap.animateTo(new double[]{0, 0, 0, 0, 0, 0, 0}); // placeholder until weekly data wired*/
-
         progressBox.getChildren().addAll(prog, recap);
         dv.contentBox().getChildren().add(progressBox);
 
-        // ── NEW: tiny filter bar (affects only active-today)
+        // ── tiny filter bar (affects only active-today)
         HBox filterBar = buildFilterBar(dv);
         VBox.setMargin(filterBar, new Insets(0, 0, 12, 0));
         dv.contentBox().getChildren().add(filterBar);
 
-        // Create summary (but add it later so it stays at the bottom)
+        // Create summary (append later so it stays at bottom)
         summary = new CompletionSummaryCard();
         summary.animateToCounts(0, 1); // initial state
 
@@ -87,7 +85,7 @@ public class Gui {
                 summary.animateToCounts(newV.intValue(), HabitService.totalDisplayedProperty().get());
             }
             updateFilterCounts();
-            // >>> keep recap in sync when a habit is checked/unchecked
+            // keep recap in sync when a habit is checked/unchecked
             recap.updateToday(new ArrayList<>(HabitService.getAllHabits().values()));
         });
 
@@ -97,13 +95,22 @@ public class Gui {
             }
             refreshHabitCards(dv);
             updateFilterCounts();
-            // >>> also refresh recap when totals change (habit added/removed, schedule change, etc.)
+            // also refresh recap when totals change (habit added/removed, schedule change, etc.)
             recap.updateToday(new ArrayList<>(HabitService.getAllHabits().values()));
         });
 
         // ── Build habit cards AFTER listeners are wired; summary will be appended last
         refreshHabitCards(dv);
         updateFilterCounts();
+
+        // ── NEW: schedule a UI refresh at local midnight every day
+        MidnightScheduler.start(() -> Platform.runLater(() -> {
+            HabitService.forceRecompute(); // recompute today’s metrics
+            recap.updateToday(new ArrayList<>(HabitService.getAllHabits().values()));
+            refreshHabitCards(dv);         // re-order active-today vs inactive, refresh checkboxes
+            updateFilterCounts();
+            summaryUpdateSnapshot();
+        }));
 
         Scene scene = new Scene(scroller, 1200, 720);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());

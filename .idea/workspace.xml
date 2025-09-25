@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="added Persistence.java to services package">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Implemented saving and loading + added gson correctly to gradle (Refreshed project)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/MidnightScheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/Persistence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/Persistence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -157,14 +156,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Implemented Basic WeeklyRecapCard.java">
-      <option name="closed" value="true" />
-      <created>1756337824838</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1756337824838</updated>
     </task>
     <task id="LOCAL-00056" summary="Centered and Stretched Bars in WeeklyRecapCard.java">
       <option name="closed" value="true" />
@@ -550,7 +541,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758753032503</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="Implemented saving and loading + added gson correctly to gradle (Refreshed project)">
+      <option name="closed" value="true" />
+      <created>1758754084492</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1758754084492</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -565,7 +564,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added helpers to Habit class to begin Syncing habits" />
     <MESSAGE value="Fixed import being in wrong place in Habit" />
     <MESSAGE value="Updated habit class to be ready for habit syncing" />
     <MESSAGE value="Habit Syncing Fixed across progress bars and donut - now working" />
@@ -590,7 +588,8 @@
     <MESSAGE value="Made gui frame not resizable to keep design from moving" />
     <MESSAGE value="added GSON for Json to Gradle" />
     <MESSAGE value="added Persistence.java to services package" />
-    <option name="LAST_COMMIT_MESSAGE" value="added Persistence.java to services package" />
+    <MESSAGE value="Implemented saving and loading + added gson correctly to gradle (Refreshed project)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented saving and loading + added gson correctly to gradle (Refreshed project)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
