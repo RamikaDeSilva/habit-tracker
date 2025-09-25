@@ -2,9 +2,10 @@ package com.ramika.habit.gui;
 
 import com.ramika.habit.model.Category;
 import com.ramika.habit.model.Habit;
+import com.ramika.habit.model.Priority;
 import com.ramika.habit.service.HabitService;
-import com.ramika.habit.service.MidnightScheduler;   // <<< added
-import javafx.application.Platform;                  // <<< added
+import com.ramika.habit.service.MidnightScheduler;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -14,7 +15,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
+//import javafx.scene.layout.Priority as FxPriority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -31,11 +32,11 @@ public class Gui {
     private WeeklyRecapCard recap;
     private CompletionSummaryCard summary;
 
-    // ── NEW: filter state (applies ONLY to active-today habits)
+    // filter state (applies ONLY to active-today habits)
     private enum ActiveFilter { ALL, COMPLETED, REMAINING }
     private ActiveFilter activeFilter = ActiveFilter.ALL;
 
-    // ── NEW: UI refs for counts on the pills
+    // UI refs for counts on the pills
     private Label allCountLbl     = new Label("0");
     private Label doneCountLbl    = new Label("0");
     private Label remainCountLbl  = new Label("0");
@@ -53,29 +54,28 @@ public class Gui {
         scroller.setPannable(true);
         scroller.setStyle("-fx-background-color: transparent; -fx-padding: 0;");
 
-        // ── Top row: donut + weekly recap
+        // Top row: donut + weekly recap
         HBox progressBox = new HBox(20);
         progressBox.setPadding(new Insets(0, 0, 20, 0));
         progressBox.setAlignment(Pos.CENTER);
 
         prog  = new ProgressCard();
         recap = new WeeklyRecapCard();
-        // INIT recap with real data (Map -> List)
         recap.updateToday(new ArrayList<>(HabitService.getAllHabits().values()));
 
         progressBox.getChildren().addAll(prog, recap);
         dv.contentBox().getChildren().add(progressBox);
 
-        // ── tiny filter bar (affects only active-today)
+        // tiny filter bar (affects only active-today)
         HBox filterBar = buildFilterBar(dv);
         VBox.setMargin(filterBar, new Insets(0, 0, 12, 0));
         dv.contentBox().getChildren().add(filterBar);
 
-        // Create summary (append later so it stays at bottom)
+        // completion summary (append later so it stays at bottom)
         summary = new CompletionSummaryCard();
-        summary.animateToCounts(0, 1); // initial state
+        summary.animateToCounts(0, 1);
 
-        // ── Live listeners/bindings
+        // listeners → keep donut/summary/recap in sync
         HabitService.percentDisplayedProperty().addListener((o, oldV, p) ->
                 prog.animateTo(p == null ? 0.0 : p.doubleValue())
         );
@@ -85,7 +85,6 @@ public class Gui {
                 summary.animateToCounts(newV.intValue(), HabitService.totalDisplayedProperty().get());
             }
             updateFilterCounts();
-            // keep recap in sync when a habit is checked/unchecked
             recap.updateToday(new ArrayList<>(HabitService.getAllHabits().values()));
         });
 
@@ -95,19 +94,18 @@ public class Gui {
             }
             refreshHabitCards(dv);
             updateFilterCounts();
-            // also refresh recap when totals change (habit added/removed, schedule change, etc.)
             recap.updateToday(new ArrayList<>(HabitService.getAllHabits().values()));
         });
 
-        // ── Build habit cards AFTER listeners are wired; summary will be appended last
+        // build habit cards
         refreshHabitCards(dv);
         updateFilterCounts();
 
-        // ── NEW: schedule a UI refresh at local midnight every day
+        // refresh at local midnight
         MidnightScheduler.start(() -> Platform.runLater(() -> {
-            HabitService.forceRecompute(); // recompute today’s metrics
+            HabitService.forceRecompute();
             recap.updateToday(new ArrayList<>(HabitService.getAllHabits().values()));
-            refreshHabitCards(dv);         // re-order active-today vs inactive, refresh checkboxes
+            refreshHabitCards(dv);
             updateFilterCounts();
             summaryUpdateSnapshot();
         }));
@@ -134,18 +132,9 @@ public class Gui {
 
         allBtn.setSelected(true);
 
-        allBtn.setOnAction(e -> {
-            activeFilter = ActiveFilter.ALL;
-            refreshHabitCards(dv);
-        });
-        doneBtn.setOnAction(e -> {
-            activeFilter = ActiveFilter.COMPLETED;
-            refreshHabitCards(dv);
-        });
-        remainBtn.setOnAction(e -> {
-            activeFilter = ActiveFilter.REMAINING;
-            refreshHabitCards(dv);
-        });
+        allBtn.setOnAction(e -> { activeFilter = ActiveFilter.ALL;       refreshHabitCards(dv); });
+        doneBtn.setOnAction(e -> { activeFilter = ActiveFilter.COMPLETED; refreshHabitCards(dv); });
+        remainBtn.setOnAction(e -> { activeFilter = ActiveFilter.REMAINING; refreshHabitCards(dv); });
 
         HBox box = new HBox(12, prefix, allBtn, doneBtn, remainBtn);
         box.setAlignment(Pos.CENTER_LEFT);
@@ -178,9 +167,12 @@ public class Gui {
         return r;
     }
 
-    /** Refresh all habit cards and keep summary at the bottom.
-     *  Active-today habits appear first, inactive habits after.
-     *  The filter applies ONLY to the active-today list. */
+    /**
+     * Refresh all habit cards and keep summary at the bottom.
+     * Active-today habits appear first, inactive habits after.
+     * Inside each group, order by Priority: HIGH → MEDIUM → LOW, then by name.
+     * The filter applies ONLY to the active-today list.
+     */
     private void refreshHabitCards(DashboardView dv) {
         dv.contentBox().getChildren().removeIf(node ->
                 node instanceof HabitCard || node instanceof CompletionSummaryCard);
@@ -197,6 +189,7 @@ public class Gui {
             }
         }
 
+        // apply filter to activeToday only
         List<Habit> filteredActive = new ArrayList<>();
         for (Habit h : activeToday) {
             boolean done = isCompletedToday(h);
@@ -207,16 +200,22 @@ public class Gui {
             }
         }
 
-        Comparator<Habit> byName = Comparator.comparing(h -> h.getName().toLowerCase());
-        filteredActive.sort(byName);
-        inactive.sort(byName);
+        // Comparator: by priority (high→low), then by name
+        Comparator<Habit> byPriorityThenName = Comparator
+                .comparingInt((Habit h) -> priorityRank(h.getPriority()))
+                .thenComparing(h -> safeLower(h.getName()));
 
+        filteredActive.sort(byPriorityThenName);
+        inactive.sort(byPriorityThenName);
+
+        // render active first
         for (Habit h : filteredActive) {
             HabitCard card = new HabitCard(pickIconFor(h), h.getName(), h.getSchedule().toString());
             card.bindToHabit(h);
             dv.contentBox().getChildren().add(card);
         }
 
+        // render inactive after (only when "All" filter)
         if (activeFilter == ActiveFilter.ALL) {
             for (Habit h : inactive) {
                 HabitCard card = new HabitCard(pickIconFor(h), h.getName(), h.getSchedule().toString());
@@ -245,7 +244,7 @@ public class Gui {
         prog.animateTo(p);
     }
 
-    // ── NEW: helper to compute counts for the pills
+    // compute counts for the pills
     private void updateFilterCounts() {
         DayOfWeek today = LocalDate.now().getDayOfWeek();
 
@@ -268,7 +267,6 @@ public class Gui {
 
     /** Pick icon by Category or name */
     private String pickIconFor(Habit h) {
-        System.out.println("Habit: " + h.getName() + " category=" + h.getCategory());
         try {
             Category cat = h.getCategory();
             if (cat != null) {
@@ -288,7 +286,7 @@ public class Gui {
         return "✅";
     }
 
-    // ── NEW: centralized way to ask if a habit is completed today
+    // centralized way to ask if a habit is completed today
     private boolean isCompletedToday(Habit h) {
         try {
             return h.isCompletedToday();
@@ -297,7 +295,19 @@ public class Gui {
         }
     }
 
-    /** Convenience: set up and show the primary stage */
+    // priority sorting helper (HIGH -> 0, MEDIUM -> 1, LOW -> 2)
+    private int priorityRank(Priority p) {
+        if (p == null) return 2;
+        return switch (p) {
+            case HIGH -> 0;
+            case MEDIUM -> 1;
+            case LOW -> 2;
+        };
+    }
+
+    private String safeLower(String s) { return s == null ? "" : s.toLowerCase(); }
+
+    /** Show the primary stage */
     public void show(Stage stage) {
         stage.setTitle("Habit Hero - Track Your Habits, Achieve Your Goals");
         stage.setScene(createMainScene(stage));

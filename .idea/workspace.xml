@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Implemented reset of habits and progress at midnight without affecting data storage">
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Added bubbles for the priority and category in HabitCard">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/HabitService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,14 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00058" summary="Implemented AddHabitScene MVP and linked to button">
-      <option name="closed" value="true" />
-      <created>1756953771541</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1756953771541</updated>
     </task>
     <task id="LOCAL-00059" summary="Linked adding habit to displaying habit basic MVP">
       <option name="closed" value="true" />
@@ -547,7 +540,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758774138933</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="Added bubbles for the priority and category in HabitCard">
+      <option name="closed" value="true" />
+      <created>1758774783836</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1758774783836</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -562,7 +563,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Habit Syncing Fixed across progress bars and donut - now working" />
     <MESSAGE value="Updated HabitService.java so that only habits active today would be in the total progress bar" />
     <MESSAGE value="Changed checkbox to JavaFX type from Label" />
     <MESSAGE value="Added CSS Styling to checkbox in habitcards" />
@@ -587,7 +587,8 @@
     <MESSAGE value="Implemented saving and loading + added gson correctly to gradle (Refreshed project)" />
     <MESSAGE value="Added MidnightScheduler.java To reset habits at midnight" />
     <MESSAGE value="Implemented reset of habits and progress at midnight without affecting data storage" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented reset of habits and progress at midnight without affecting data storage" />
+    <MESSAGE value="Added bubbles for the priority and category in HabitCard" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added bubbles for the priority and category in HabitCard" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
