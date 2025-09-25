@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Implemented saving and loading + added gson correctly to gradle (Refreshed project)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/service/MidnightScheduler.java" afterDir="false" />
+    <list default="true" id="c4ab1945-bf8b-45f2-ac20-330052fd6189" name="Changes" comment="Implemented reset of habits and progress at midnight without affecting data storage">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/Gui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/ui/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ramika/habit/gui/HabitCard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,22 +154,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1755560446414</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Centered and Stretched Bars in WeeklyRecapCard.java">
-      <option name="closed" value="true" />
-      <created>1756338024759</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1756338024759</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Added CSS File + package">
-      <option name="closed" value="true" />
-      <created>1756346328896</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1756346328896</updated>
     </task>
     <task id="LOCAL-00058" summary="Implemented AddHabitScene MVP and linked to button">
       <option name="closed" value="true" />
@@ -549,7 +531,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758754084492</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="Added MidnightScheduler.java To reset habits at midnight">
+      <option name="closed" value="true" />
+      <created>1758774115403</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1758774115403</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Implemented reset of habits and progress at midnight without affecting data storage">
+      <option name="closed" value="true" />
+      <created>1758774138933</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1758774138933</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -564,8 +562,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed import being in wrong place in Habit" />
-    <MESSAGE value="Updated habit class to be ready for habit syncing" />
     <MESSAGE value="Habit Syncing Fixed across progress bars and donut - now working" />
     <MESSAGE value="Updated HabitService.java so that only habits active today would be in the total progress bar" />
     <MESSAGE value="Changed checkbox to JavaFX type from Label" />
@@ -589,7 +585,9 @@
     <MESSAGE value="added GSON for Json to Gradle" />
     <MESSAGE value="added Persistence.java to services package" />
     <MESSAGE value="Implemented saving and loading + added gson correctly to gradle (Refreshed project)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented saving and loading + added gson correctly to gradle (Refreshed project)" />
+    <MESSAGE value="Added MidnightScheduler.java To reset habits at midnight" />
+    <MESSAGE value="Implemented reset of habits and progress at midnight without affecting data storage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented reset of habits and progress at midnight without affecting data storage" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

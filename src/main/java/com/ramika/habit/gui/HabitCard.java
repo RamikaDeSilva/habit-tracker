@@ -3,7 +3,9 @@ package com.ramika.habit.gui;
 import com.ramika.habit.exceptions.HabitAlreadyCompleteException;
 import com.ramika.habit.exceptions.HabitNotActiveTodayException;
 import com.ramika.habit.exceptions.HabitNotFoundException;
+import com.ramika.habit.model.Category;
 import com.ramika.habit.model.Habit;
+import com.ramika.habit.model.Priority;
 import com.ramika.habit.service.HabitService;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -23,7 +25,13 @@ public class HabitCard extends StackPane {
     private final CheckBox checkBox = new CheckBox();
     private final Label    titleLbl;
     private final Button   deleteBtn;
+
     private final HBox     daysRow = new HBox(6);
+
+    // NEW: badges row for category + priority
+    private final HBox     badgesRow = new HBox(8);
+    private final Label    categoryChip = new Label();
+    private final Label    priorityChip = new Label();
 
     private UUID    habitId;
     private boolean activeToday;
@@ -56,7 +64,18 @@ public class HabitCard extends StackPane {
         HBox titleRow = new HBox(6, emojiLbl, titleLbl);
         titleRow.setAlignment(Pos.CENTER_LEFT);
 
-        VBox textCol = new VBox(10, titleRow, daysRow);
+        // NEW: badges row setup (category + priority)
+        styleChipBase(categoryChip);
+        styleChipBase(priorityChip);
+        badgesRow.setAlignment(Pos.CENTER_LEFT);
+        badgesRow.getChildren().addAll(categoryChip, priorityChip);
+
+        // Days row (initially empty, filled in later)
+
+        VBox headerCol = new VBox(6, titleRow, badgesRow); // 4px gap between title + badges
+        headerCol.setAlignment(Pos.CENTER_LEFT);
+
+        VBox textCol = new VBox(14, headerCol, daysRow);   // 14px gap before days row
         textCol.setAlignment(Pos.CENTER_LEFT);
 
         HBox row = new HBox(12, checkBox, textCol);
@@ -93,6 +112,9 @@ public class HabitCard extends StackPane {
         // Initial state
         boolean doneToday = activeToday && habit.isCompletedOn(LocalDate.now());
         checkBox.setSelected(doneToday);
+
+        // Draw badges from Habit (category + priority)
+        updateBadges(habit);
 
         // Draw the weekly schedule row
         updateDayChips(habit.getSchedule());
@@ -213,5 +235,44 @@ public class HabitCard extends StackPane {
         a.setHeaderText(null);
         a.setContentText(msg);
         a.showAndWait();
+    }
+
+    // ====== NEW: badge helpers ======
+
+    private void updateBadges(Habit habit) {
+        // Category chip
+        Category cat = habit.getCategory();
+        if (cat == null) cat = Category.OTHER;
+        switch (cat) {
+            case FITNESS -> setChip(categoryChip, "🏋️  Fitness", "#fff6e5", "#b35300");
+            case FINANCIAL -> setChip(categoryChip, "💰  Financial", "#e9fff1", "#0b6b3e");
+            case MENTALHEALTH -> setChip(categoryChip, "🧠  Mental Health", "#eef2ff", "#4338ca");
+            case OTHER -> setChip(categoryChip, "📋  Other", "#f3f4f6", "#374151");
+        }
+
+        // Priority chip
+        Priority pr = habit.getPriority();
+        if (pr == null) pr = Priority.MEDIUM;
+        switch (pr) {
+            case LOW -> setChip(priorityChip, "🟢  Low", "#eafff1", "#0d8a4e");
+            case MEDIUM -> setChip(priorityChip, "🟡  Medium", "#fffbe6", "#8a6d00");
+            case HIGH -> setChip(priorityChip, "🔴  High", "#ffecec", "#a60202");
+        }
+    }
+
+    private void styleChipBase(Label chip) {
+        chip.setPadding(new Insets(4, 10, 4, 10));
+        chip.setStyle("-fx-background-radius: 14; -fx-font-size: 12px; -fx-font-weight: 600;");
+    }
+
+    private void setChip(Label chip, String text, String bgHex, String fgHex) {
+        chip.setText(text);
+        chip.setStyle(
+                "-fx-background-radius: 14;" +
+                        "-fx-font-size: 12px;" +
+                        "-fx-font-weight: 600;" +
+                        "-fx-background-color: " + bgHex + ";" +
+                        "-fx-text-fill: " + fgHex + ";"
+        );
     }
 }
