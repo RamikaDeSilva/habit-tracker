@@ -26,6 +26,13 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+// === NEW IMPORTS FOR ANIMATION ===
+import javafx.animation.FadeTransition;
+import javafx.animation.ParallelTransition;
+import javafx.animation.TranslateTransition;
+import javafx.scene.Node;
+import javafx.util.Duration;
+
 public class Gui {
 
     private ProgressCard prog;
@@ -92,12 +99,12 @@ public class Gui {
             if (summary != null) {
                 summary.animateToCounts(HabitService.completedDisplayedProperty().get(), newV.intValue());
             }
-            refreshHabitCards(dv);
+            refreshHabitCards(dv); // will animate cards on any total-change
             updateFilterCounts();
             recap.updateToday(new ArrayList<>(HabitService.getAllHabits().values()));
         });
 
-        // build habit cards
+        // build habit cards (initial render animates)
         refreshHabitCards(dv);
         updateFilterCounts();
 
@@ -105,7 +112,7 @@ public class Gui {
         MidnightScheduler.start(() -> Platform.runLater(() -> {
             HabitService.forceRecompute();
             recap.updateToday(new ArrayList<>(HabitService.getAllHabits().values()));
-            refreshHabitCards(dv);
+            refreshHabitCards(dv); // animate after midnight rebuild
             updateFilterCounts();
             summaryUpdateSnapshot();
         }));
@@ -132,8 +139,8 @@ public class Gui {
 
         allBtn.setSelected(true);
 
-        allBtn.setOnAction(e -> { activeFilter = ActiveFilter.ALL;       refreshHabitCards(dv); });
-        doneBtn.setOnAction(e -> { activeFilter = ActiveFilter.COMPLETED; refreshHabitCards(dv); });
+        allBtn.setOnAction(e -> { activeFilter = ActiveFilter.ALL;        refreshHabitCards(dv); });
+        doneBtn.setOnAction(e -> { activeFilter = ActiveFilter.COMPLETED;  refreshHabitCards(dv); });
         remainBtn.setOnAction(e -> { activeFilter = ActiveFilter.REMAINING; refreshHabitCards(dv); });
 
         HBox box = new HBox(12, prefix, allBtn, doneBtn, remainBtn);
@@ -208,11 +215,15 @@ public class Gui {
         filteredActive.sort(byPriorityThenName);
         inactive.sort(byPriorityThenName);
 
+        // collect the *newly added* HabitCard nodes so we animate only them
+        List<Node> cardsToAnimate = new ArrayList<>();
+
         // render active first
         for (Habit h : filteredActive) {
             HabitCard card = new HabitCard(pickIconFor(h), h.getName(), h.getSchedule().toString());
             card.bindToHabit(h);
             dv.contentBox().getChildren().add(card);
+            cardsToAnimate.add(card);
         }
 
         // render inactive after (only when "All" filter)
@@ -221,6 +232,7 @@ public class Gui {
                 HabitCard card = new HabitCard(pickIconFor(h), h.getName(), h.getSchedule().toString());
                 card.bindToHabit(h);
                 dv.contentBox().getChildren().add(card);
+                cardsToAnimate.add(card);
             }
         }
 
@@ -232,6 +244,9 @@ public class Gui {
         }
 
         updateFilterCounts();
+
+        // === NEW: animate freshly added cards (initial load, nav back, filter clicks) ===
+        animateSlideUp(cardsToAnimate);
     }
 
     /** Ensure summary + donut reflect current service state */
@@ -306,6 +321,30 @@ public class Gui {
     }
 
     private String safeLower(String s) { return s == null ? "" : s.toLowerCase(); }
+
+    /** Slide the given nodes up with a small stagger. */
+    private void animateSlideUp(List<Node> nodes) {
+        final double startY = 22;        // how far they start below
+        final double eachDelayMs = 60;   // stagger between cards
+
+        for (int i = 0; i < nodes.size(); i++) {
+            Node n = nodes.get(i);
+            n.setTranslateY(startY);
+            n.setOpacity(0.0);
+
+            TranslateTransition tt = new TranslateTransition(Duration.millis(280), n);
+            tt.setFromY(startY);
+            tt.setToY(0);
+
+            FadeTransition ft = new FadeTransition(Duration.millis(280), n);
+            ft.setFromValue(0.0);
+            ft.setToValue(1.0);
+
+            ParallelTransition pt = new ParallelTransition(tt, ft);
+            pt.setDelay(Duration.millis(i * eachDelayMs));
+            pt.play();
+        }
+    }
 
     /** Show the primary stage */
     public void show(Stage stage) {
