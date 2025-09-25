@@ -350,7 +350,7 @@ public class Gui {
     public void show(Stage stage) {
         stage.setTitle("Habit Hero - Track Your Habits, Achieve Your Goals");
         stage.setScene(createMainScene(stage));
-        //stage.setResizable(false);
+        stage.setResizable(false);
         stage.show();
     }
 }
